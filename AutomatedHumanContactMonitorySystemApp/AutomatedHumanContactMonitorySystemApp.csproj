@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Dtos\" />
+    <Folder Include="Forms\AttendanceForms\" />
+    <Folder Include="Forms\AttendeeForms\" />
+    <Folder Include="Forms\PlaceForms\" />
+    <Folder Include="Models\Dtos\AttendanceDtos\" />
+    <Folder Include="Models\Dtos\AttendeeDtos\" />
+    <Folder Include="Models\Dtos\PlaceDtos\" />
     <Folder Include="Queries\AttendanceQueries\Get\" />
     <Folder Include="Queries\AttendanceQueries\Delete\" />
     <Folder Include="Queries\AttendanceQueries\Put\" />
