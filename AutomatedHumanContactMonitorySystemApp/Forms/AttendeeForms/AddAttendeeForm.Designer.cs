@@ -121,6 +121,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             this.Controls.Add(this.btnAdd);
             this.Name = "AddAttendeeForm";
             this.Text = "AddAttendeeForm";
+            this.Load += new System.EventHandler(this.AddAttendeeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -43,7 +43,6 @@ namespace AutomatedHumanContactMonitorySystemApp
             this.btnPerson.TabIndex = 0;
             this.btnPerson.Text = "Person";
             this.btnPerson.UseVisualStyleBackColor = true;
-            this.btnPerson.Click += new System.EventHandler(this.btnPerson_Click);
             // 
             // btnAdd
             // 
@@ -53,6 +52,7 @@ namespace AutomatedHumanContactMonitorySystemApp
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
@@ -83,6 +83,7 @@ namespace AutomatedHumanContactMonitorySystemApp
             this.Controls.Add(this.btnPerson);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }

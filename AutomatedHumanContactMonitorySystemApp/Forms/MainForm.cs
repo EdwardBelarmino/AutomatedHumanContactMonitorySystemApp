@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms;
+using AutomatedHumanContactMonitorySystemApp.IRepositories;
+using AutomatedHumanContactMonitorySystemApp.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +20,14 @@ namespace AutomatedHumanContactMonitorySystemApp
             InitializeComponent();
         }
 
-        private void btnPerson_Click(object sender, EventArgs e)
+       
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+           
+            
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
         }
