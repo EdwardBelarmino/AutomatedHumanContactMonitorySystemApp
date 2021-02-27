@@ -17,5 +17,9 @@ namespace AutomatedHumanContactMonitorySystemApp
             InitializeComponent();
         }
 
+        private void btnPerson_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
