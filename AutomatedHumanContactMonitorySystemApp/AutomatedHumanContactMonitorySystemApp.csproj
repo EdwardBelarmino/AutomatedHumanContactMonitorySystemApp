@@ -6,4 +6,21 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Dtos\" />
+    <Folder Include="Models\ContextModels\" />
+    <Folder Include="Queries\AttendanceQueries\Get\" />
+    <Folder Include="Queries\AttendanceQueries\Delete\" />
+    <Folder Include="Queries\AttendanceQueries\Put\" />
+    <Folder Include="Queries\AttendanceQueries\Post\" />
+    <Folder Include="Queries\AttendeeQueries\Get\" />
+    <Folder Include="Queries\AttendeeQueries\Delete\" />
+    <Folder Include="Queries\AttendeeQueries\Put\" />
+    <Folder Include="Queries\AttendeeQueries\Post\" />
+    <Folder Include="Queries\PlaceQueries\Delete\" />
+    <Folder Include="Queries\PlaceQueries\Get\" />
+    <Folder Include="Queries\PlaceQueries\Put\" />
+    <Folder Include="Queries\PlaceQueries\Post\" />
+  </ItemGroup>
+
 </Project>
