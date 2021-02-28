@@ -12,16 +12,6 @@
     <Folder Include="Models\Dtos\AttendanceDtos\" />
     <Folder Include="Models\Dtos\AttendeeDtos\" />
     <Folder Include="Models\Dtos\PlaceDtos\" />
-    <Folder Include="Queries\AttendanceQueries\Put\" />
-    <Folder Include="Queries\AttendanceQueries\Post\" />
-    <Folder Include="Queries\AttendeeQueries\Get\" />
-    <Folder Include="Queries\AttendeeQueries\Delete\" />
-    <Folder Include="Queries\AttendeeQueries\Put\" />
-    <Folder Include="Queries\AttendeeQueries\Post\" />
-    <Folder Include="Queries\PlaceQueries\Delete\" />
-    <Folder Include="Queries\PlaceQueries\Get\" />
-    <Folder Include="Queries\PlaceQueries\Put\" />
-    <Folder Include="Queries\PlaceQueries\Post\" />
   </ItemGroup>
 
   <ItemGroup>
