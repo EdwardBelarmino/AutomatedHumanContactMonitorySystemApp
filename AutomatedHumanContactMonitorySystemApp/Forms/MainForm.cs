@@ -15,16 +15,22 @@ namespace AutomatedHumanContactMonitorySystemApp
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+
+        public IAttendeeRepository AttendeeRepository { get; private set; }
+        public MainForm(IAttendeeRepository attendeeRepository)
         {
             InitializeComponent();
+            AttendeeRepository = attendeeRepository;
         }
 
        
         private void btnAdd_Click(object sender, EventArgs e)
         {
-           
-            
+            var addAttendeeForm = new AddAttendeeForm(AttendeeRepository);
+
+            addAttendeeForm.Show();
+
+
         }
 
         private void MainForm_Load(object sender, EventArgs e)

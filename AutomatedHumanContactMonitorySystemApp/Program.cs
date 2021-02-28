@@ -23,11 +23,12 @@ namespace AutomatedHumanContactMonitorySystemApp
         {
             container = new Container();
             container.Register<IAttendeeRepository, AttendeeRepository>(Lifestyle.Singleton);
-            container.Register<AddAttendeeForm>(Lifestyle.Singleton);
+            //container.Register<AddAttendeeForm>(Lifestyle.Singleton);
+            container.Register<MainForm>(Lifestyle.Singleton);
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(container.GetInstance<AddAttendeeForm>());
+            Application.Run(container.GetInstance<MainForm>());
         }
     }
 }
