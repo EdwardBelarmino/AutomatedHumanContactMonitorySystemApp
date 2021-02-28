@@ -80,6 +80,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             // 
             // txtId
             // 
+            this.txtId.Enabled = false;
             this.txtId.Location = new System.Drawing.Point(150, 36);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(203, 23);
@@ -114,15 +115,17 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             this.btnUpdate.TabIndex = 8;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(96, 292);
+            this.dataGridView1.Location = new System.Drawing.Point(87, 276);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(240, 150);
             this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // UpdateAttendeeForm
             // 
@@ -141,6 +144,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             this.Controls.Add(this.label1);
             this.Name = "UpdateAttendeeForm";
             this.Text = "UpdateAttendeeForm";
+            this.Load += new System.EventHandler(this.UpdateAttendeeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

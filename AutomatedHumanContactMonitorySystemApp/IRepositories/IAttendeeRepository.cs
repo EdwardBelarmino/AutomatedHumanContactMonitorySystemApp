@@ -12,5 +12,6 @@ namespace AutomatedHumanContactMonitorySystemApp.IRepositories
         Attendee GetAttendee(int id);
         void PostAttendee(Attendee attendee);
         void DeleteAttendee(int id);
+        void PutAttendee(Attendee attendee);
     }
 }
