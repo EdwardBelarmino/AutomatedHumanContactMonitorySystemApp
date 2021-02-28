@@ -20,5 +20,20 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             var attendees = JsonConvert.DeserializeObject<List<Attendee>>(response.Content);
             return attendees.ToList();
         }
+
+        public Attendee GetAttendee(int id) 
+        {
+            var client = new RestClient("https://localhost:44385/");
+            var request = new RestRequest("api/attendee/get"+id);
+            request.RequestFormat = DataFormat.Json;
+            var response = client.Execute(request);
+            var attendee = JsonConvert.DeserializeObject<Attendee>(response.Content);
+            return attendee;
+        }
+
+
+
+
     }
+
 }

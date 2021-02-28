@@ -27,17 +27,21 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
         }
 
 
+
+
+
+
         #region
         private List<Attendee> GetAttendees()
         {
             var attendees = AttendeeRepository.GetAttendees();
             return attendees.ToList();
         }
-
-
-
-
-
+        private Attendee GetAttendee(int id)
+        {
+            var attendee = AttendeeRepository.GetAttendee(id);
+            return attendee;
+        }
         #endregion
     }
 }
