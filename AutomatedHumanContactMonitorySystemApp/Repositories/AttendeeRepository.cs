@@ -40,6 +40,16 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             var response = client.Execute(request);
         }
 
+        public void DeleteAttendee(int id)
+        { 
+            var client = new RestClient("https://localhost:44385/");
+            var request = new RestRequest("api/attendee/delete/" + id, Method.DELETE);
+            request.RequestFormat = DataFormat.Json;
+            var response = client.Execute(request);
+
+        }
+
+
 
     }
 

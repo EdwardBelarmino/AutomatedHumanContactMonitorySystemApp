@@ -37,5 +37,11 @@ namespace AutomatedHumanContactMonitorySystemApp
         {
 
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var deleteAttendeeForm = new DeleteAttendeeForm(AttendeeRepository);
+            deleteAttendeeForm.Show();
+        }
     }
 }
