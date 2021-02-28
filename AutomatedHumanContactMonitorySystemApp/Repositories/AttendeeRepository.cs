@@ -31,7 +31,14 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             return attendee;
         }
 
-
+        public void PostAttendee(Attendee attendee) 
+        {
+            var client = new RestClient("https://localhost:44385/");
+            var request = new RestRequest("api/attendee/post", Method.POST);
+            request.AddJsonBody(attendee);
+            request.RequestFormat = DataFormat.Json;
+            var response = client.Execute(request);
+        }
 
 
     }

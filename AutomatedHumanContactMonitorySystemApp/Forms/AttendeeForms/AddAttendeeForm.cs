@@ -23,15 +23,26 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
 
         private void AddAttendeeForm_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = GetAttendees();
+            LGV();
+        }
+
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddAttendee();
+            LGV();
         }
 
 
 
 
-
-
         #region
+
+        private void LGV()
+        { 
+            dataGridView1.DataSource = GetAttendees(); 
+        }
+
         private List<Attendee> GetAttendees()
         {
             var attendees = AttendeeRepository.GetAttendees();
@@ -42,6 +53,20 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             var attendee = AttendeeRepository.GetAttendee(id);
             return attendee;
         }
+
+        private void AddAttendee() 
+        {
+            var attendeeToAdd = new Attendee()
+            {
+                Name = txtName.Text,
+                Address = txtAddress.Text,
+                Age = int.Parse(txtAge.Text)
+            };
+
+            AttendeeRepository.PostAttendee(attendeeToAdd);
+        }
+
         #endregion
+
     }
 }
