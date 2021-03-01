@@ -29,5 +29,13 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
         }
+
+        public void DeletePlace(int id)
+        {
+            var client = new RestClient("https://localhost:44385/");
+            var request = new RestRequest("api/place/delete/" + id, Method.DELETE);
+            request.RequestFormat = DataFormat.Json;
+            var response = client.Execute(request);
+        }
     }
 }

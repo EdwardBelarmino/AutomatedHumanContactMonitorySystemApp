@@ -9,6 +9,7 @@ namespace AutomatedHumanContactMonitorySystemApp.IRepositories
     {
         List<Place> GetPlaces();
         void PostPlace(Place place);
+        void DeletePlace(int id);
 
     }
 }
