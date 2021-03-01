@@ -40,10 +40,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
         }
 
 
-
-
-
-
         #region Helpers
 
         private void PutPlace()
