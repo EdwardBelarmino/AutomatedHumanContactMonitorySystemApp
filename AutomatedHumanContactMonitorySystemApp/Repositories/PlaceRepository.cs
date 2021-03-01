@@ -20,5 +20,14 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             var places = JsonConvert.DeserializeObject<List<Place>>(response.Content);
             return places.ToList();
         }
+
+        public void PostPlace(Place place)
+        {
+            var client = new RestClient("https://localhost:44385/");
+            var request = new RestRequest("api/place/post", Method.POST);
+            request.AddJsonBody(place);
+            request.RequestFormat = DataFormat.Json;
+            var response = client.Execute(request);
+        }
     }
 }

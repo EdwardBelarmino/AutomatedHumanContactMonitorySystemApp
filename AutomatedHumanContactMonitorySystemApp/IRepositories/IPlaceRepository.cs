@@ -8,7 +8,7 @@ namespace AutomatedHumanContactMonitorySystemApp.IRepositories
     public interface IPlaceRepository
     {
         List<Place> GetPlaces();
-
+        void PostPlace(Place place);
 
     }
 }

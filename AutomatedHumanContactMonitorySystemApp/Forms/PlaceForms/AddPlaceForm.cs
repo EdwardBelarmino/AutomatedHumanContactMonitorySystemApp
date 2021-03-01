@@ -25,9 +25,11 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
         {
             LGV();
         }
-
-
-
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddPlace();
+            LGV();
+        }
         #region Helpers
         private List<Place> GetPlaces()
         {
@@ -39,7 +41,18 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
             dataGridView1.DataSource = GetPlaces();
         }
 
+        private void AddPlace()
+        {
+            var placeToAdd = new Place()
+            {
+                Location = txtLocation.Text
+            };
+
+            PlaceRepository.PostPlace(placeToAdd);
+        }
+
         #endregion Helpers
+
 
 
 
