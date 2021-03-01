@@ -38,6 +38,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             this.ClientSize = new System.Drawing.Size(378, 450);
             this.Name = "UpdateAttendanceForm";
             this.Text = "UpdateAttendanceForm";
+            this.Load += new System.EventHandler(this.UpdateAttendanceForm_Load);
             this.ResumeLayout(false);
 
         }

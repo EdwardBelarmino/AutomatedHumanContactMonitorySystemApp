@@ -1,4 +1,5 @@
-﻿using AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms;
+﻿using AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms;
+using AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms;
 using AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms;
 using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.Repositories;
@@ -19,11 +20,13 @@ namespace AutomatedHumanContactMonitorySystemApp
 
         public IAttendeeRepository AttendeeRepository { get; private set; }
         public IPlaceRepository PlaceRepository { get; private set; }
-        public MainForm(IAttendeeRepository attendeeRepository, IPlaceRepository placeRepository)
+        public IAttendanceRepository AttendanceRepository { get; private set; }
+        public MainForm(IAttendeeRepository attendeeRepository, IPlaceRepository placeRepository, IAttendanceRepository attendanceRepository)
         {
             InitializeComponent();
             AttendeeRepository = attendeeRepository;
             PlaceRepository = placeRepository;
+            AttendanceRepository = attendanceRepository;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -68,7 +71,29 @@ namespace AutomatedHumanContactMonitorySystemApp
             var deletePlaceForm = new DeletePlaceForm(PlaceRepository);
             deletePlaceForm.Show();
         }
+
         #endregion PlaceMenuStrip
+       
+        #region AttendanceMenuStrip
+        private void toolStripMenuItemAddAttendance_Click(object sender, EventArgs e)
+        {
+            var addAttendanceForm = new AddAttendanceForm(AttendanceRepository);
+            addAttendanceForm.Show();
+        }
+
+        private void toolStripMenuEditAttendance_Click(object sender, EventArgs e)
+        {
+            var updateAttendanceForm = new UpdateAttendanceForm(AttendanceRepository);
+            updateAttendanceForm.Show();
+        }
+        private void toolStripMenuDeleteAttendance_Click(object sender, EventArgs e)
+        {
+            var deleteAttendanceForm = new DeleteAttendanceForm(AttendanceRepository);
+            deleteAttendanceForm.Show();
+        }
+
+
+        #endregion AttendanceMenuStrip
 
 
     }

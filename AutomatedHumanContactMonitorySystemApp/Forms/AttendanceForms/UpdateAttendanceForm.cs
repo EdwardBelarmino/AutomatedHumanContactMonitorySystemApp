@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutomatedHumanContactMonitorySystemApp.IRepositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,17 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
 {
     public partial class UpdateAttendanceForm : Form
     {
-        public UpdateAttendanceForm()
+        public MainForm MainForm { get; set; }
+        public IAttendanceRepository AttendanceRepository { get; private set; }
+        public UpdateAttendanceForm(IAttendanceRepository attendanceRepository)
         {
             InitializeComponent();
+            AttendanceRepository = attendanceRepository;
+        }
+
+        private void UpdateAttendanceForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

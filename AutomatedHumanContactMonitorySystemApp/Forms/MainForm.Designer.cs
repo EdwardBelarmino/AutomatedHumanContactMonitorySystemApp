@@ -31,7 +31,9 @@ namespace AutomatedHumanContactMonitorySystemApp
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItemAttendance = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemAttendanceAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemAddAttendance = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuEditAttendance = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuDeleteAttendance = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemAttendee = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuAddAttendee = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuEditAttendee = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,16 +61,33 @@ namespace AutomatedHumanContactMonitorySystemApp
             // toolStripMenuItemAttendance
             // 
             this.toolStripMenuItemAttendance.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemAttendanceAdd});
+            this.toolStripMenuItemAddAttendance,
+            this.toolStripMenuEditAttendance,
+            this.toolStripMenuDeleteAttendance});
             this.toolStripMenuItemAttendance.Name = "toolStripMenuItemAttendance";
             this.toolStripMenuItemAttendance.Size = new System.Drawing.Size(80, 20);
             this.toolStripMenuItemAttendance.Text = "Attendance";
             // 
-            // toolStripMenuItemAttendanceAdd
+            // toolStripMenuItemAddAttendance
             // 
-            this.toolStripMenuItemAttendanceAdd.Name = "toolStripMenuItemAttendanceAdd";
-            this.toolStripMenuItemAttendanceAdd.Size = new System.Drawing.Size(160, 22);
-            this.toolStripMenuItemAttendanceAdd.Text = "Add Attendance";
+            this.toolStripMenuItemAddAttendance.Name = "toolStripMenuItemAddAttendance";
+            this.toolStripMenuItemAddAttendance.Size = new System.Drawing.Size(171, 22);
+            this.toolStripMenuItemAddAttendance.Text = "Add Attendance";
+            this.toolStripMenuItemAddAttendance.Click += new System.EventHandler(this.toolStripMenuItemAddAttendance_Click);
+            // 
+            // toolStripMenuEditAttendance
+            // 
+            this.toolStripMenuEditAttendance.Name = "toolStripMenuEditAttendance";
+            this.toolStripMenuEditAttendance.Size = new System.Drawing.Size(171, 22);
+            this.toolStripMenuEditAttendance.Text = "Edit Attendance";
+            this.toolStripMenuEditAttendance.Click += new System.EventHandler(this.toolStripMenuEditAttendance_Click);
+            // 
+            // toolStripMenuDeleteAttendance
+            // 
+            this.toolStripMenuDeleteAttendance.Name = "toolStripMenuDeleteAttendance";
+            this.toolStripMenuDeleteAttendance.Size = new System.Drawing.Size(171, 22);
+            this.toolStripMenuDeleteAttendance.Text = "Delete Attendance";
+            this.toolStripMenuDeleteAttendance.Click += new System.EventHandler(this.toolStripMenuDeleteAttendance_Click);
             // 
             // toolStripMenuItemAttendee
             // 
@@ -152,7 +171,7 @@ namespace AutomatedHumanContactMonitorySystemApp
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAttendance;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAttendanceAdd;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAddAttendance;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAttendee;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPlace;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuAddAttendee;
@@ -161,6 +180,8 @@ namespace AutomatedHumanContactMonitorySystemApp
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuAddPlace;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuEditPlace;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuDeletePlace;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuEditAttendance;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuDeleteAttendance;
     }
 }
 
