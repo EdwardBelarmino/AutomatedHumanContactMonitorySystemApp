@@ -39,14 +39,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
             LGV();
         }
 
-
-
-
-
-
-
-
-
         #region Helpers
         private void LGV()
         {
@@ -63,12 +55,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
         {
             PlaceRepository.DeletePlace(id);
         }
-
-
-
-
-
-
 
         #endregion Helpers
 

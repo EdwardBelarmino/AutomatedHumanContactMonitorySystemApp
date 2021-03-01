@@ -37,5 +37,16 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
         }
+
+        public void PutPlace(Place place)
+        {
+            var client = new RestClient("https://localhost:44385/");
+            var request = new RestRequest("api/place/put/" + place.Id, Method.PUT);
+            request.RequestFormat = DataFormat.Json;
+            request.AddJsonBody(place);
+            var response = client.Execute(request);
+        }
+
+
     }
 }

@@ -109,7 +109,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(261, 228);
+            this.btnUpdate.Location = new System.Drawing.Point(278, 224);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 8;
@@ -120,7 +120,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(87, 276);
+            this.dataGridView1.Location = new System.Drawing.Point(113, 274);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(240, 150);
