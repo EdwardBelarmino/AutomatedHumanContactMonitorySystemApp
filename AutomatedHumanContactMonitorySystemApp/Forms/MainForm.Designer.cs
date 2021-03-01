@@ -37,6 +37,9 @@ namespace AutomatedHumanContactMonitorySystemApp
             this.toolStripMenuEditAttendee = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuDeleteAttendee = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemPlace = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuAddPlace = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuEditPlace = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuDeletePlace = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +52,7 @@ namespace AutomatedHumanContactMonitorySystemApp
             this.toolStripMenuItemPlace});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(775, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(850, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -100,15 +103,40 @@ namespace AutomatedHumanContactMonitorySystemApp
             // 
             // toolStripMenuItemPlace
             // 
+            this.toolStripMenuItemPlace.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuAddPlace,
+            this.toolStripMenuEditPlace,
+            this.toolStripMenuDeletePlace});
             this.toolStripMenuItemPlace.Name = "toolStripMenuItemPlace";
             this.toolStripMenuItemPlace.Size = new System.Drawing.Size(47, 20);
             this.toolStripMenuItemPlace.Text = "Place";
+            // 
+            // toolStripMenuAddPlace
+            // 
+            this.toolStripMenuAddPlace.Name = "toolStripMenuAddPlace";
+            this.toolStripMenuAddPlace.Size = new System.Drawing.Size(138, 22);
+            this.toolStripMenuAddPlace.Text = "Add Place";
+            this.toolStripMenuAddPlace.Click += new System.EventHandler(this.toolStripMenuAddPlace_Click);
+            // 
+            // toolStripMenuEditPlace
+            // 
+            this.toolStripMenuEditPlace.Name = "toolStripMenuEditPlace";
+            this.toolStripMenuEditPlace.Size = new System.Drawing.Size(138, 22);
+            this.toolStripMenuEditPlace.Text = "Edit Place";
+            this.toolStripMenuEditPlace.Click += new System.EventHandler(this.toolStripMenuEditPlace_Click);
+            // 
+            // toolStripMenuDeletePlace
+            // 
+            this.toolStripMenuDeletePlace.Name = "toolStripMenuDeletePlace";
+            this.toolStripMenuDeletePlace.Size = new System.Drawing.Size(138, 22);
+            this.toolStripMenuDeletePlace.Text = "Delete Place";
+            this.toolStripMenuDeletePlace.Click += new System.EventHandler(this.toolStripMenuDeletePlace_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(775, 450);
+            this.ClientSize = new System.Drawing.Size(850, 450);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
@@ -130,6 +158,9 @@ namespace AutomatedHumanContactMonitorySystemApp
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuAddAttendee;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuEditAttendee;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuDeleteAttendee;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuAddPlace;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuEditPlace;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuDeletePlace;
     }
 }
 

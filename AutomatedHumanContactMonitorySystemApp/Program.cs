@@ -23,6 +23,7 @@ namespace AutomatedHumanContactMonitorySystemApp
         {
             container = new Container();
             container.Register<IAttendeeRepository, AttendeeRepository>(Lifestyle.Singleton);
+            container.Register<IPlaceRepository, PlaceRepository>(Lifestyle.Singleton);
             //container.Register<AddAttendeeForm>(Lifestyle.Singleton);
             container.Register<MainForm>(Lifestyle.Singleton);
             Application.SetHighDpiMode(HighDpiMode.SystemAware);

@@ -38,6 +38,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
             this.ClientSize = new System.Drawing.Size(358, 450);
             this.Name = "UpdatePlaceForm";
             this.Text = "UpdatePlaceForm";
+            this.Load += new System.EventHandler(this.UpdatePlaceForm_Load);
             this.ResumeLayout(false);
 
         }

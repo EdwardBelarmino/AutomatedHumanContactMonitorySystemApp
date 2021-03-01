@@ -1,4 +1,5 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms;
+using AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms;
 using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.Repositories;
 using System;
@@ -17,10 +18,12 @@ namespace AutomatedHumanContactMonitorySystemApp
     {
 
         public IAttendeeRepository AttendeeRepository { get; private set; }
-        public MainForm(IAttendeeRepository attendeeRepository)
+        public IPlaceRepository PlaceRepository { get; private set; }
+        public MainForm(IAttendeeRepository attendeeRepository, IPlaceRepository placeRepository)
         {
             InitializeComponent();
             AttendeeRepository = attendeeRepository;
+            PlaceRepository = placeRepository;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -44,6 +47,24 @@ namespace AutomatedHumanContactMonitorySystemApp
         {
             var deleteAttendeeForm = new DeleteAttendeeForm(AttendeeRepository);
             deleteAttendeeForm.Show();
+        }
+
+        private void toolStripMenuAddPlace_Click(object sender, EventArgs e)
+        {
+            var addPlaceForm = new AddPlaceForm(PlaceRepository);
+            addPlaceForm.Show();
+        }
+
+        private void toolStripMenuEditPlace_Click(object sender, EventArgs e)
+        {
+            var updatePlaceForm = new UpdatePlaceForm(PlaceRepository);
+            updatePlaceForm.Show();
+        }
+
+        private void toolStripMenuDeletePlace_Click(object sender, EventArgs e)
+        {
+            var deletePlaceForm = new DeletePlaceForm(PlaceRepository);
+            deletePlaceForm.Show();
         }
     }
 }

@@ -38,6 +38,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
             this.ClientSize = new System.Drawing.Size(353, 450);
             this.Name = "DeletePlaceForm";
             this.Text = "DeletePlaceForm";
+            this.Load += new System.EventHandler(this.DeletePlaceForm_Load);
             this.ResumeLayout(false);
 
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutomatedHumanContactMonitorySystemApp.IRepositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,17 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
 {
     public partial class UpdatePlaceForm : Form
     {
-        public UpdatePlaceForm()
+        public MainForm MainForm { get; set; }
+        public IPlaceRepository PlaceRepository { get; private set; }
+        public UpdatePlaceForm(IPlaceRepository placeRepository)
         {
             InitializeComponent();
+            PlaceRepository = placeRepository;
+        }
+
+        private void UpdatePlaceForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
