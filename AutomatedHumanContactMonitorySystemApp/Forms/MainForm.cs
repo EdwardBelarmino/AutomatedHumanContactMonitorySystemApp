@@ -23,31 +23,27 @@ namespace AutomatedHumanContactMonitorySystemApp
             AttendeeRepository = attendeeRepository;
         }
 
-       
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            var addAttendeeForm = new AddAttendeeForm(AttendeeRepository);
-
-            addAttendeeForm.Show();
-
-
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
 
         }
-
-        private void btnDelete_Click(object sender, EventArgs e)
+        
+        private void toolStripMenuAddAttendee_Click(object sender, EventArgs e)
         {
-            var deleteAttendeeForm = new DeleteAttendeeForm(AttendeeRepository);
-            deleteAttendeeForm.Show();
+            var addAttendeeForm = new AddAttendeeForm(AttendeeRepository);
+            addAttendeeForm.Show();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void toolStripMenuEditAttendee_Click(object sender, EventArgs e)
         {
             var updateAttendeeForm = new UpdateAttendeeForm(AttendeeRepository);
             updateAttendeeForm.Show();
+        }
+
+        private void toolStripMenuDeleteAttendee_Click(object sender, EventArgs e)
+        {
+            var deleteAttendeeForm = new DeleteAttendeeForm(AttendeeRepository);
+            deleteAttendeeForm.Show();
         }
     }
 }
