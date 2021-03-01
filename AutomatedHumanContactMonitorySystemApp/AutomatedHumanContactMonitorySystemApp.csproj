@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Forms\AttendanceForms\" />
-    <Folder Include="Forms\PlaceForms\" />
     <Folder Include="Models\Dtos\AttendanceDtos\" />
     <Folder Include="Models\Dtos\AttendeeDtos\" />
     <Folder Include="Models\Dtos\PlaceDtos\" />
