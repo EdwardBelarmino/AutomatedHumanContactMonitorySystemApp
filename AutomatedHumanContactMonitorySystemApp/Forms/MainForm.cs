@@ -30,7 +30,9 @@ namespace AutomatedHumanContactMonitorySystemApp
         {
 
         }
-        
+
+
+        #region AttendeeMenuStrip
         private void toolStripMenuAddAttendee_Click(object sender, EventArgs e)
         {
             var addAttendeeForm = new AddAttendeeForm(AttendeeRepository);
@@ -48,23 +50,26 @@ namespace AutomatedHumanContactMonitorySystemApp
             var deleteAttendeeForm = new DeleteAttendeeForm(AttendeeRepository);
             deleteAttendeeForm.Show();
         }
+        #endregion AttendeeMenuStrip
 
+        #region PlaceMenuStrip
         private void toolStripMenuAddPlace_Click(object sender, EventArgs e)
         {
             var addPlaceForm = new AddPlaceForm(PlaceRepository);
             addPlaceForm.Show();
         }
-
         private void toolStripMenuEditPlace_Click(object sender, EventArgs e)
         {
             var updatePlaceForm = new UpdatePlaceForm(PlaceRepository);
             updatePlaceForm.Show();
         }
-
         private void toolStripMenuDeletePlace_Click(object sender, EventArgs e)
         {
             var deletePlaceForm = new DeletePlaceForm(PlaceRepository);
             deletePlaceForm.Show();
         }
+        #endregion PlaceMenuStrip
+
+
     }
 }

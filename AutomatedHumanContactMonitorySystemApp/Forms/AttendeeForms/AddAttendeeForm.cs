@@ -36,7 +36,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
 
 
 
-        #region
+        #region helpers
 
         private void LGV()
         { 
@@ -66,7 +66,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             AttendeeRepository.PostAttendee(attendeeToAdd);
         }
 
-        #endregion
+        #endregion helpers
 
     }
 }
