@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AutomatedHumanContactMonitorySystemApp.Models.Dtos.AttendanceDtos
 {
-    public class GetAttendancesDto
+    public class AttendanceDto
     {
         public int Id { get; set; }
         public DateTime VisitedDateTime { get; set; }
