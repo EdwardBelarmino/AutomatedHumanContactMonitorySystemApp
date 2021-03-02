@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Dtos\AttendanceDtos\" />
     <Folder Include="Models\Dtos\AttendeeDtos\" />
     <Folder Include="Models\Dtos\PlaceDtos\" />
   </ItemGroup>
