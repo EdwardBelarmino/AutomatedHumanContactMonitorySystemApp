@@ -77,7 +77,7 @@ namespace AutomatedHumanContactMonitorySystemApp
         #region AttendanceMenuStrip
         private void toolStripMenuItemAddAttendance_Click(object sender, EventArgs e)
         {
-            var addAttendanceForm = new AddAttendanceForm(AttendanceRepository);
+            var addAttendanceForm = new AddAttendanceForm(AttendanceRepository, AttendeeRepository, PlaceRepository);
             addAttendanceForm.Show();
         }
 

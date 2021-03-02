@@ -9,6 +9,6 @@ namespace AutomatedHumanContactMonitorySystemApp.IRepositories
     public interface IAttendanceRepository
     {
         List<AttendanceDto> GetAttendances();
-
+        void PostAttendance(AttendanceDto attendanceDto);
     }
 }
