@@ -39,5 +39,15 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             var response = client.Execute(request);
         }
 
+        public void PutAttendance(AttendanceDto attendanceDto)
+        {
+            var client = new RestClient("https://localhost:44385/");
+            var request = new RestRequest("api/attendance/put/" + attendanceDto.Id, Method.PUT);
+            request.RequestFormat = DataFormat.Json;
+            request.AddJsonBody(attendanceDto);
+            var response = client.Execute(request);
+        }
+
+
     }
 }
