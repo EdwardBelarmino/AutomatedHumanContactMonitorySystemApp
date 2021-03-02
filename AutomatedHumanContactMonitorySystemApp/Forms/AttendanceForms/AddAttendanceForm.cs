@@ -1,5 +1,6 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
+using AutomatedHumanContactMonitorySystemApp.Models.Dtos.AttendanceDtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,7 +35,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             dataGridView1.DataSource = GetAttendances();
         }
 
-        private List<Attendance> GetAttendances()
+        private List<AttendanceDto> GetAttendances()
         {
             var attendances = AttendanceRepository.GetAttendances();
             return attendances.ToList();

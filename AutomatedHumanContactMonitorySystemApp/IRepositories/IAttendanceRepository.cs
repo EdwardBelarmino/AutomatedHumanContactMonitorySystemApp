@@ -1,4 +1,5 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
+using AutomatedHumanContactMonitorySystemApp.Models.Dtos.AttendanceDtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,7 @@ namespace AutomatedHumanContactMonitorySystemApp.IRepositories
 {
     public interface IAttendanceRepository
     {
-        List<Attendance> GetAttendances();
+        List<AttendanceDto> GetAttendances();
 
     }
 }
