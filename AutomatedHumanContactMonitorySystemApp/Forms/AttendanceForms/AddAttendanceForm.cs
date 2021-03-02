@@ -58,8 +58,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             txtLocation.Text = row.Cells[1].Value.ToString();
         }
         #endregion
-
-
         #region Helpers Attendance
 
         private void LGVAttendance()
@@ -87,7 +85,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         }
 
         #endregion Helpers
-
         #region Helpers Attendee
 
         private List<Attendee> GetAttendees()
@@ -100,7 +97,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             dataGridView2.DataSource = GetAttendees();
         }
         #endregion
-
         #region Helpers Place
 
         private List<Place> GetPlaces()

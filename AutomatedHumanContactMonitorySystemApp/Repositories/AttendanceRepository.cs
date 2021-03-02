@@ -31,7 +31,13 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             var response = client.Execute(request);
         }
 
-
+        public void DeleteAttendance(int id)
+        {
+            var client = new RestClient("https://localhost:44385/");
+            var request = new RestRequest("api/attendance/delete/" + id, Method.DELETE);
+            request.RequestFormat = DataFormat.Json;
+            var response = client.Execute(request);
+        }
 
     }
 }
