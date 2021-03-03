@@ -23,12 +23,12 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
 
         private void AddPlaceForm_Load(object sender, EventArgs e)
         {
-            LGV();
+            LoadGridViewPlaces();
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddPlace();
-            LGV();
+            LoadGridViewPlaces();
         }
         #region Helpers
         private List<Place> GetPlaces()
@@ -36,7 +36,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
             var places = PlaceRepository.GetPlaces();
             return places.ToList();
         }
-        private void LGV()
+        private void LoadGridViewPlaces()
         {
             dataGridView1.DataSource = GetPlaces();
         }

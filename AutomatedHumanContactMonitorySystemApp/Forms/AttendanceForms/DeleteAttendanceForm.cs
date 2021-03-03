@@ -23,7 +23,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
 
         private void DeleteAttendanceForm_Load(object sender, EventArgs e)
         {
-            LGVAttendance();
+            LoadGridViewAttendances();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -42,12 +42,12 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeleteAttendance(int.Parse(txtId.Text));
-            LGVAttendance();
+            LoadGridViewAttendances();
         }
 
 
         #region Helpers
-        private void LGVAttendance()
+        private void LoadGridViewAttendances()
         {
             dataGridView1.DataSource = GetAttendances();
         }

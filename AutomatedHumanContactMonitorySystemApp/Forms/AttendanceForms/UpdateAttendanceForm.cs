@@ -23,7 +23,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
 
         private void UpdateAttendanceForm_Load(object sender, EventArgs e)
         {
-            LGVAttendance();
+            LoadGridViewAttendances();
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -42,13 +42,13 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         private void btnEdit_Click(object sender, EventArgs e)
         {
             PutAttendance();
-            LGVAttendance();
+            LoadGridViewAttendances();
         }
 
 
         #region Helpers
 
-        private void LGVAttendance()
+        private void LoadGridViewAttendances()
         {
             dataGridView1.DataSource = GetAttendances();
         }

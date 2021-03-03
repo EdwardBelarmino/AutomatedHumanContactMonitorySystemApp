@@ -23,14 +23,14 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
 
         private void DeleteAttendeeForm_Load(object sender, EventArgs e)
         {
-            
-            LGV();
+
+            LoadGridViewAttendees();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeleteAttendee(int.Parse(lblId.Text));
-            LGV();  
+            LoadGridViewAttendees();  
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -44,7 +44,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
 
 
         #region
-        private void LGV()
+        private void LoadGridViewAttendees()
         {
             dataGridView1.DataSource = GetAttendees();
         }

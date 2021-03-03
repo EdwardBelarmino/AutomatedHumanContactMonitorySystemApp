@@ -23,7 +23,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
 
         private void UpdateAttendeeForm_Load(object sender, EventArgs e)
         {
-            LGV();
+            LoadGridViewAttendees();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -39,7 +39,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             PutAttendee();
-            LGV();
+            LoadGridViewAttendees();
         }
 
         #region
@@ -57,7 +57,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
         }
 
 
-        private void LGV()
+        private void LoadGridViewAttendees()
         {
             dataGridView1.DataSource = GetAttendees();
         }

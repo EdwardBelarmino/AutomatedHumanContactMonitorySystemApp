@@ -23,7 +23,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
 
         private void UpdatePlaceForm_Load(object sender, EventArgs e)
         {
-            LGV();
+            LoadGridViewPlaces();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -36,7 +36,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
         private void btnEdit_Click(object sender, EventArgs e)
         {
             PutPlace();
-            LGV();
+            LoadGridViewPlaces();
         }
 
 
@@ -52,7 +52,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
             PlaceRepository.PutPlace(placeToUpdate);
         }
 
-        private void LGV()
+        private void LoadGridViewPlaces()
         {
             dataGridView1.DataSource = GetPlaces();
         }

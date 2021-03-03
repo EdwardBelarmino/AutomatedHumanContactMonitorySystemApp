@@ -29,15 +29,15 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
 
         private void AddAttendanceForm_Load(object sender, EventArgs e)
         {
-            LGVAttendance();
-            LGVAttendee();
-            LGVPlace();
+            LoadGridViewAttendances();
+            LoadGridViewAttendees();
+            LoadGridViewPlaces();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddAttendance();
-            LGVAttendance();
+            LoadGridViewAttendances();
 
         }
 
@@ -60,7 +60,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         #endregion
         #region Helpers Attendance
 
-        private void LGVAttendance()
+        private void LoadGridViewAttendances()
         {
             dataGridView1.DataSource = GetAttendances();
         }
@@ -92,7 +92,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             var attendees = AttendeeRepository.GetAttendees();
             return attendees.ToList();
         }
-        private void LGVAttendee()
+        private void LoadGridViewAttendees()
         {
             dataGridView2.DataSource = GetAttendees();
         }
@@ -104,7 +104,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             var places = PlaceRepository.GetPlaces();
             return places.ToList();
         }
-        private void LGVPlace()
+        private void LoadGridViewPlaces()
         {
             dataGridView3.DataSource = GetPlaces();
         }

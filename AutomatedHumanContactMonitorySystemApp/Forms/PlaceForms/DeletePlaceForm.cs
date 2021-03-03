@@ -23,7 +23,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
 
         private void DeletePlaceForm_Load(object sender, EventArgs e)
         {
-            LGV();
+            LoadGridViewPlaces();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -36,11 +36,11 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeletePlace(int.Parse(lblId.Text));
-            LGV();
+            LoadGridViewPlaces();
         }
 
         #region Helpers
-        private void LGV()
+        private void LoadGridViewPlaces()
         {
             dataGridView1.DataSource = GetPlaces();
         }
