@@ -30,13 +30,11 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtAttendeeId = new System.Windows.Forms.TextBox();
-            this.txtDateTime = new System.Windows.Forms.TextBox();
             this.txtTemperature = new System.Windows.Forms.TextBox();
             this.txtPlaceId = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -64,15 +62,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             this.label2.Size = new System.Drawing.Size(65, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "AttendeeId";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(106, 185);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Date&Time:";
             // 
             // label4
             // 
@@ -118,13 +107,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             this.txtAttendeeId.Name = "txtAttendeeId";
             this.txtAttendeeId.Size = new System.Drawing.Size(458, 23);
             this.txtAttendeeId.TabIndex = 8;
-            // 
-            // txtDateTime
-            // 
-            this.txtDateTime.Location = new System.Drawing.Point(215, 176);
-            this.txtDateTime.Name = "txtDateTime";
-            this.txtDateTime.Size = new System.Drawing.Size(458, 23);
-            this.txtDateTime.TabIndex = 9;
             // 
             // txtTemperature
             // 
@@ -266,13 +248,11 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.txtPlaceId);
             this.Controls.Add(this.txtTemperature);
-            this.Controls.Add(this.txtDateTime);
             this.Controls.Add(this.txtAttendeeId);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Name = "AddAttendanceForm";
             this.Text = "AddAttendanceForm";
@@ -287,13 +267,11 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
 
         #endregion
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txtAttendeeId;
-        private System.Windows.Forms.TextBox txtDateTime;
         private System.Windows.Forms.TextBox txtTemperature;
         private System.Windows.Forms.TextBox txtPlaceId;
         private System.Windows.Forms.DataGridView dataGridView2;

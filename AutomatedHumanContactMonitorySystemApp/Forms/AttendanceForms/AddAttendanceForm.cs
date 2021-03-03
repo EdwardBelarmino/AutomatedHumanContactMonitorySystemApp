@@ -76,7 +76,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             var attendanceToAdd = new AttendanceDto()
             {
                 AttendeeId = int.Parse(txtAttendeeId.Text),
-                VisitedDateTime = Convert.ToDateTime(txtDateTime.Text),
+                VisitedDateTime = DateTime.Now,
                 Temperature = double.Parse(txtTemperature.Text),
                 PlaceId = int.Parse(txtPlaceId.Text)
             };
