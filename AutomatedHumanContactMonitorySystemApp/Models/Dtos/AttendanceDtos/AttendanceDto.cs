@@ -7,6 +7,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Models.Dtos.AttendanceDtos
     public class AttendanceDto
     {
         public int Id { get; set; }
+        public long RFID { get; set; }
         public DateTime VisitedDateTime { get; set; }
         public double Temperature { get; set; }
         #region Attendee

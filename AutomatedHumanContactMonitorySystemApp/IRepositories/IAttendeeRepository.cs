@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using AutomatedHumanContactMonitorySystemApp.Models.Dtos.SearchDtos;
 
 namespace AutomatedHumanContactMonitorySystemApp.IRepositories
 {
@@ -13,5 +14,6 @@ namespace AutomatedHumanContactMonitorySystemApp.IRepositories
         void PostAttendee(Attendee attendee);
         void DeleteAttendee(int id);
         void PutAttendee(Attendee attendee);
+        List<Attendee> GetAttendeeBySearchParameter(SearchDto searchParameter);
     }
 }

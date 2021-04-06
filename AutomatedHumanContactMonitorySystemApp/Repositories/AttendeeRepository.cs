@@ -1,5 +1,6 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
+using AutomatedHumanContactMonitorySystemApp.Models.Dtos.SearchDtos;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -56,8 +57,19 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             request.AddJsonBody(attendee);
             var response = client.Execute(request);
         }
-        
 
+        public List<Attendee> GetAttendeeBySearchParameter(SearchDto searchParameter)
+        {
+            var client = new RestClient("https://localhost:44385/");
+            var request = new RestRequest("/api/attendee/getattendeebysearchparameter/", Method.POST);
+            request.AddJsonBody(searchParameter);
+            request.RequestFormat = DataFormat.Json;
+            var response = client.Execute(request);
+
+            var dataList = JsonConvert.DeserializeObject<List<Attendee>>(response.Content);
+
+            return dataList.ToList();
+        }
 
     }
 

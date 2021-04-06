@@ -10,11 +10,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Sharer;
+
 
 namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
 {
     public partial class AddAttendanceForm : Form
     {
+        
+        private SharerConnection connection = new SharerConnection("COM5", 9600);
         public MainForm MainForm { get; set; }
         public IAttendanceRepository AttendanceRepository { get; private set; }
         public IAttendeeRepository AttendeeRepository { get; private set; }
@@ -32,6 +36,19 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             LoadGridViewAttendances();
             LoadGridViewAttendees();
             LoadGridViewPlaces();
+
+            if (!connection.Connected)
+            {
+                connection.Connect();
+
+                // Scan all functions shared
+                connection.RefreshFunctions();
+
+                // remote call function on Arduino and wait for the result
+                var value = connection.ReadVariable("rfid");
+
+                txtRFID.Text = value.Value.ToString().PadLeft(10, '0');
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -76,9 +93,11 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             var attendanceToAdd = new AttendanceDto()
             {
                 AttendeeId = int.Parse(txtAttendeeId.Text),
+                RFID = long.Parse(txtRFID.Text),
                 VisitedDateTime = DateTime.Now,
                 Temperature = double.Parse(txtTemperature.Text),
                 PlaceId = int.Parse(txtPlaceId.Text)
+
             };
 
             AttendanceRepository.PostAttendance(attendanceToAdd);
@@ -109,8 +128,17 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             dataGridView3.DataSource = GetPlaces();
         }
 
+
         #endregion
 
-    
+        private void button1_Click(object sender, EventArgs e)
+        {
+            connection.RefreshFunctions();
+
+            // remote call function on Arduino and wait for the result
+            var value = connection.ReadVariable("rfid");
+
+            txtRFID.Text = value.Value.ToString().PadLeft(10, '0' );
+        }
     }
 }
