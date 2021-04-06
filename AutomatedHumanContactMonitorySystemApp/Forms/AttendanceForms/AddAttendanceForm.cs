@@ -10,11 +10,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Sharer;
 
 namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
 {
     public partial class AddAttendanceForm : Form
     {
+        private SharerConnection connection = new SharerConnection("COM3", 9600);
         public MainForm MainForm { get; set; }
         public IAttendanceRepository AttendanceRepository { get; private set; }
         public IAttendeeRepository AttendeeRepository { get; private set; }
@@ -32,6 +34,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             LoadGridViewAttendances();
             LoadGridViewAttendees();
             LoadGridViewPlaces();
+            timer1.Start();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -109,8 +112,23 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             dataGridView3.DataSource = GetPlaces();
         }
 
+
         #endregion
 
-    
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (!connection.Connected)
+            {
+                connection.Connect();
+
+                // Scan all functions shared
+                connection.RefreshFunctions();
+
+                // remote call function on Arduino and wait for the result
+                var value = connection.ReadVariable("rfid");
+
+                txtAttendeeId.Text = value.Value.ToString();
+            }
+        }
     }
 }

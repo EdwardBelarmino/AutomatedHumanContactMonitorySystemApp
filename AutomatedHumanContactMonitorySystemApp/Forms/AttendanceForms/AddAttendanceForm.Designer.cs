@@ -29,6 +29,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -49,6 +50,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtAge = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -59,9 +61,9 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(106, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 15);
+            this.label2.Size = new System.Drawing.Size(79, 15);
             this.label2.TabIndex = 1;
-            this.label2.Text = "AttendeeId";
+            this.label2.Text = "AttendeeRFID";
             // 
             // label4
             // 
@@ -229,6 +231,10 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             this.txtAddress.Size = new System.Drawing.Size(396, 23);
             this.txtAddress.TabIndex = 23;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // AddAttendanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -286,5 +292,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtAge;
         private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.Timer timer1;
     }
 }
