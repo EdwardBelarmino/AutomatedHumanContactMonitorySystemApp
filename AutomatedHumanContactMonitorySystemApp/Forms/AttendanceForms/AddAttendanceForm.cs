@@ -16,7 +16,12 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
 {
     public partial class AddAttendanceForm : Form
     {
-        private SharerConnection connection = new SharerConnection("COM3", 9600);
+        bool isTimerRunning = true;
+        string rfidValue = string.Empty;
+        string bodytempValue = string.Empty;
+        string proximityValue = string.Empty;
+
+        private SharerConnection connection = new SharerConnection("COM5", 9600);
         public MainForm MainForm { get; set; }
         public IAttendanceRepository AttendanceRepository { get; private set; }
         public IAttendeeRepository AttendeeRepository { get; private set; }
@@ -35,6 +40,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             LoadGridViewAttendees();
             LoadGridViewPlaces();
             timer1.Start();
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -120,15 +126,65 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             if (!connection.Connected)
             {
                 connection.Connect();
-
                 // Scan all functions shared
                 connection.RefreshFunctions();
-
-                // remote call function on Arduino and wait for the result
-                var value = connection.ReadVariable("rfid");
-
-                txtAttendeeId.Text = value.Value.ToString();
+                connection.RefreshVariables();
             }
+
+            if (isTimerRunning)
+            {
+                rfidValue = connection.Call("returnRfid").Value.ToString(); //ok
+                txtAttendeeId.Text = rfidValue.ToString().PadLeft(10, '0'); //ok
+            }
+            
+            if (txtAttendeeId.Text != "0000000000" && txtAttendeeId.Text != "") //ok
+            {
+                if (isTimerRunning)
+                {
+                    connection.WriteVariable("i", 2);
+                }
+
+                isTimerRunning = false; //ok
+
+                proximityValue = connection.Call("returnProximity").Value.ToString(); 
+
+                if (proximityValue == "0")
+                {
+                    bodytempValue = connection.Call("returnTemperature").Value.ToString(); //ok
+                    txtTemperature.Text = bodytempValue;
+                }
+                else
+                {
+                    txtTemperature.Text = string.Empty;
+                }
+                
+            }
+
+            //try
+            //{
+            //    if (isTimerRunning)
+            //    {
+                    
+            //    }
+
+            //    if (value.ToString() != "0" || value.ToString() != "")
+            //    {
+            //        isTimerRunning = false;
+
+                    
+
+            //        var runFunctionChangeVariableIToNum = connection.WriteVariable("i", 2);
+
+            //        connection.WriteVariable("rfid", 0);
+            //    }
+                
+            //}
+            //catch(Exception ex)
+            //{
+
+            //}
+            
+            
         }
     }
 }
