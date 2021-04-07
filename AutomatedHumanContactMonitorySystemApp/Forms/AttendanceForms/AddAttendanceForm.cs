@@ -148,6 +148,23 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             {
                 rfidValue = connection.Call("returnRfid").Value.ToString(); //ok
                 txtAttendeeRFID.Text = rfidValue.ToString().PadLeft(10, '0'); //ok
+
+                var attendees = AttendeeRepository.GetAttendees()
+                                                         .Where(a => a.AttendeeRFID.ToString() == rfidValue &&
+                                                                     a.AttendeeRFID.ToString() != "0" &&
+                                                                     a.AttendeeRFID.ToString() != string.Empty);
+                var isRfidRegistered = attendees.Any();
+
+                if (isRfidRegistered)
+                {
+                    txtName.Text = attendees.SingleOrDefault().Name;
+                    txtAge.Text = attendees.SingleOrDefault().Age.ToString();
+                    txtAddress.Text = attendees.SingleOrDefault().Address;
+                }
+
+                txtName.Enabled = !isRfidRegistered;
+                txtAge.Enabled = !isRfidRegistered;
+                txtAddress.Enabled = !isRfidRegistered;
             }
 
             if (txtAttendeeRFID.Text != "0000000000" && txtAttendeeRFID.Text != "") //ok
