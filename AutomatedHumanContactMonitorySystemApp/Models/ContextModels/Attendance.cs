@@ -7,7 +7,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Models.ContextModels
     public class Attendance
     {
         public int Id { get; set; }
-
         public long RFID { get; set; }
         public Attendee Attendee { get; set; }
         public int AttendeeId { get; set; }

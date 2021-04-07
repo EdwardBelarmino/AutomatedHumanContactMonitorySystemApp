@@ -12,13 +12,16 @@ using System.Text;
 using System.Windows.Forms;
 using Sharer;
 
-
 namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
 {
     public partial class AddAttendanceForm : Form
     {
-        
-        private SharerConnection connection = new SharerConnection("COM5", 9600);
+        bool isTimerRunning = true;
+        string rfidValue = string.Empty;
+        string bodytempValue = string.Empty;
+        string proximityValue = string.Empty;
+
+        private SharerConnection connection = new SharerConnection("COM6", 9600);
         public MainForm MainForm { get; set; }
         public IAttendanceRepository AttendanceRepository { get; private set; }
         public IAttendeeRepository AttendeeRepository { get; private set; }
@@ -36,25 +39,25 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             LoadGridViewAttendances();
             LoadGridViewAttendees();
             LoadGridViewPlaces();
+            timer1.Start();
 
-            if (!connection.Connected)
-            {
-                connection.Connect();
-
-                // Scan all functions shared
-                connection.RefreshFunctions();
-
-                // remote call function on Arduino and wait for the result
-                var value = connection.ReadVariable("rfid");
-
-                txtRFID.Text = value.Value.ToString().PadLeft(10, '0');
-            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddAttendance();
+
             LoadGridViewAttendances();
+            double temperature = double.Parse(txtTemperature.Text);
+            if (temperature > 38)
+            {
+                string message1 = "Fever";
+                MessageBox.Show(message1);
+
+            }
+            else
+            {
+                AddAttendance();
+            }
 
         }
 
@@ -62,10 +65,11 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = this.dataGridView2.Rows[e.RowIndex];
-            txtAttendeeId.Text = row.Cells[0].Value.ToString();
-            txtName.Text = row.Cells[1].Value.ToString();
-            txtAge.Text = row.Cells[2].Value.ToString();
-            txtAddress.Text = row.Cells[3].Value.ToString();
+            txtID.Text = row.Cells[0].Value.ToString();
+            txtAttendeeRFID.Text = row.Cells[1].Value.ToString();
+            txtName.Text = row.Cells[2].Value.ToString();
+            txtAge.Text = row.Cells[3].Value.ToString();
+            txtAddress.Text = row.Cells[4].Value.ToString();
         }
 
         private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -92,12 +96,11 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         {
             var attendanceToAdd = new AttendanceDto()
             {
-                AttendeeId = int.Parse(txtAttendeeId.Text),
-                RFID = long.Parse(txtRFID.Text),
+                AttendeeId = int.Parse(txtID.Text),
+                RFID = long.Parse(txtAttendeeRFID.Text),
                 VisitedDateTime = DateTime.Now,
                 Temperature = double.Parse(txtTemperature.Text),
                 PlaceId = int.Parse(txtPlaceId.Text)
-
             };
 
             AttendanceRepository.PostAttendance(attendanceToAdd);
@@ -131,14 +134,70 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
 
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            connection.RefreshFunctions();
+            if (!connection.Connected)
+            {
+                connection.Connect();
+                // Scan all functions shared
+                connection.RefreshFunctions();
+                connection.RefreshVariables();
+            }
 
-            // remote call function on Arduino and wait for the result
-            var value = connection.ReadVariable("rfid");
+            if (isTimerRunning)
+            {
+                rfidValue = connection.Call("returnRfid").Value.ToString(); //ok
+                txtAttendeeRFID.Text = rfidValue.ToString().PadLeft(10, '0'); //ok
+            }
 
-            txtRFID.Text = value.Value.ToString().PadLeft(10, '0' );
+            if (txtAttendeeRFID.Text != "0000000000" && txtAttendeeRFID.Text != "") //ok
+            {
+                if (isTimerRunning)
+                {
+                    connection.WriteVariable("i", 2);
+                }
+
+                isTimerRunning = false; //ok
+
+                proximityValue = connection.Call("returnProximity").Value.ToString();
+
+                if (proximityValue == "0")
+                {
+                    bodytempValue = connection.Call("returnTemperature").Value.ToString(); //ok
+                    txtTemperature.Text = bodytempValue;
+                }
+                else
+                {
+                    txtTemperature.Text = string.Empty;
+                }
+
+            }
+
+            //try
+            //{
+            //    if (isTimerRunning)
+            //    {
+
+            //    }
+
+            //    if (value.ToString() != "0" || value.ToString() != "")
+            //    {
+            //        isTimerRunning = false;
+
+
+
+            //        var runFunctionChangeVariableIToNum = connection.WriteVariable("i", 2);
+
+            //        connection.WriteVariable("rfid", 0);
+            //    }
+
+            //}
+            //catch(Exception ex)
+            //{
+
+            //}
+
+
         }
     }
 }

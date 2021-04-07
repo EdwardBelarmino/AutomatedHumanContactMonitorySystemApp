@@ -35,7 +35,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             this.label5 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtAttendeeId = new System.Windows.Forms.TextBox();
+            this.txtAttendeeRFID = new System.Windows.Forms.TextBox();
             this.txtTemperature = new System.Windows.Forms.TextBox();
             this.txtPlaceId = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -51,6 +51,8 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             this.txtAge = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -59,7 +61,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(121, 61);
+            this.label2.Location = new System.Drawing.Point(132, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 20);
             this.label2.TabIndex = 1;
@@ -105,14 +107,14 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             this.dataGridView1.Size = new System.Drawing.Size(648, 177);
             this.dataGridView1.TabIndex = 6;
             // 
-            // txtAttendeeId
+            // txtAttendeeRFID
             // 
-            this.txtAttendeeId.Enabled = false;
-            this.txtAttendeeId.Location = new System.Drawing.Point(246, 48);
-            this.txtAttendeeId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtAttendeeId.Name = "txtAttendeeId";
-            this.txtAttendeeId.Size = new System.Drawing.Size(523, 27);
-            this.txtAttendeeId.TabIndex = 8;
+            this.txtAttendeeRFID.Enabled = false;
+            this.txtAttendeeRFID.Location = new System.Drawing.Point(246, 48);
+            this.txtAttendeeRFID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAttendeeRFID.Name = "txtAttendeeRFID";
+            this.txtAttendeeRFID.Size = new System.Drawing.Size(523, 27);
+            this.txtAttendeeRFID.TabIndex = 8;
             // 
             // txtTemperature
             // 
@@ -250,11 +252,29 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // txtID
+            // 
+            this.txtID.Location = new System.Drawing.Point(246, 12);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(523, 27);
+            this.txtID.TabIndex = 24;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(126, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(24, 20);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "ID";
+            // 
             // AddAttendanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1536, 712);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtAge);
             this.Controls.Add(this.txtName);
@@ -269,7 +289,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.txtPlaceId);
             this.Controls.Add(this.txtTemperature);
-            this.Controls.Add(this.txtAttendeeId);
+            this.Controls.Add(this.txtAttendeeRFID);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label5);
@@ -293,7 +313,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox txtAttendeeId;
+        private System.Windows.Forms.TextBox txtAttendeeRFID;
         private System.Windows.Forms.TextBox txtTemperature;
         private System.Windows.Forms.TextBox txtPlaceId;
         private System.Windows.Forms.DataGridView dataGridView2;
@@ -309,5 +329,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         private System.Windows.Forms.TextBox txtAge;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label label3;
     }
 }
