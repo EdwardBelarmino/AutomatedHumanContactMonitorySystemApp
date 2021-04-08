@@ -80,6 +80,7 @@ namespace AutomatedHumanContactMonitorySystemApp
             this.toolStripMenuEditAttendance.Name = "toolStripMenuEditAttendance";
             this.toolStripMenuEditAttendance.Size = new System.Drawing.Size(171, 22);
             this.toolStripMenuEditAttendance.Text = "Edit Attendance";
+            this.toolStripMenuEditAttendance.Visible = false;
             this.toolStripMenuEditAttendance.Click += new System.EventHandler(this.toolStripMenuEditAttendance_Click);
             // 
             // toolStripMenuDeleteAttendance
@@ -87,6 +88,7 @@ namespace AutomatedHumanContactMonitorySystemApp
             this.toolStripMenuDeleteAttendance.Name = "toolStripMenuDeleteAttendance";
             this.toolStripMenuDeleteAttendance.Size = new System.Drawing.Size(171, 22);
             this.toolStripMenuDeleteAttendance.Text = "Delete Attendance";
+            this.toolStripMenuDeleteAttendance.Visible = false;
             this.toolStripMenuDeleteAttendance.Click += new System.EventHandler(this.toolStripMenuDeleteAttendance_Click);
             // 
             // toolStripMenuItemAttendee
@@ -98,6 +100,7 @@ namespace AutomatedHumanContactMonitorySystemApp
             this.toolStripMenuItemAttendee.Name = "toolStripMenuItemAttendee";
             this.toolStripMenuItemAttendee.Size = new System.Drawing.Size(67, 20);
             this.toolStripMenuItemAttendee.Text = "Attendee";
+            this.toolStripMenuItemAttendee.Visible = false;
             // 
             // toolStripMenuAddAttendee
             // 
@@ -129,6 +132,7 @@ namespace AutomatedHumanContactMonitorySystemApp
             this.toolStripMenuItemPlace.Name = "toolStripMenuItemPlace";
             this.toolStripMenuItemPlace.Size = new System.Drawing.Size(47, 20);
             this.toolStripMenuItemPlace.Text = "Place";
+            this.toolStripMenuItemPlace.Visible = false;
             // 
             // toolStripMenuAddPlace
             // 
@@ -159,7 +163,9 @@ namespace AutomatedHumanContactMonitorySystemApp
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

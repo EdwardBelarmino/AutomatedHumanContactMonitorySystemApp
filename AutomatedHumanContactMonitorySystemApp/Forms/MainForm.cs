@@ -37,6 +37,7 @@ namespace AutomatedHumanContactMonitorySystemApp
             LoadLoginForm();
         }
 
+        #region Login
         private void LoadLoginForm()
         {
             var loginForm = new LoginForm(AppUserRepository);
@@ -49,6 +50,7 @@ namespace AutomatedHumanContactMonitorySystemApp
         {
             this.Show();
         }
+        #endregion Login
 
         #region AttendeeMenuStrip
         private void toolStripMenuAddAttendee_Click(object sender, EventArgs e)
@@ -93,7 +95,7 @@ namespace AutomatedHumanContactMonitorySystemApp
         private void toolStripMenuItemAddAttendance_Click(object sender, EventArgs e)
         {
             var addAttendanceForm = new AddAttendanceForm(AttendanceRepository, AttendeeRepository, PlaceRepository);
-            addAttendanceForm.Show();
+            addAttendanceForm.ShowDialog();
         }
 
         private void toolStripMenuEditAttendance_Click(object sender, EventArgs e)
