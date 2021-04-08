@@ -1,5 +1,6 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms;
 using AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms;
+using AutomatedHumanContactMonitorySystemApp.Forms.LoginForms;
 using AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms;
 using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.Repositories;
@@ -21,19 +22,33 @@ namespace AutomatedHumanContactMonitorySystemApp
         public IAttendeeRepository AttendeeRepository { get; private set; }
         public IPlaceRepository PlaceRepository { get; private set; }
         public IAttendanceRepository AttendanceRepository { get; private set; }
-        public MainForm(IAttendeeRepository attendeeRepository, IPlaceRepository placeRepository, IAttendanceRepository attendanceRepository)
+        public IAppUserRepository AppUserRepository { get; private set; }
+        public MainForm(IAttendeeRepository attendeeRepository, IPlaceRepository placeRepository, IAttendanceRepository attendanceRepository, IAppUserRepository appUserRepository)
         {
             InitializeComponent();
             AttendeeRepository = attendeeRepository;
             PlaceRepository = placeRepository;
             AttendanceRepository = attendanceRepository;
+            AppUserRepository = appUserRepository;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            LoadLoginForm();
         }
 
+        private void LoadLoginForm()
+        {
+            var loginForm = new LoginForm(AppUserRepository);
+            loginForm.FormClosed += LoginForm_FormClosed;
+            this.Hide();
+            loginForm.ShowDialog();
+        }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
+        }
 
         #region AttendeeMenuStrip
         private void toolStripMenuAddAttendee_Click(object sender, EventArgs e)
