@@ -21,6 +21,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         string rfidValue = string.Empty;
         string bodytempValue = string.Empty;
         string proximityValue = string.Empty;
+        int selectedAttendeeId = 0;
 
         private SharerConnection connection = new SharerConnection("COM6", 9600);
         public IAttendanceRepository AttendanceRepository { get; private set; }
@@ -49,13 +50,14 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             {
                 string message1 = "Fever";
                 MessageBox.Show(message1);
-
             }
             else
             {
                 AddAttendance();
+                LoadGridViewAttendances();
             }
 
+            //connection.WriteVariable("i", 1);
         }
 
         #region Helpers Attendance
@@ -78,6 +80,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
                 RFID = long.Parse(txtAttendeeRFID.Text),
                 VisitedDateTime = DateTime.Now,
                 Temperature = double.Parse(txtTemperature.Text),
+                AttendeeId = selectedAttendeeId,
                 PlaceId = 1
             };
 
@@ -124,25 +127,36 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
                                                           a.AttendeeRFID.ToString() != string.Empty);
                 var isRfidRegistered = attendees.Any();
 
-                if (!isRfidRegistered)
+                if (!isRfidRegistered && txtAttendeeRFID.Text != "0000000000" && txtAttendeeRFID.Text != "") 
                 {
+                    timer1.Stop();
                     var addAttendeeForm = new AddAttendeeForm(AttendeeRepository);
                     addAttendeeForm.FormClosed += AddAttendeeForm_FormClosed;
                     addAttendeeForm.txtRFID.Enabled = false;
                     addAttendeeForm.txtRFID.Text = rfidValue;
                     addAttendeeForm.ShowDialog();
                 }
+                else if (isRfidRegistered)
+                {
+                    txtName.Text = attendees.SingleOrDefault().Name;
+                    txtAge.Text = attendees.SingleOrDefault().Age.ToString();
+                    txtAddress.Text = attendees.SingleOrDefault().Address;
 
+                    selectedAttendeeId = attendees.SingleOrDefault().Id;
+                }
+            
                 //txtName.Enabled = !isRfidRegistered;
                 //txtAge.Enabled = !isRfidRegistered;
                 //txtAddress.Enabled = !isRfidRegistered;
             }
 
+        
             if (txtAttendeeRFID.Text != "0000000000" && txtAttendeeRFID.Text != "") //ok
             {
                 if (isTimerRunning)
                 {
                     connection.WriteVariable("i", 2);
+                    //connection.Call("modifyI", 2);
                 }
 
                 isTimerRunning = false; //ok
@@ -152,6 +166,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
                 if (proximityValue == "0")
                 {
                     bodytempValue = connection.Call("returnTemperature").Value.ToString(); //ok
+                    //bodytempValue = connection.ReadVariable("bodytemp").Value.ToString(); //ok
                     txtTemperature.Text = bodytempValue;
                 }
                 else
@@ -193,14 +208,19 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             var attendees = GetAttendees().Where(a => a.AttendeeRFID.ToString() == rfidValue &&
                                                       a.AttendeeRFID.ToString() != "0" &&
                                                       a.AttendeeRFID.ToString() != string.Empty);
+
             var isRfidRegistered = attendees.Any();
 
-            if (!isRfidRegistered)
+            if (isRfidRegistered)
             {
                 txtName.Text = attendees.SingleOrDefault().Name;
                 txtAge.Text = attendees.SingleOrDefault().Age.ToString();
                 txtAddress.Text = attendees.SingleOrDefault().Address;
+
+                selectedAttendeeId = attendees.SingleOrDefault().Id;
             }
+
+            timer1.Start();
         }
     }
 }
