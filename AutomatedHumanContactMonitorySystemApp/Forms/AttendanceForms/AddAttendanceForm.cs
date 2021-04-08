@@ -57,7 +57,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             }
 
         }
-=
+
         #region Helpers Attendance
 
         private void LoadGridViewAttendances()
