@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Sharer;
+using AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms;
 
 namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
 {
@@ -22,7 +23,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         string proximityValue = string.Empty;
 
         private SharerConnection connection = new SharerConnection("COM6", 9600);
-        public MainForm MainForm { get; set; }
         public IAttendanceRepository AttendanceRepository { get; private set; }
         public IAttendeeRepository AttendeeRepository { get; private set; }
         public IPlaceRepository PlaceRepository { get; private set; }
@@ -37,17 +37,14 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         private void AddAttendanceForm_Load(object sender, EventArgs e)
         {
             LoadGridViewAttendances();
-            LoadGridViewAttendees();
-            LoadGridViewPlaces();
             timer1.Start();
 
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
-            LoadGridViewAttendances();
             double temperature = double.Parse(txtTemperature.Text);
+
             if (temperature > 38)
             {
                 string message1 = "Fever";
@@ -60,25 +57,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             }
 
         }
-
-        #region Cell-Clicks
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow row = this.dataGridView2.Rows[e.RowIndex];
-            txtID.Text = row.Cells[0].Value.ToString();
-            txtAttendeeRFID.Text = row.Cells[1].Value.ToString();
-            txtName.Text = row.Cells[2].Value.ToString();
-            txtAge.Text = row.Cells[3].Value.ToString();
-            txtAddress.Text = row.Cells[4].Value.ToString();
-        }
-
-        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow row = this.dataGridView3.Rows[e.RowIndex];
-            txtPlaceId.Text = row.Cells[0].Value.ToString();
-            txtLocation.Text = row.Cells[1].Value.ToString();
-        }
-        #endregion
+=
         #region Helpers Attendance
 
         private void LoadGridViewAttendances()
@@ -96,11 +75,10 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
         {
             var attendanceToAdd = new AttendanceDto()
             {
-                AttendeeId = int.Parse(txtID.Text),
                 RFID = long.Parse(txtAttendeeRFID.Text),
                 VisitedDateTime = DateTime.Now,
                 Temperature = double.Parse(txtTemperature.Text),
-                PlaceId = int.Parse(txtPlaceId.Text)
+                PlaceId = 1
             };
 
             AttendanceRepository.PostAttendance(attendanceToAdd);
@@ -114,10 +92,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             var attendees = AttendeeRepository.GetAttendees();
             return attendees.ToList();
         }
-        private void LoadGridViewAttendees()
-        {
-            dataGridView2.DataSource = GetAttendees();
-        }
+ 
         #endregion
         #region Helpers Place
 
@@ -126,11 +101,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             var places = PlaceRepository.GetPlaces();
             return places.ToList();
         }
-        private void LoadGridViewPlaces()
-        {
-            dataGridView3.DataSource = GetPlaces();
-        }
-
 
         #endregion
 
@@ -149,22 +119,23 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
                 rfidValue = connection.Call("returnRfid").Value.ToString(); //ok
                 txtAttendeeRFID.Text = rfidValue.ToString().PadLeft(10, '0'); //ok
 
-                var attendees = AttendeeRepository.GetAttendees()
-                                                         .Where(a => a.AttendeeRFID.ToString() == rfidValue &&
-                                                                     a.AttendeeRFID.ToString() != "0" &&
-                                                                     a.AttendeeRFID.ToString() != string.Empty);
+                var attendees = GetAttendees().Where(a => a.AttendeeRFID.ToString() == rfidValue &&
+                                                          a.AttendeeRFID.ToString() != "0" &&
+                                                          a.AttendeeRFID.ToString() != string.Empty);
                 var isRfidRegistered = attendees.Any();
 
-                if (isRfidRegistered)
+                if (!isRfidRegistered)
                 {
-                    txtName.Text = attendees.SingleOrDefault().Name;
-                    txtAge.Text = attendees.SingleOrDefault().Age.ToString();
-                    txtAddress.Text = attendees.SingleOrDefault().Address;
+                    var addAttendeeForm = new AddAttendeeForm(AttendeeRepository);
+                    addAttendeeForm.FormClosed += AddAttendeeForm_FormClosed;
+                    addAttendeeForm.txtRFID.Enabled = false;
+                    addAttendeeForm.txtRFID.Text = rfidValue;
+                    addAttendeeForm.ShowDialog();
                 }
 
-                txtName.Enabled = !isRfidRegistered;
-                txtAge.Enabled = !isRfidRegistered;
-                txtAddress.Enabled = !isRfidRegistered;
+                //txtName.Enabled = !isRfidRegistered;
+                //txtAge.Enabled = !isRfidRegistered;
+                //txtAddress.Enabled = !isRfidRegistered;
             }
 
             if (txtAttendeeRFID.Text != "0000000000" && txtAttendeeRFID.Text != "") //ok
@@ -215,6 +186,21 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
             //}
 
 
+        }
+
+        private void AddAttendeeForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            var attendees = GetAttendees().Where(a => a.AttendeeRFID.ToString() == rfidValue &&
+                                                      a.AttendeeRFID.ToString() != "0" &&
+                                                      a.AttendeeRFID.ToString() != string.Empty);
+            var isRfidRegistered = attendees.Any();
+
+            if (!isRfidRegistered)
+            {
+                txtName.Text = attendees.SingleOrDefault().Name;
+                txtAge.Text = attendees.SingleOrDefault().Age.ToString();
+                txtAddress.Text = attendees.SingleOrDefault().Address;
+            }
         }
     }
 }
