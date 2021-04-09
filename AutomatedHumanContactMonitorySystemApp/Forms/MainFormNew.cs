@@ -1,4 +1,5 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.Extensions;
+using AutomatedHumanContactMonitorySystemApp.Forms.LoginForms;
 using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.UserControls;
 using System;
@@ -33,6 +34,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             AttendanceRepository = attendanceRepository;
             AppUserRepository = appUserRepository;
 
+            LoadLoginForm();
             ToggleMenuButtons(isDashboard: true);
         }
 
@@ -143,6 +145,22 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             flowLayoutPanel1.Controls.Clear();
         }
         #endregion Helpers
+
+        #region Login
+        private void LoadLoginForm()
+        {
+            var loginForm = new LoginForm(AppUserRepository);
+            loginForm.FormClosed += LoginForm_FormClosed;
+            this.Hide();
+            loginForm.ShowDialog();
+        }
+
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
+        }
+        #endregion Login
+
 
     }
 }
