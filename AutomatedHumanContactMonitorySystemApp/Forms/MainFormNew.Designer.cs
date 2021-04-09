@@ -153,6 +153,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(178, 59);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(614, 531);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
