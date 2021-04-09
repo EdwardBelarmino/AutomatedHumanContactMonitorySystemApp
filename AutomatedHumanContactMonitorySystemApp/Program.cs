@@ -23,17 +23,17 @@ namespace AutomatedHumanContactMonitorySystemApp
         static void Main()
         {
             container = new Container();
-            //container.Register<IAttendeeRepository, AttendeeRepository>(Lifestyle.Singleton);
-            //container.Register<IPlaceRepository, PlaceRepository>(Lifestyle.Singleton);
-            //container.Register<IAttendanceRepository, AttendanceRepository>(Lifestyle.Singleton);
-            //container.Register<IAppUserRepository, AppUserRepository>(Lifestyle.Singleton);
+            container.Register<IAttendeeRepository, AttendeeRepository>(Lifestyle.Singleton);
+            container.Register<IPlaceRepository, PlaceRepository>(Lifestyle.Singleton);
+            container.Register<IAttendanceRepository, AttendanceRepository>(Lifestyle.Singleton);
+            container.Register<IAppUserRepository, AppUserRepository>(Lifestyle.Singleton);
 
             ////container.Register<AddAttendeeForm>(Lifestyle.Singleton);
-            container.Register<ParentForm>(Lifestyle.Singleton);
+            container.Register<MainFormNew>(Lifestyle.Singleton);
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(container.GetInstance<ParentForm>());
+            Application.Run(container.GetInstance<MainFormNew>());
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace AutomatedHumanContactMonitorySystemApp.Forms
 {
-    partial class ParentForm
+    partial class MainFormNew
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormNew));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnContactTracing = new System.Windows.Forms.Button();
             this.btnAdmin = new System.Windows.Forms.Button();
@@ -37,7 +37,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnToggleMenu = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelMenu.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +72,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             this.btnContactTracing.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnContactTracing.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnContactTracing.UseVisualStyleBackColor = true;
+            this.btnContactTracing.Click += new System.EventHandler(this.btnContactTracing_Click);
             // 
             // btnAdmin
             // 
@@ -89,6 +90,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             this.btnAdmin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAdmin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // btnDashboard
             // 
@@ -107,6 +109,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDashboard.UseVisualStyleBackColor = true;
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
             // panel2
             // 
@@ -145,24 +148,24 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             this.label1.Text = "AHCMS";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel3
+            // flowLayoutPanel1
             // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(178, 59);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(614, 531);
-            this.panel3.TabIndex = 1;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(178, 59);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(614, 531);
+            this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // ParentForm
+            // MainFormNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(792, 590);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "ParentForm";
+            this.Name = "MainFormNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ParentForm";
             this.panelMenu.ResumeLayout(false);
@@ -179,7 +182,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnToggleMenu;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
