@@ -41,6 +41,22 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             ToggleMenuSize();
         }
 
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            ToggleMenuButtons(isDashboard: true);
+        }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            ToggleMenuButtons(isAdmin: true);
+        }
+
+        private void btnContactTracing_Click(object sender, EventArgs e)
+        {
+            ToggleMenuButtons(isContactTracing: true);
+        }
+
+        #region Helpers
         private void ToggleMenuSize()
         {
             if (isMenuSizeToggled)
@@ -54,8 +70,8 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
                 panelMenu.Width = fullWidthMenu;
             }
 
-            btnAdmin.Visible = 
-                btnDashboard.Visible = 
+            btnAdmin.Visible =
+                btnDashboard.Visible =
                     btnContactTracing.Visible = isMenuSizeToggled;
         }
 
@@ -70,19 +86,19 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
             if (isDashboardClicked)
             {
-                isAdminClicked = 
+                isAdminClicked =
                     isContactTracingClicked = !isDashboardClicked;
             }
             else if (isAdminClicked)
             {
-                isDashboardClicked = 
+                isDashboardClicked =
                     isContactTracingClicked = !isAdminClicked;
             }
             else if (isContactTracingClicked)
             {
                 LoadContactTracingUserControl();
 
-                isDashboardClicked = 
+                isDashboardClicked =
                     isAdminClicked = !isContactTracingClicked;
             }
 
@@ -126,21 +142,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         {
             flowLayoutPanel1.Controls.Clear();
         }
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-            ToggleMenuButtons(isDashboard: true);
-        }
+        #endregion Helpers
 
-        private void btnAdmin_Click(object sender, EventArgs e)
-        {
-            ToggleMenuButtons(isAdmin: true);
-        }
-
-        private void btnContactTracing_Click(object sender, EventArgs e)
-        {
-            ToggleMenuButtons(isContactTracing: true);
-        }
-
-        
     }
 }
