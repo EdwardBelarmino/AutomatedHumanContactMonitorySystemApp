@@ -1,6 +1,7 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
 using AutomatedHumanContactMonitorySystemApp.Models.Dtos.AttendanceDtos;
+using AutomatedHumanContactMonitorySystemApp.Properties;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -12,9 +13,10 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
 {
     public class AttendanceRepository : IAttendanceRepository
     {
+        private readonly string ApiAddress = Settings.Default.ApiAddress;
         public List<AttendanceDto> GetAttendances()
         {
-            var client = new RestClient("https://localhost:44385/");
+            var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/attendance/get");
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
@@ -24,7 +26,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
 
         public void PostAttendance(AttendanceDto attendanceDto)
         {
-            var client = new RestClient("https://localhost:44385/");
+            var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/attendance/post", Method.POST);
             request.AddJsonBody(attendanceDto);
             request.RequestFormat = DataFormat.Json;
@@ -33,7 +35,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
 
         public void DeleteAttendance(int id)
         {
-            var client = new RestClient("https://localhost:44385/");
+            var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/attendance/delete/" + id, Method.DELETE);
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
@@ -41,7 +43,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
 
         public void PutAttendance(AttendanceDto attendanceDto)
         {
-            var client = new RestClient("https://localhost:44385/");
+            var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/attendance/put/" + attendanceDto.Id, Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(attendanceDto);

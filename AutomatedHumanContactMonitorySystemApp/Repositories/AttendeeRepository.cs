@@ -1,5 +1,6 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
+using AutomatedHumanContactMonitorySystemApp.Properties;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -11,9 +12,10 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
 {
     public class AttendeeRepository : IAttendeeRepository
     {
+        private readonly string ApiAddress = Settings.Default.ApiAddress;
         public List<Attendee> GetAttendees()
         {
-            var client = new RestClient("https://localhost:44385/");
+            var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/attendee/get");
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
@@ -23,7 +25,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
 
         public Attendee GetAttendee(int id) 
         {
-            var client = new RestClient("https://localhost:44385/");
+            var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/attendee/get"+id);
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
@@ -33,7 +35,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
 
         public void PostAttendee(Attendee attendee) 
         {
-            var client = new RestClient("https://localhost:44385/");
+            var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/attendee/post", Method.POST);
             request.AddJsonBody(attendee);
             request.RequestFormat = DataFormat.Json;
@@ -42,7 +44,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
 
         public void DeleteAttendee(int id)
         { 
-            var client = new RestClient("https://localhost:44385/");
+            var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/attendee/delete/" + id, Method.DELETE);
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
@@ -50,7 +52,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
 
         public void PutAttendee(Attendee attendee)
         {
-            var client = new RestClient("https://localhost:44385/");
+            var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/attendee/put/" + attendee.Id, Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(attendee);

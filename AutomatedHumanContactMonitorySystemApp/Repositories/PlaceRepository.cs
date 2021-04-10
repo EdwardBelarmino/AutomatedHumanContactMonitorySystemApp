@@ -1,5 +1,6 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
+using AutomatedHumanContactMonitorySystemApp.Properties;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -11,9 +12,10 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
 {
     public class PlaceRepository : IPlaceRepository
     {
+        private readonly string ApiAddress = Settings.Default.ApiAddress;
         public List<Place> GetPlaces()
         {
-            var client = new RestClient("https://localhost:44385/");
+            var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/place/get");
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
@@ -23,7 +25,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
 
         public void PostPlace(Place place)
         {
-            var client = new RestClient("https://localhost:44385/");
+            var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/place/post", Method.POST);
             request.AddJsonBody(place);
             request.RequestFormat = DataFormat.Json;
@@ -32,7 +34,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
 
         public void DeletePlace(int id)
         {
-            var client = new RestClient("https://localhost:44385/");
+            var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/place/delete/" + id, Method.DELETE);
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
@@ -40,7 +42,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
 
         public void PutPlace(Place place)
         {
-            var client = new RestClient("https://localhost:44385/");
+            var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/place/put/" + place.Id, Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(place);
