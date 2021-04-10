@@ -1,4 +1,5 @@
-﻿using AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms;
+﻿using AutomatedHumanContactMonitorySystemApp.Forms;
+using AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms;
 using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
 using AutomatedHumanContactMonitorySystemApp.Models.Dtos.AttendanceDtos;
@@ -26,6 +27,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         public IAttendanceRepository AttendanceRepository { get; private set; }
         public IAttendeeRepository AttendeeRepository { get; private set; }
         public IPlaceRepository PlaceRepository { get; private set; }
+        public MainFormNew MainForm { get; set; }
         public ContactTracingUserControl()
         {
             InitializeComponent();
@@ -94,74 +96,82 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         #region Helpers Timer
         private void TimerTick()
         {
-            if (!connection.Connected)
+            try
             {
-                connection.Connect();
-                // Scan all functions shared
-                connection.RefreshFunctions();
-                connection.RefreshVariables();
-            }
-
-            if (isTimerRunning)
-            {
-                rfidValue = connection.Call("returnRfid").Value.ToString(); //ok
-                txtAttendeeRFID.Text = rfidValue.ToString().PadLeft(10, '0'); //ok
-
-                var attendees = GetAttendees().Where(a => a.AttendeeRFID.ToString() == rfidValue &&
-                                                          a.AttendeeRFID.ToString() != "0" &&
-                                                          a.AttendeeRFID.ToString() != string.Empty);
-                var isRfidRegistered = attendees.Any();
-
-                if (!isRfidRegistered && txtAttendeeRFID.Text != "0000000000" && txtAttendeeRFID.Text != "")
+                if (!connection.Connected)
                 {
-                    connectionTimer.Stop();
-                    var addAttendeeForm = new AddAttendeeForm(AttendeeRepository);
-                    addAttendeeForm.FormClosed += AddAttendeeForm_FormClosed; ;
-                    addAttendeeForm.txtRFID.Enabled = false;
-                    addAttendeeForm.txtRFID.Text = rfidValue;
-                    addAttendeeForm.ShowDialog();
-                }
-                else if (isRfidRegistered)
-                {
-                    txtName.Text = attendees.SingleOrDefault().Name;
-                    txtAge.Text = attendees.SingleOrDefault().Age.ToString();
-                    txtAddress.Text = attendees.SingleOrDefault().Address;
-
-                    selectedAttendeeId = attendees.SingleOrDefault().Id;
+                    connection.Connect();
+                    // Scan all functions shared
+                    connection.RefreshFunctions();
+                    connection.RefreshVariables();
                 }
 
-                //txtName.Enabled = !isRfidRegistered;
-                //txtAge.Enabled = !isRfidRegistered;
-                //txtAddress.Enabled = !isRfidRegistered;
-            }
-
-
-            if (txtAttendeeRFID.Text != "0000000000" && txtAttendeeRFID.Text != "") //ok
-            {
                 if (isTimerRunning)
                 {
-                    connection.WriteVariable("i", 2);
-                    //connection.Call("modifyI", 2);
+
+                    rfidValue = connection.Call("returnRfid").Value.ToString(); //ok
+                    txtAttendeeRFID.Text = rfidValue.ToString().PadLeft(10, '0'); //ok
+
+                    var attendees = GetAttendees().Where(a => a.AttendeeRFID.ToString() == rfidValue &&
+                                                              a.AttendeeRFID.ToString() != "0" &&
+                                                              a.AttendeeRFID.ToString() != string.Empty);
+                    var isRfidRegistered = attendees.Any();
+
+                    if (!isRfidRegistered && txtAttendeeRFID.Text != "0000000000" && txtAttendeeRFID.Text != "")
+                    {
+                        connectionTimer.Stop();
+                        var addAttendeeForm = new AddAttendeeForm(AttendeeRepository);
+                        addAttendeeForm.FormClosed += AddAttendeeForm_FormClosed; ;
+                        addAttendeeForm.txtRFID.Enabled = false;
+                        addAttendeeForm.txtRFID.Text = rfidValue;
+                        addAttendeeForm.ShowDialog();
+                    }
+                    else if (isRfidRegistered)
+                    {
+                        txtName.Text = attendees.SingleOrDefault().Name;
+                        txtAge.Text = attendees.SingleOrDefault().Age.ToString();
+                        txtAddress.Text = attendees.SingleOrDefault().Address;
+
+                        selectedAttendeeId = attendees.SingleOrDefault().Id;
+                    }
+
+                    //txtName.Enabled = !isRfidRegistered;
+                    //txtAge.Enabled = !isRfidRegistered;
+                    //txtAddress.Enabled = !isRfidRegistered;
                 }
 
-                isTimerRunning = false; //ok
 
-                proximityValue = connection.Call("returnProximity").Value.ToString();
-
-                if (proximityValue == "0")
+                if (txtAttendeeRFID.Text != "0000000000" && txtAttendeeRFID.Text != "") //ok
                 {
-                    bodytempValue = connection.Call("returnTemperature").Value.ToString(); //ok
+                    if (isTimerRunning)
+                    {
+                        connection.WriteVariable("i", 2);
+                        //connection.Call("modifyI", 2);
+                    }
 
-                    txtTemperature.ForeColor = int.Parse(bodytempValue) > 38 ? Color.Red : Color.Black; //change color if temp is high
+                    isTimerRunning = false; //ok
 
-                    txtTemperature.Text = bodytempValue;
+                    proximityValue = connection.Call("returnProximity").Value.ToString();
+
+                    if (proximityValue == "0")
+                    {
+                        bodytempValue = connection.Call("returnTemperature").Value.ToString(); //ok
+
+                        txtTemperature.Text = bodytempValue;
+
+                        btnAdd.PerformClick();
+                    }
+                    else
+                    {
+                        txtTemperature.Text = string.Empty;
+                    }
                 }
-                else
-                {
-                    txtTemperature.Text = string.Empty;
-                }
+            }
+            catch(Exception ex)
+            {
 
             }
+            
         }
 
 
@@ -171,19 +181,49 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
 
         public void LoadUserControl()
         {
-            connection.Connect();
- 
+            if (!connection.Connected)
+                connection.Connect();
+
             connectionTimer.Start();
+
+            //connection.Connect();
+
+            //connectionTimer.Start();
         }
 
         public void UnloadUserControl()
         {
-            connection.Disconnect();
+            if (connection.Connected)
+                connection.Disconnect();
 
             connectionTimer.Stop();
+
+            //connection.Disconnect();
+
+            //connectionTimer.Stop();
         }
 
         #endregion Helpers UserControl
+
+        private void ResetFields()
+        {
+            txtAddress.Text = string.Empty;
+            txtAge.Text = string.Empty;
+            txtAttendeeRFID.Text = string.Empty;
+            txtName.Text = string.Empty;
+            txtTemperature.Text = string.Empty;
+
+            rfidValue = "";
+            bodytempValue = string.Empty;
+            proximityValue = string.Empty;
+            selectedAttendeeId = 0;
+        }
+
+        public void ResetContactTracingUserControl()
+        {
+            UnloadUserControl();
+            MainForm.ResetContactTracingUserControl();
+        }
 
         private void ContactTracingUserControl_Load(object sender, EventArgs e)
         {
@@ -205,7 +245,9 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             else
             {
                 AddAttendance();
-                LoadGridViewAttendances();
+                //LoadGridViewAttendances();
+                connection.WriteVariable("i", 0);
+                ResetContactTracingUserControl();
             }
         }
 

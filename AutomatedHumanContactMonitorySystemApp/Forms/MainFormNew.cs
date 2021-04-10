@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace AutomatedHumanContactMonitorySystemApp.Forms
@@ -99,7 +100,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             else if (isContactTracingClicked)
             {
                 LoadContactTracingUserControl();
-
+                
                 isDashboardClicked =
                     isAdminClicked = !isContactTracingClicked;
             }
@@ -131,16 +132,25 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             }
         }
 
-        private void LoadContactTracingUserControl()
+        public void ResetContactTracingUserControl()
+        {
+            ClearFlowLayoutPanel();
+            //LoadContactTracingUserControl();
+
+            btnContactTracing.PerformClick();
+        }
+
+        public void LoadContactTracingUserControl()
         {
             var contactTracingUserControl = new ContactTracingUserControl();
             contactTracingUserControl.LoadRepositories(AttendanceRepository, AttendeeRepository, PlaceRepository);
-            //contactTracingUserControl.LoadUserControl();
+            contactTracingUserControl.LoadUserControl();
             contactTracingUserControl.Dock = DockStyle.Top;
+            //contactTracingUserControl.MainForm = this;
             flowLayoutPanel1.Controls.Add(contactTracingUserControl);
         }
 
-        private void ClearFlowLayoutPanel()
+        public void ClearFlowLayoutPanel()
         {
             flowLayoutPanel1.Controls.Clear();
         }
