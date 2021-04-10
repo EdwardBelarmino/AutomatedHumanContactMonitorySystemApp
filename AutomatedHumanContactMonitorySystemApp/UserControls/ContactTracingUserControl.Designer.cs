@@ -36,12 +36,12 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtTemperature = new System.Windows.Forms.TextBox();
             this.txtAttendeeRFID = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.connectionTimer = new System.Windows.Forms.Timer(this.components);
+            this.txtTemperature = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtAddress
@@ -122,19 +122,6 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.label8.TabIndex = 30;
             this.label8.Text = "Name:";
             // 
-            // txtTemperature
-            // 
-            this.txtTemperature.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTemperature.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtTemperature.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTemperature.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTemperature.Location = new System.Drawing.Point(121, 136);
-            this.txtTemperature.Name = "txtTemperature";
-            this.txtTemperature.Size = new System.Drawing.Size(238, 18);
-            this.txtTemperature.TabIndex = 29;
-            // 
             // txtAttendeeRFID
             // 
             this.txtAttendeeRFID.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -193,18 +180,30 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             // 
             this.connectionTimer.Tick += new System.EventHandler(this.connectionTimer_Tick);
             // 
+            // txtTemperature
+            // 
+            this.txtTemperature.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtTemperature.AutoSize = true;
+            this.txtTemperature.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTemperature.Location = new System.Drawing.Point(121, 138);
+            this.txtTemperature.Name = "txtTemperature";
+            this.txtTemperature.Size = new System.Drawing.Size(21, 15);
+            this.txtTemperature.TabIndex = 36;
+            this.txtTemperature.Text = "00";
+            // 
             // ContactTracingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.txtTemperature);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtAge);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtTemperature);
             this.Controls.Add(this.txtAttendeeRFID);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label4);
@@ -225,11 +224,11 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtTemperature;
         private System.Windows.Forms.TextBox txtAttendeeRFID;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer connectionTimer;
+        private System.Windows.Forms.Label txtTemperature;
     }
 }

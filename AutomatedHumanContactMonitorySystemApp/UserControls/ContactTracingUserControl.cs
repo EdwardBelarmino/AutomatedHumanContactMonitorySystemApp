@@ -199,8 +199,8 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
 
             if (temperature > 38)
             {
-                string message1 = "Fever";
-                MessageBox.Show(message1);
+                //string message1 = "Fever";
+                //MessageBox.Show(message1);
             }
             else
             {
