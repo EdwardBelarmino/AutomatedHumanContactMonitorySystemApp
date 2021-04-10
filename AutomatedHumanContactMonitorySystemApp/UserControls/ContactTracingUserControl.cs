@@ -151,7 +151,9 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
                 if (proximityValue == "0")
                 {
                     bodytempValue = connection.Call("returnTemperature").Value.ToString(); //ok
-                    //bodytempValue = connection.ReadVariable("bodytemp").Value.ToString(); //ok
+
+                    txtTemperature.ForeColor = int.Parse(bodytempValue) > 38 ? Color.Red : Color.Black; //change color if temp is high
+
                     txtTemperature.Text = bodytempValue;
                 }
                 else
