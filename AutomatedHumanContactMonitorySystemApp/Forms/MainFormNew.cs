@@ -144,9 +144,9 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         {
             var contactTracingUserControl = new ContactTracingUserControl();
             contactTracingUserControl.LoadRepositories(AttendanceRepository, AttendeeRepository, PlaceRepository);
-            contactTracingUserControl.LoadUserControl();
             contactTracingUserControl.Dock = DockStyle.Top;
-            //contactTracingUserControl.MainForm = this;
+            contactTracingUserControl.MainForm = this;
+            contactTracingUserControl.LoadUserControl();
             flowLayoutPanel1.Controls.Add(contactTracingUserControl);
         }
 
