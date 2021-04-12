@@ -222,7 +222,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         public void ResetContactTracingUserControl()
         {
             UnloadUserControl();
-            MainForm.ResetContactTracingUserControl();
+            //MainForm.ResetContactTracingUserControl();
         }
 
         private void ContactTracingUserControl_Load(object sender, EventArgs e)
