@@ -94,6 +94,8 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             }
             else if (isAdminClicked)
             {
+                LoadAttendanceListUserControl();
+
                 isDashboardClicked =
                     isContactTracingClicked = !isAdminClicked;
             }
@@ -144,10 +146,21 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         {
             var contactTracingUserControl = new ContactTracingUserControl();
             contactTracingUserControl.LoadRepositories(AttendanceRepository, AttendeeRepository, PlaceRepository);
-            contactTracingUserControl.LoadUserControl();
+            //contactTracingUserControl.LoadUserControl();
             contactTracingUserControl.Dock = DockStyle.Top;
-            //contactTracingUserControl.MainForm = this;
+            contactTracingUserControl.MainForm = this;
+
             flowLayoutPanel1.Controls.Add(contactTracingUserControl);
+        }
+
+        public void LoadAttendanceListUserControl()
+        {
+            var attendanceListUserControl = new AttendanceListUserControl();
+            attendanceListUserControl.LoadRepositories(AttendanceRepository);
+            attendanceListUserControl.LoadAttendanceList();
+            attendanceListUserControl.Dock = DockStyle.Top;
+
+            flowLayoutPanel1.Controls.Add(attendanceListUserControl);
         }
 
         public void ClearFlowLayoutPanel()
