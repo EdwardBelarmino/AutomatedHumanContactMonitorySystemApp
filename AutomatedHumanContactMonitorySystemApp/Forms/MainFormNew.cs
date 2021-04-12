@@ -134,22 +134,13 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             }
         }
 
-        public void ResetContactTracingUserControl()
-        {
-            ClearFlowLayoutPanel();
-            //LoadContactTracingUserControl();
-
-            btnContactTracing.PerformClick();
-        }
 
         public void LoadContactTracingUserControl()
         {
-            var contactTracingUserControl = new ContactTracingUserControl();
-            contactTracingUserControl.LoadRepositories(AttendanceRepository, AttendeeRepository, PlaceRepository);
-            contactTracingUserControl.LoadUserControl();
-            contactTracingUserControl.Dock = DockStyle.Top;
-            //contactTracingUserControl.MainForm = this;
-            flowLayoutPanel1.Controls.Add(contactTracingUserControl);
+            var contactTracingForm = new ContactTracingForm();
+            contactTracingForm.LoadRepositories(AttendanceRepository, AttendeeRepository, PlaceRepository);
+            contactTracingForm.LoadUserControl();
+            contactTracingForm.ShowDialog();
         }
 
         public void LoadAttendanceListUserControl()
