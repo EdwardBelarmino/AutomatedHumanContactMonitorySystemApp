@@ -11,6 +11,7 @@
   <ItemGroup>
     <Folder Include="Models\Dtos\AttendeeDtos\" />
     <Folder Include="Models\Dtos\PlaceDtos\" />
+    <Folder Include="DataSets\" />
   </ItemGroup>
 
   <ItemGroup>
