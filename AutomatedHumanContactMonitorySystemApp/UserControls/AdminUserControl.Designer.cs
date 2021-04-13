@@ -345,6 +345,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.btnSetStatus.TabIndex = 2;
             this.btnSetStatus.Text = "Set Status";
             this.btnSetStatus.UseVisualStyleBackColor = false;
+            this.btnSetStatus.Click += new System.EventHandler(this.btnSetStatus_Click);
             // 
             // AdminUserControl
             // 

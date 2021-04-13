@@ -1,4 +1,5 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.IRepositories;
+using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
 using AutomatedHumanContactMonitorySystemApp.Models.Dtos.AttendanceDtos;
 using System;
 using System.Collections.Generic;
@@ -61,13 +62,13 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendanceForms
 
         private void PutAttendance()
         {
-            var attendanceToUpdate = new AttendanceDto()
+            var attendanceToUpdate = new Attendance()
             {
                 Id = int.Parse(txtId.Text),
                 Temperature = double.Parse(txtTemperature.Text),
                 VisitedDateTime = Convert.ToDateTime(txtDateTime.Text),
             };
-            AttendanceRepository.PutAttendance(attendanceToUpdate);
+            AttendanceRepository.UpdateAttendanceStatus(attendanceToUpdate);
         }
 
         #endregion

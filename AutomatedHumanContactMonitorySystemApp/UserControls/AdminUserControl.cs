@@ -1,4 +1,5 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.IRepositories;
+using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
 using AutomatedHumanContactMonitorySystemApp.Models.Dtos;
 using AutomatedHumanContactMonitorySystemApp.Models.Dtos.AttendanceDtos;
 using System;
@@ -15,7 +16,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
     public partial class AdminUserControl : UserControl
     {
         private IAttendanceRepository AttendanceRepository { get; set; }
-        private AttendanceDto SelectedAttendance = new AttendanceDto();
+        private Attendance SelectedAttendance = new Attendance();
         public AdminUserControl()
         {
             InitializeComponent();
@@ -58,7 +59,14 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
 
         private void UpdateAttendanceById()
         {
-            
+            SelectedAttendance.Status = comboStatus.Text;
+
+            if (SelectedAttendance.Id > 0)
+            {
+                AttendanceRepository.UpdateAttendanceStatus(SelectedAttendance);
+            }
+
+            SelectedAttendance = new Attendance();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -70,10 +78,9 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         {
             SelectedAttendance.Id = int.Parse(dgvAttendances.CurrentRow.Cells[6].Value.ToString());
             SelectedAttendance.Status = dgvAttendances.CurrentRow.Cells[5].Value.ToString();
-            SelectedAttendance.AttendeeRFID = long.Parse(dgvAttendances.CurrentRow.Cells[4].Value.ToString());
 
             comboStatus.Text = SelectedAttendance.Status;
-            txtRfid.Text = SelectedAttendance.AttendeeRFID.ToString();
+            txtRfid.Text = dgvAttendances.CurrentRow.Cells[4].Value.ToString();
         }
 
         private void comboStatus_DrawItem(object sender, DrawItemEventArgs e)
@@ -105,6 +112,12 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
                     e.Graphics.DrawString(cbx.Items[e.Index].ToString(), cbx.Font, brush, e.Bounds, sf);
                 }
             }
+        }
+
+        private void btnSetStatus_Click(object sender, EventArgs e)
+        {
+            UpdateAttendanceById();
+            LoadAttendanceList();
         }
     }
 }

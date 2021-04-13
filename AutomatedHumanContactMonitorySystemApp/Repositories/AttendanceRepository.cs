@@ -42,12 +42,11 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             var response = client.Execute(request);
         }
 
-        public void PutAttendance(AttendanceDto attendanceDto)
+        public void UpdateAttendanceStatus(Attendance attendance)
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/attendance/put/" + attendanceDto.Id, Method.PUT);
-            request.RequestFormat = DataFormat.Json;
-            request.AddJsonBody(attendanceDto);
+            var request = new RestRequest("api/attendance/UpdateAttendanceStatus", Method.POST);
+            request.AddJsonBody(attendance);
             var response = client.Execute(request);
         }
 
