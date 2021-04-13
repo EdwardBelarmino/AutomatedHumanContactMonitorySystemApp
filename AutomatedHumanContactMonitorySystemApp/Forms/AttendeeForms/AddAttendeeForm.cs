@@ -62,7 +62,8 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
                 Name = txtName.Text,
                 Address = txtAddress.Text,
                 Age = int.Parse(txtAge.Text),
-                AttendeeRFID = long.Parse(txtRFID.Text)
+                AttendeeRFID = long.Parse(txtRFID.Text),
+                Status = "NORMAL"
             };
 
             AttendeeRepository.PostAttendee(attendeeToAdd);
