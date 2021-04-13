@@ -94,14 +94,14 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             }
             else if (isAdminClicked)
             {
-                LoadAttendanceListUserControl();
+                LoadAdminUserControl();
 
                 isDashboardClicked =
                     isContactTracingClicked = !isAdminClicked;
             }
             else if (isContactTracingClicked)
             {
-                LoadContactTracingUserControl();
+                LoadContactTracingForm();
                 
                 isDashboardClicked =
                     isAdminClicked = !isContactTracingClicked;
@@ -135,7 +135,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         }
 
 
-        public void LoadContactTracingUserControl()
+        private void LoadContactTracingForm()
         {
             var contactTracingForm = new ContactTracingForm();
             contactTracingForm.LoadRepositories(AttendanceRepository, AttendeeRepository, PlaceRepository);
@@ -143,16 +143,23 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             contactTracingForm.ShowDialog();
         }
 
-        public void LoadAttendanceListUserControl()
+        private void LoadAttendanceListUserControl()
         {
             var attendanceListUserControl = new AttendanceListUserControl();
             attendanceListUserControl.LoadRepositories(AttendanceRepository);
             attendanceListUserControl.LoadAttendanceList();
-            attendanceListUserControl.Dock = DockStyle.Top;
 
             flowLayoutPanel1.Controls.Add(attendanceListUserControl);
         }
 
+        private void LoadAdminUserControl()
+        {
+            var adminUserControl = new AdminUserControl();
+            adminUserControl.LoadRepositories(AttendanceRepository);
+            adminUserControl.LoadAttendanceList();
+
+            flowLayoutPanel1.Controls.Add(adminUserControl);
+        }
         public void ClearFlowLayoutPanel()
         {
             flowLayoutPanel1.Controls.Clear();
