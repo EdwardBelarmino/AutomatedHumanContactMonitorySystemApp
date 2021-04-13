@@ -59,7 +59,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         {
             var attendanceToAdd = new AttendanceDto()
             {
-                RFID = long.Parse(txtAttendeeRFID.Text),
+                AttendeeRFID = long.Parse(txtAttendeeRFID.Text),
                 VisitedDateTime = DateTime.Now,
                 Temperature = double.Parse(txtTemperature.Text),
                 AttendeeId = selectedAttendeeId,

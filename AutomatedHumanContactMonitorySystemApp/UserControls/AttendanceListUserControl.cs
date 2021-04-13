@@ -38,7 +38,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
                                        attendance.VisitedDateTime,
                                        attendance.Temperature,
                                        attendance.Location,
-                                       attendance.RFID,
+                                       attendance.AttendeeRFID,
                                        "STATUS");
             }
         }
