@@ -12,6 +12,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Models.Dtos.AttendanceDtos
         }
         public DateTime VisitedDateTime { get; set; }
         public double Temperature { get; set; }
+        public string Status { get; set; }
         #region Attendee
         public int AttendeeId { get; set; }
         public string Name { get; set; }

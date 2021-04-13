@@ -1,4 +1,5 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.IRepositories;
+using AutomatedHumanContactMonitorySystemApp.Models.Dtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,15 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
 
         public void LoadAttendanceList()
         {
-            var attendances = AttendanceRepository.GetAttendances();
+            dataGridView1.Rows.Clear();
+
+            var searchDto = new SearchDto()
+            {
+                SearchBy = comboSearchBy.Text,
+                SearchText = txtSearchText.Text
+            };
+
+            var attendances = AttendanceRepository.GetAttendanceBySearchParameter(searchDto);
 
             foreach (var attendance in attendances)
             {
@@ -38,8 +47,13 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
                                        attendance.Temperature,
                                        attendance.Location,
                                        attendance.RFID,
-                                       "STATUS");
+                                       attendance.Status);
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadAttendanceList();
         }
     }
 }

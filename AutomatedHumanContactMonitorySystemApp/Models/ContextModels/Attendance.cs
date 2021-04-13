@@ -14,6 +14,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Models.ContextModels
         public double Temperature { get; set; }
         public Place Place { get; set; }
         public int PlaceId { get; set; }
+        public string Status { get; set; }
 
     }
 }

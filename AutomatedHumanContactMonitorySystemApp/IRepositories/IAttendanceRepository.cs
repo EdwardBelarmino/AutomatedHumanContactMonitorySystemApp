@@ -1,4 +1,5 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
+using AutomatedHumanContactMonitorySystemApp.Models.Dtos;
 using AutomatedHumanContactMonitorySystemApp.Models.Dtos.AttendanceDtos;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace AutomatedHumanContactMonitorySystemApp.IRepositories
         void PostAttendance(AttendanceDto attendanceDto);
         void DeleteAttendance(int id);
         void PutAttendance(AttendanceDto attendanceDto);
+        List<AttendanceDto> GetAttendanceBySearchParameter(SearchDto searchDto);
     }
 }

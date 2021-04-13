@@ -9,8 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Dtos\AttendeeDtos\" />
-    <Folder Include="Models\Dtos\PlaceDtos\" />
+    <Compile Remove="Models\Dtos\AttendeeDtos\**" />
+    <Compile Remove="Models\Dtos\PlaceDtos\**" />
+    <EmbeddedResource Remove="Models\Dtos\AttendeeDtos\**" />
+    <EmbeddedResource Remove="Models\Dtos\PlaceDtos\**" />
+    <None Remove="Models\Dtos\AttendeeDtos\**" />
+    <None Remove="Models\Dtos\PlaceDtos\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="DataSets\" />
   </ItemGroup>
 
