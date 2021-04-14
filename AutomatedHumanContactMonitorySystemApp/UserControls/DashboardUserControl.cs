@@ -32,7 +32,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         {
             var searchDto = new SearchDto()
             {
-                Date = date.Value.ToUniversalTime()
+                Date = date.Value.AddDays(1)
             };
 
             var attendances = AttendanceRepository.GetAttendanceByDate(searchDto);
