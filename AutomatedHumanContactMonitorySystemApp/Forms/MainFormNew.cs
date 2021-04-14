@@ -89,6 +89,8 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
             if (isDashboardClicked)
             {
+                LoadDashboardUserControl();
+
                 isAdminClicked =
                     isContactTracingClicked = !isDashboardClicked;
             }
@@ -159,6 +161,15 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             adminUserControl.LoadAttendanceList();
 
             flowLayoutPanel1.Controls.Add(adminUserControl);
+        }
+
+        private void LoadDashboardUserControl()
+        {
+            var dashboardUserControl = new DashboardUserControl();
+            dashboardUserControl.LoadRepositories(AttendanceRepository);
+            dashboardUserControl.LoadAttendanceList(DateTime.Now);
+
+            flowLayoutPanel1.Controls.Add(dashboardUserControl);
         }
         public void ClearFlowLayoutPanel()
         {

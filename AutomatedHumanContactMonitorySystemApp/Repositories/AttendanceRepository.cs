@@ -60,6 +60,16 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             return attendances.ToList();
         }
 
+        public List<AttendanceDto> GetAttendanceByDate(SearchDto searchDto)
+        {
+            var client = new RestClient(ApiAddress);
+            var request = new RestRequest("api/attendance/GetAttendanceByDate", Method.POST);
+            request.AddJsonBody(searchDto);
+            var response = client.Execute(request);
+            var attendances = JsonConvert.DeserializeObject<List<AttendanceDto>>(response.Content);
+            return attendances.ToList();
+        }
+
 
     }
 }

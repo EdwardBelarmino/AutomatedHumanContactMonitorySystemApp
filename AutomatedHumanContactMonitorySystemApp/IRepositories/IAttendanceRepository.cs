@@ -14,5 +14,6 @@ namespace AutomatedHumanContactMonitorySystemApp.IRepositories
         void DeleteAttendance(int id);
         void UpdateAttendanceStatus(Attendance attendance);
         List<AttendanceDto> GetAttendanceBySearchParameter(SearchDto searchDto);
+        List<AttendanceDto> GetAttendanceByDate(SearchDto searchDto);
     }
 }
