@@ -66,7 +66,27 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
                 AttendanceRepository.UpdateAttendanceStatus(SelectedAttendance);
             }
 
+            if (SelectedAttendance.Status == "POSITIVE")
+            {
+                UpdateMultipleAttendances();
+            }
+
             SelectedAttendance = new Attendance();
+        }
+
+        private void UpdateMultipleAttendances()
+        {
+            var attendances = AttendanceRepository.GetAttendances().Where(a => a.VisitedDateTime.Year <= SelectedAttendance.VisitedDateTime.Year &&
+                                                                                  a.VisitedDateTime.Month <= SelectedAttendance.VisitedDateTime.Month &&
+                                                                                  a.VisitedDateTime.Day <= SelectedAttendance.VisitedDateTime.Day &&
+                                                                                  a.VisitedDateTime.Date >= SelectedAttendance.VisitedDateTime.Date.AddDays(-14));
+
+            foreach (var attendance in attendances)
+            {
+                if (attendance.Id != SelectedAttendance.Id)
+                    AttendanceRepository.UpdateAttendanceStatus(new Attendance { Id = attendance.Id, Status = "POSITIVE" });
+            }
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -78,6 +98,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         {
             SelectedAttendance.Id = int.Parse(dgvAttendances.CurrentRow.Cells[6].Value.ToString());
             SelectedAttendance.Status = dgvAttendances.CurrentRow.Cells[5].Value.ToString();
+            SelectedAttendance.VisitedDateTime = DateTime.Parse(dgvAttendances.CurrentRow.Cells[1].Value.ToString());
 
             comboStatus.Text = SelectedAttendance.Status;
             txtRfid.Text = dgvAttendances.CurrentRow.Cells[4].Value.ToString();
@@ -116,8 +137,12 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
 
         private void btnSetStatus_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+
             UpdateAttendanceById();
             LoadAttendanceList();
+
+            this.Cursor = Cursors.Default;
         }
     }
 }
