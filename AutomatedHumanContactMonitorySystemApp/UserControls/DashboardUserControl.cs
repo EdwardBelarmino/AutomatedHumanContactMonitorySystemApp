@@ -37,11 +37,35 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
 
             var attendances = AttendanceRepository.GetAttendanceByDate(searchDto);
 
-            string puiCount = attendances.Where(a => a.Status == "PUI").Count().ToString();
-            string positiveCount = attendances.Where(a => a.Status == "POSITIVE").Count().ToString();
+            double puiCount = attendances.Where(a => a.Status == "PUI").Count();
+            double positiveCount = attendances.Where(a => a.Status == "POSITIVE").Count();
+            double normalCount = attendances.Where(a => a.Status == "NORMAL").Count();
 
-            lblPuiCount.Text = puiCount;
-            lblPositiveCount.Text = positiveCount;
+            lblPuiCount.Text = puiCount.ToString();
+            lblPositiveCount.Text = positiveCount.ToString();
+            lblNormal.Text = normalCount.ToString();
+
+            LoadChart(puiCount: puiCount, positiveCount: positiveCount, normalCount: normalCount);
+        }
+
+        private void LoadChart(double puiCount = 0, double positiveCount = 0, double normalCount = 0)
+        {
+            var plt = new ScottPlot.Plot(600, 400);
+            formsPlot1.Reset();
+            double[] values = { puiCount, positiveCount, normalCount };
+            string[] labels = { "PUI", "POSITIVE", "NORMAL" };
+            var pie = formsPlot1.plt.PlotPie(values, labels);
+            pie.donutSize = .6;
+            pie.showLabels = false;
+            pie.colors = new Color[] { Color.Blue, Color.Red, Color.Green };
+
+            formsPlot1.plt.Legend();
+            formsPlot1.plt.Grid(false);
+            formsPlot1.plt.Frame(false);
+            formsPlot1.plt.Ticks(false, false);
+
+            formsPlot1.Render();
+
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

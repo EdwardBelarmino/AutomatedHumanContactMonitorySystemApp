@@ -29,6 +29,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblPuiCount = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,9 +40,14 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.btnUpdate = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
+            this.formsPlot1 = new ScottPlot.FormsPlot();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblNormal = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -87,7 +93,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.panel2.Controls.Add(this.lblPositiveCount);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.panel2.Location = new System.Drawing.Point(185, 29);
+            this.panel2.Location = new System.Drawing.Point(204, 29);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(158, 133);
             this.panel2.TabIndex = 1;
@@ -123,8 +129,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.btnUpdate);
-            this.panel3.Controls.Add(this.dateTimePicker1);
+            this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.panel2);
@@ -140,7 +145,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(417, 59);
+            this.btnUpdate.Location = new System.Drawing.Point(38, 270);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(145, 23);
             this.btnUpdate.TabIndex = 4;
@@ -153,7 +158,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.CustomFormat = "MMMM dd, yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(417, 30);
+            this.dateTimePicker1.Location = new System.Drawing.Point(38, 241);
             this.dateTimePicker1.MaxDate = new System.DateTime(2021, 4, 14, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(1889, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -174,10 +179,61 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.label5.Text = "Cases for the date of: September 21, 1991";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // formsPlot1
+            // 
+            this.formsPlot1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
+            this.formsPlot1.Location = new System.Drawing.Point(202, 222);
+            this.formsPlot1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.formsPlot1.Name = "formsPlot1";
+            this.formsPlot1.Size = new System.Drawing.Size(396, 279);
+            this.formsPlot1.TabIndex = 3;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
+            this.panel4.Controls.Add(this.lblNormal);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.panel4.Location = new System.Drawing.Point(400, 29);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(158, 133);
+            this.panel4.TabIndex = 3;
+            // 
+            // lblNormal
+            // 
+            this.lblNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNormal.Font = new System.Drawing.Font("Arial Black", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblNormal.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblNormal.Location = new System.Drawing.Point(0, 12);
+            this.lblNormal.Name = "lblNormal";
+            this.lblNormal.Size = new System.Drawing.Size(158, 95);
+            this.lblNormal.TabIndex = 1;
+            this.lblNormal.Text = "20";
+            this.lblNormal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Arial", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
+            this.label3.Location = new System.Drawing.Point(0, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(158, 17);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "NORMAL COUNT";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // DashboardUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.formsPlot1);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.panel3);
             this.Name = "DashboardUserControl";
             this.Size = new System.Drawing.Size(614, 531);
@@ -185,6 +241,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -201,5 +258,9 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label5;
+        private ScottPlot.FormsPlot formsPlot1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lblNormal;
+        private System.Windows.Forms.Label label3;
     }
 }
