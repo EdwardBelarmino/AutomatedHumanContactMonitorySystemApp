@@ -44,6 +44,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             lblPuiCount.Text = puiCount.ToString();
             lblPositiveCount.Text = positiveCount.ToString();
             lblNormal.Text = normalCount.ToString();
+            lblCasesText.Text = $"Cases for the date of: {date.Value.ToString("MMMM dd, yyyy")}";
 
             LoadChart(puiCount: puiCount, positiveCount: positiveCount, normalCount: normalCount);
         }

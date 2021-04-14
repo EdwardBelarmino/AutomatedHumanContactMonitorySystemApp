@@ -37,13 +37,13 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.lblPositiveCount = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.formsPlot1 = new ScottPlot.FormsPlot();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblNormal = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblCasesText = new System.Windows.Forms.Label();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.formsPlot1 = new ScottPlot.FormsPlot();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -130,63 +130,13 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.lblCasesText);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Location = new System.Drawing.Point(17, 15);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(581, 201);
             this.panel3.TabIndex = 2;
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
-            this.btnUpdate.FlatAppearance.BorderSize = 0;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(38, 270);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(145, 23);
-            this.btnUpdate.TabIndex = 4;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.CustomFormat = "MMMM dd, yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(38, 241);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2021, 4, 14, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(1889, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(145, 23);
-            this.dateTimePicker1.TabIndex = 3;
-            this.dateTimePicker1.Value = new System.DateTime(2021, 4, 14, 0, 0, 0, 0);
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
-            this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(0, 181);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(581, 20);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Cases for the date of: September 21, 1991";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // formsPlot1
-            // 
-            this.formsPlot1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
-            this.formsPlot1.Location = new System.Drawing.Point(202, 222);
-            this.formsPlot1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.formsPlot1.Name = "formsPlot1";
-            this.formsPlot1.Size = new System.Drawing.Size(396, 279);
-            this.formsPlot1.TabIndex = 3;
             // 
             // panel4
             // 
@@ -227,6 +177,56 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.label3.Text = "NORMAL COUNT";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblCasesText
+            // 
+            this.lblCasesText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
+            this.lblCasesText.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblCasesText.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.lblCasesText.ForeColor = System.Drawing.Color.White;
+            this.lblCasesText.Location = new System.Drawing.Point(0, 181);
+            this.lblCasesText.Name = "lblCasesText";
+            this.lblCasesText.Size = new System.Drawing.Size(581, 20);
+            this.lblCasesText.TabIndex = 2;
+            this.lblCasesText.Text = "Cases for the date of: September 21, 1991";
+            this.lblCasesText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
+            this.btnUpdate.FlatAppearance.BorderSize = 0;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Location = new System.Drawing.Point(38, 270);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(145, 23);
+            this.btnUpdate.TabIndex = 4;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker1.CustomFormat = "MMMM dd, yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(38, 241);
+            this.dateTimePicker1.MaxDate = new System.DateTime(2021, 4, 14, 0, 0, 0, 0);
+            this.dateTimePicker1.MinDate = new System.DateTime(1889, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(145, 23);
+            this.dateTimePicker1.TabIndex = 3;
+            this.dateTimePicker1.Value = new System.DateTime(2021, 4, 14, 0, 0, 0, 0);
+            // 
+            // formsPlot1
+            // 
+            this.formsPlot1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
+            this.formsPlot1.Location = new System.Drawing.Point(202, 222);
+            this.formsPlot1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.formsPlot1.Name = "formsPlot1";
+            this.formsPlot1.Size = new System.Drawing.Size(396, 279);
+            this.formsPlot1.TabIndex = 3;
+            // 
             // DashboardUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -257,7 +257,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblCasesText;
         private ScottPlot.FormsPlot formsPlot1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblNormal;
