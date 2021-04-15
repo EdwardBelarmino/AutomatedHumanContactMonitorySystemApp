@@ -78,6 +78,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             }
 
             SelectedAttendance = new Attendance();
+            SelectedAttendee = new Attendee();
         }
 
         private void UpdateMultipleAttendances()
