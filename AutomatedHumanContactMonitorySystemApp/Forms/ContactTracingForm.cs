@@ -240,12 +240,13 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
             if (temperature > 38)
             {
-                //string message1 = "Fever";
-                //MessageBox.Show(message1);
+                UnloadUserControl();
+                btnAdd.Text = "Not allowed to enter due to high temperature.";
             }
             else
             {
                 AddAttendance();
+                btnAdd.Text = "";
                 //LoadGridViewAttendances();
                 Thread.Sleep(2000);
 
