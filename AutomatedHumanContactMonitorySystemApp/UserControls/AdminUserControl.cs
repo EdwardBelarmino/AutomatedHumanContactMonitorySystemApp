@@ -55,7 +55,8 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
                                        attendance.Location,
                                        attendance.AttendeeRFID,
                                        attendance.Status,
-                                       attendance.Id);
+                                       attendance.Id,
+                                       attendance.AttendeeId);
             }
         }
 
