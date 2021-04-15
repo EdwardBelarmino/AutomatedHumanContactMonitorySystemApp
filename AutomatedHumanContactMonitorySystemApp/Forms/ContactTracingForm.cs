@@ -132,6 +132,19 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
                         selectedAttendeeId = attendees.SingleOrDefault().Id;
                         selectedAttendeeStatus = attendees.SingleOrDefault().Status;
+
+                        if (selectedAttendeeStatus == "POSITIVE")
+                        {
+                            connection.WriteVariable("i", 4);
+                            Thread.Sleep(2000);
+                            UnloadUserControl();
+                        }
+                        else if (selectedAttendeeStatus == "PUI")
+                        {
+                            connection.WriteVariable("i", 3);
+                            Thread.Sleep(2000);
+                            UnloadUserControl();
+                        }
                     }
 
                     //txtName.Enabled = !isRfidRegistered;
