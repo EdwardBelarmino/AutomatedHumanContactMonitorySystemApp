@@ -14,7 +14,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
     public partial class LoginForm : Form
     {
         public IAppUserRepository AppUserRepository { get; set; }
-        public int PlaceId { get; set; }
         public LoginForm(IAppUserRepository appUserRepository)
         {
             AppUserRepository = appUserRepository;
@@ -33,7 +32,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
 
             if (placeId != 0)
             {
-                PlaceHelper.PlaceId = PlaceId;
+                PlaceHelper.PlaceId = placeId;
                 this.Close();
             }
             else
