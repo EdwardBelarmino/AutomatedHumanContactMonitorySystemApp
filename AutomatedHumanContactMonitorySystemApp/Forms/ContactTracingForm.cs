@@ -22,7 +22,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         string bodytempValue = string.Empty;
         string proximityValue = string.Empty;
         int selectedAttendeeId = 0;
-        string selectedAttendeeStatus = "NORMAL";
+        string selectedAttendeeStatus;
 
         private SharerConnection connection = new SharerConnection("COM6", 9600);
         public IAttendanceRepository AttendanceRepository { get; private set; }
