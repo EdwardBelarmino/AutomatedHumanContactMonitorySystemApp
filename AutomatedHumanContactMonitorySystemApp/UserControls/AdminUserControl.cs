@@ -88,7 +88,11 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             foreach (var attendance in attendances)
             {
                 if (attendance.Id != SelectedAttendance.Id && attendance.Status != "POSITIVE")
+                {
                     AttendanceRepository.UpdateAttendanceStatus(new Attendance { Id = attendance.Id, Status = "PUI" });
+                    AttendeeRepository.UpdateAttendeeStatus(new Attendee { Id = attendance.AttendeeId, Status = "PUI" });
+                }
+                    
             }
 
         }
