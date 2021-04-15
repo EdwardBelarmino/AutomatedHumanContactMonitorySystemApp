@@ -44,7 +44,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
                 SearchText = txtSearchText.Text
             };
 
-            var attendances = AttendanceRepository.GetAttendanceBySearchParameter(searchDto);
+            var attendances = AttendanceRepository.GetAttendanceBySearchParameter(searchDto).Where(a => a.PlaceId == Helpers.PlaceHelper.PlaceId);
             
 
             foreach (var attendance in attendances)
