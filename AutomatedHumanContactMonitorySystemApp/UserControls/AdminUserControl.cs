@@ -83,7 +83,8 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             var attendances = AttendanceRepository.GetAttendances().Where(a => a.VisitedDateTime.Year <= SelectedAttendance.VisitedDateTime.Year &&
                                                                                   a.VisitedDateTime.Month <= SelectedAttendance.VisitedDateTime.Month &&
                                                                                   a.VisitedDateTime.Day <= SelectedAttendance.VisitedDateTime.Day &&
-                                                                                  a.VisitedDateTime.Date >= SelectedAttendance.VisitedDateTime.Date.AddDays(-14));
+                                                                                  a.VisitedDateTime.Date >= SelectedAttendance.VisitedDateTime.Date.AddDays(-14) &&
+                                                                                  a.PlaceId == Helpers.PlaceHelper.PlaceId);
 
             foreach (var attendance in attendances)
             {
