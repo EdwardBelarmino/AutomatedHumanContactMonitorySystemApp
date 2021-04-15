@@ -63,7 +63,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
                 VisitedDateTime = DateTime.Now,
                 Temperature = double.Parse(txtTemperature.Text),
                 AttendeeId = selectedAttendeeId,
-                Status = "NORMAL",
+                Status = selectedAttendeeStatus,
                 PlaceId = 1
             };
 
