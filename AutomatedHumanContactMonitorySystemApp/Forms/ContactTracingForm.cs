@@ -107,7 +107,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
                 if (isTimerRunning)
                 {
-
                     rfidValue = connection.Call("returnRfid").Value.ToString(); //ok
                     txtAttendeeRFID.Text = rfidValue.ToString().PadLeft(10, '0'); //ok
 

@@ -58,7 +58,13 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             request.AddJsonBody(attendee);
             var response = client.Execute(request);
         }
-        
+        public void UpdateAttendeeStatus(Attendee attendee)
+        {
+            var client = new RestClient(ApiAddress);
+            var request = new RestRequest("api/attendee/UpdateAttendeeStatus", Method.POST);
+            request.AddJsonBody(attendee);
+            var response = client.Execute(request);
+        }
 
 
     }

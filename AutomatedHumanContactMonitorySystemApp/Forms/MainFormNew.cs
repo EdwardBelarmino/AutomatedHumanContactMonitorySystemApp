@@ -157,7 +157,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         private void LoadAdminUserControl()
         {
             var adminUserControl = new AdminUserControl();
-            adminUserControl.LoadRepositories(AttendanceRepository);
+            adminUserControl.LoadRepositories(AttendanceRepository, AttendeeRepository);
             adminUserControl.LoadAttendanceList();
 
             flowLayoutPanel1.Controls.Add(adminUserControl);

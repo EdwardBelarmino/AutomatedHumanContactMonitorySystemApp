@@ -16,6 +16,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
     public partial class AdminUserControl : UserControl
     {
         private IAttendanceRepository AttendanceRepository { get; set; }
+        private IAttendeeRepository AttendeeRepository { get; set; }
         private Attendance SelectedAttendance = new Attendance();
         public AdminUserControl()
         {
@@ -27,9 +28,10 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
 
         }
 
-        public void LoadRepositories(IAttendanceRepository attendanceRepository)
+        public void LoadRepositories(IAttendanceRepository attendanceRepository, IAttendeeRepository attendeeRepository)
         {
             AttendanceRepository = attendanceRepository;
+            AttendeeRepository = attendeeRepository;
         }
 
         public void LoadAttendanceList()
@@ -64,6 +66,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             if (SelectedAttendance.Id > 0)
             {
                 AttendanceRepository.UpdateAttendanceStatus(SelectedAttendance);
+                AttendeeRepository.UpdateAttendeeStatus(new Attendee { Id = SelectedAttendance.Id, Status = SelectedAttendance.Status });
             }
 
             if (SelectedAttendance.Status == "POSITIVE")
