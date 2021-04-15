@@ -22,6 +22,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         string bodytempValue = string.Empty;
         string proximityValue = string.Empty;
         int selectedAttendeeId = 0;
+        string selectedAttendeeStatus = "NORMAL";
 
         private SharerConnection connection = new SharerConnection("COM6", 9600);
         public IAttendanceRepository AttendanceRepository { get; private set; }
@@ -63,6 +64,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
                 VisitedDateTime = DateTime.Now,
                 Temperature = double.Parse(txtTemperature.Text),
                 AttendeeId = selectedAttendeeId,
+                Status = selectedAttendeeStatus,
                 PlaceId = 1
             };
 
@@ -131,6 +133,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
                         txtAddress.Text = attendees.SingleOrDefault().Address;
 
                         selectedAttendeeId = attendees.SingleOrDefault().Id;
+                        selectedAttendeeStatus = attendees.SingleOrDefault().Status;
                     }
 
                     //txtName.Enabled = !isRfidRegistered;
@@ -260,6 +263,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
                 txtAddress.Text = attendees.SingleOrDefault().Address;
 
                 selectedAttendeeId = attendees.SingleOrDefault().Id;
+                selectedAttendeeStatus = attendees.SingleOrDefault().Status;
             }
 
             connectionTimer.Start();
