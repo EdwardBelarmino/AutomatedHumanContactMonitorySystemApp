@@ -62,11 +62,11 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         private void UpdateAttendanceById()
         {
             SelectedAttendance.Status = comboStatus.Text;
-
+            
             if (SelectedAttendance.Id > 0)
             {
                 AttendanceRepository.UpdateAttendanceStatus(SelectedAttendance);
-                AttendeeRepository.UpdateAttendeeStatus(new Attendee { Id = SelectedAttendance.Id, Status = SelectedAttendance.Status });
+                AttendeeRepository.UpdateAttendeeStatus(new Attendee { Id = SelectedAttendance.AttendeeId, Status = SelectedAttendance.Status });
             }
 
             if (SelectedAttendance.Status == "POSITIVE")
@@ -102,6 +102,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             SelectedAttendance.Id = int.Parse(dgvAttendances.CurrentRow.Cells[6].Value.ToString());
             SelectedAttendance.Status = dgvAttendances.CurrentRow.Cells[5].Value.ToString();
             SelectedAttendance.VisitedDateTime = DateTime.Parse(dgvAttendances.CurrentRow.Cells[1].Value.ToString());
+            SelectedAttendance.AttendeeId = int.Parse(dgvAttendances.CurrentRow.Cells[7].Value.ToString());
 
             comboStatus.Text = SelectedAttendance.Status;
             txtRfid.Text = dgvAttendances.CurrentRow.Cells[4].Value.ToString();
