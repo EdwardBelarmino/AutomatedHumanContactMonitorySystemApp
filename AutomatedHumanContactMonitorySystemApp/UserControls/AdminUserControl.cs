@@ -41,10 +41,11 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             var searchDto = new SearchDto()
             {
                 SearchBy = comboSearchBy.Text,
-                SearchText = txtSearchText.Text
+                SearchText = txtSearchText.Text,
+                PlaceId = Helpers.PlaceHelper.PlaceId
             };
 
-            var attendances = AttendanceRepository.GetAttendanceBySearchParameter(searchDto).Where(a => a.PlaceId == Helpers.PlaceHelper.PlaceId);
+            var attendances = AttendanceRepository.GetAttendanceBySearchParameter(searchDto);
             
 
             foreach (var attendance in attendances)
