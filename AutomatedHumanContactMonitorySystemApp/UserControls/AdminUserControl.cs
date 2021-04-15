@@ -18,7 +18,6 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         private IAttendanceRepository AttendanceRepository { get; set; }
         private IAttendeeRepository AttendeeRepository { get; set; }
         private Attendance SelectedAttendance = new Attendance();
-        private Attendee SelectedAttendee = new Attendee();
         public AdminUserControl()
         {
             InitializeComponent();
@@ -64,12 +63,11 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         private void UpdateAttendanceById()
         {
             SelectedAttendance.Status = comboStatus.Text;
-            SelectedAttendee.Status = comboStatus.Text;
 
             if (SelectedAttendance.Id > 0)
             {
                 AttendanceRepository.UpdateAttendanceStatus(SelectedAttendance);
-                AttendeeRepository.UpdateAttendeeStatus(SelectedAttendee);
+                AttendeeRepository.UpdateAttendeeStatus(new Attendee { Id = int.Parse(dgvAttendances.CurrentRow.Cells[7].Value.ToString()), Status = SelectedAttendance.Status});
             }
 
             if (SelectedAttendance.Status == "POSITIVE")
@@ -78,7 +76,6 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             }
 
             SelectedAttendance = new Attendance();
-            SelectedAttendee = new Attendee();
         }
 
         private void UpdateMultipleAttendances()
@@ -106,8 +103,6 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             SelectedAttendance.Id = int.Parse(dgvAttendances.CurrentRow.Cells[6].Value.ToString());
             SelectedAttendance.Status = dgvAttendances.CurrentRow.Cells[5].Value.ToString();
             SelectedAttendance.VisitedDateTime = DateTime.Parse(dgvAttendances.CurrentRow.Cells[1].Value.ToString());
-
-            SelectedAttendee.Id = int.Parse(dgvAttendances.CurrentRow.Cells[7].Value.ToString());
 
             comboStatus.Text = SelectedAttendance.Status;
             txtRfid.Text = dgvAttendances.CurrentRow.Cells[4].Value.ToString();
