@@ -331,12 +331,14 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
+            this.Id.Visible = false;
             // 
             // AttendeeId
             // 
             this.AttendeeId.HeaderText = "AttendeeId";
             this.AttendeeId.Name = "AttendeeId";
             this.AttendeeId.ReadOnly = true;
+            this.AttendeeId.Visible = false;
             // 
             // PlaceId
             // 
