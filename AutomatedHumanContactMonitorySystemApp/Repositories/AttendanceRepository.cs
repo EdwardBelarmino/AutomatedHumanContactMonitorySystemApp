@@ -25,11 +25,11 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             return attendances.ToList();
         }
 
-        public void PostAttendance(AttendanceDto attendanceDto)
+        public void PostAttendance(Attendance attendance)
         {
             var client = new RestClient(ApiAddress);
             var request = new RestRequest("api/attendance/post", Method.POST);
-            request.AddJsonBody(attendanceDto);
+            request.AddJsonBody(attendance);
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
         }
