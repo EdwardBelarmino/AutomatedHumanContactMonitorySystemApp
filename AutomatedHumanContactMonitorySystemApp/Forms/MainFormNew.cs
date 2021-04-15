@@ -181,6 +181,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         private void LoadLoginForm()
         {
             var loginForm = new LoginForm(AppUserRepository);
+
             loginForm.FormClosed += LoginForm_FormClosed;
             this.Hide();
             loginForm.ShowDialog();

@@ -1,4 +1,5 @@
-﻿using AutomatedHumanContactMonitorySystemApp.IRepositories;
+﻿using AutomatedHumanContactMonitorySystemApp.Helpers;
+using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
     public partial class LoginForm : Form
     {
         public IAppUserRepository AppUserRepository { get; set; }
+        public int PlaceId { get; set; }
         public LoginForm(IAppUserRepository appUserRepository)
         {
             AppUserRepository = appUserRepository;
@@ -24,14 +26,14 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             var appUser = new AppUser()
             {
                 Username = txtUsername.Text,
-                Password = txtPassword.Text,
-                PlaceId = 1
+                Password = txtPassword.Text
             };
 
-            var isAuthorized = AppUserRepository.IsAuthorized(appUser);
+            var placeId = AppUserRepository.IsAuthorized(appUser);
 
-            if (isAuthorized)
+            if (placeId != 0)
             {
+                PlaceHelper.PlaceId = PlaceId;
                 this.Close();
             }
             else
