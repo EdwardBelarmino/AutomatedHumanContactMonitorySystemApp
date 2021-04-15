@@ -240,8 +240,10 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
             if (temperature > 38)
             {
-                UnloadUserControl();
                 btnAdd.Text = "Not allowed to enter due to high temperature.";
+                Thread.Sleep(2000);
+                UnloadUserControl();
+                
             }
             else
             {
