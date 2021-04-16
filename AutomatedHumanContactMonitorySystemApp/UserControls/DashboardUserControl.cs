@@ -35,7 +35,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
                 Date = date.Value
             };
 
-            var attendances = AttendanceRepository.GetAttendanceByDate(searchDto);
+            var attendances = AttendanceRepository.GetAttendanceByDate(searchDto).Where(a => a.PlaceId == Helpers.PlaceHelper.PlaceId);
 
             double puiCount = attendances.Where(a => a.Status == "PUI").Count();
             double positiveCount = attendances.Where(a => a.Status == "POSITIVE").Count();
