@@ -44,9 +44,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
             ToggleMenuButtons(isDashboard: true);
 
-            PlaceInfo = PlaceRepository.GetPlaces().Where(a => a.Id == Helpers.PlaceHelper.PlaceId).SingleOrDefault();
-            lblLocationName.Text = PlaceInfo.Location;
-            lblAppUserName.Text = Helpers.PlaceHelper.AppUserName;
         }
 
         private void btnToggleMenu_Click(object sender, EventArgs e)
@@ -199,10 +196,27 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Show();
+            if (Helpers.PlaceHelper.PlaceId > 0)
+            {
+                PlaceInfo = PlaceRepository.GetPlaces().Where(a => a.Id == Helpers.PlaceHelper.PlaceId).SingleOrDefault();
+                lblLocationName.Text = PlaceInfo.Location;
+                lblAppUserName.Text = Helpers.PlaceHelper.AppUserName;
+                this.Show();
+
+            }
+            else
+            {
+                Application.Exit();
+            }
+
+            
         }
+
         #endregion Login
 
-
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

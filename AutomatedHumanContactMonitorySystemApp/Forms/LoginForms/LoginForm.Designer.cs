@@ -29,6 +29,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -39,6 +40,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -147,6 +149,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.btnClose);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.btnLogin);
             this.panel3.Controls.Add(this.label2);
@@ -158,6 +161,19 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(392, 415);
             this.panel3.TabIndex = 12;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Location = new System.Drawing.Point(363, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(29, 24);
+            this.btnClose.TabIndex = 12;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // LoginForm
             // 
@@ -193,5 +209,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnClose;
     }
 }

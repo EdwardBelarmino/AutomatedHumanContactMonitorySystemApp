@@ -42,6 +42,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             this.lblLocationName = new System.Windows.Forms.Label();
             this.lblAppUserName = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -201,12 +202,26 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             this.label4.TabIndex = 4;
             this.label4.Text = "AppUser Name:";
             // 
+            // btnClose
+            // 
+            this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Location = new System.Drawing.Point(763, 2);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(29, 24);
+            this.btnClose.TabIndex = 6;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // MainFormNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(792, 590);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblAppUserName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblLocationName);
@@ -238,5 +253,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         private System.Windows.Forms.Label lblLocationName;
         private System.Windows.Forms.Label lblAppUserName;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnClose;
     }
 }
