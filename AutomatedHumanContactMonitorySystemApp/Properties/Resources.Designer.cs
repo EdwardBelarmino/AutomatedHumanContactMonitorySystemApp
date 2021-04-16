@@ -93,16 +93,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap loginImage {
-            get {
-                object obj = ResourceManager.GetObject("loginImage", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap menu_white_24x24 {
             get {
                 object obj = ResourceManager.GetObject("menu_white_24x24", resourceCulture);
