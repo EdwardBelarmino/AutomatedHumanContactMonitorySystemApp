@@ -28,17 +28,28 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
                 Password = txtPassword.Text
             };
 
-            var placeId = AppUserRepository.IsAuthorized(appUser);
-
-            if (placeId != 0)
+            if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                PlaceHelper.PlaceId = placeId;
-                this.Close();
+                MessageBox.Show("Username/Password should not be blank");
             }
             else
             {
-                MessageBox.Show("Incorrect Username/Password");
+                try
+                {
+                    var placeId = AppUserRepository.IsAuthorized(appUser);
+
+                    if (placeId != 0)
+                    {
+                        PlaceHelper.PlaceId = placeId;
+                        this.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Incorrect Username/Password");
+                }
             }
+
         }
     }
 }
