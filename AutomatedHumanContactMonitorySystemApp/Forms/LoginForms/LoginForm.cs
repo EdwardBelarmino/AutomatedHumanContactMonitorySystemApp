@@ -40,6 +40,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
 
                     if (placeId != 0)
                     {
+                        PlaceHelper.AppUserName = appUser.Username;
                         PlaceHelper.PlaceId = placeId;
                         this.Close();
                     }

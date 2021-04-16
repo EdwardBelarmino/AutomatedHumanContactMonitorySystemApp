@@ -1,12 +1,14 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.Extensions;
 using AutomatedHumanContactMonitorySystemApp.Forms.LoginForms;
 using AutomatedHumanContactMonitorySystemApp.IRepositories;
+using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
 using AutomatedHumanContactMonitorySystemApp.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -22,6 +24,8 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
         private static readonly int fullWidthMenu = 178;
         private static readonly int toggledWidthMenu = 45;
+
+        private Place PlaceInfo { get; set; }
         public IAttendeeRepository AttendeeRepository { get; private set; }
         public IPlaceRepository PlaceRepository { get; private set; }
         public IAttendanceRepository AttendanceRepository { get; private set; }
@@ -30,13 +34,19 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         public MainFormNew(IAttendeeRepository attendeeRepository, IPlaceRepository placeRepository, IAttendanceRepository attendanceRepository, IAppUserRepository appUserRepository)
         {
             InitializeComponent();
+
             AttendeeRepository = attendeeRepository;
             PlaceRepository = placeRepository;
             AttendanceRepository = attendanceRepository;
             AppUserRepository = appUserRepository;
 
             LoadLoginForm();
+
             ToggleMenuButtons(isDashboard: true);
+
+            PlaceInfo = PlaceRepository.GetPlaces().Where(a => a.Id == Helpers.PlaceHelper.PlaceId).SingleOrDefault();
+            lblLocationName.Text = PlaceInfo.Location;
+            lblAppUserName.Text = Helpers.PlaceHelper.AppUserName;
         }
 
         private void btnToggleMenu_Click(object sender, EventArgs e)
