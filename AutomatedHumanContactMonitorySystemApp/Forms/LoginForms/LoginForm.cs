@@ -51,5 +51,11 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             }
 
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            this.BackColor = Color.FromArgb(70, 85, 67, 255);
+        }
     }
 }
