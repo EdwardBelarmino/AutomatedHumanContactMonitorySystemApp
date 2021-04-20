@@ -117,12 +117,17 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
                     if (!isRfidRegistered && txtAttendeeRFID.Text != "0000000000" && txtAttendeeRFID.Text != "")
                     {
-                        connectionTimer.Stop();
-                        var addAttendeeForm = new AddAttendeeForm(AttendeeRepository);
-                        addAttendeeForm.FormClosed += AddAttendeeForm_FormClosed;
-                        addAttendeeForm.txtRFID.Enabled = false;
-                        addAttendeeForm.txtRFID.Text = rfidValue;
-                        addAttendeeForm.ShowDialog();
+                        //connectionTimer.Stop();
+                        //var addAttendeeForm = new AddAttendeeForm(AttendeeRepository);
+                        //addAttendeeForm.FormClosed += AddAttendeeForm_FormClosed;
+                        //addAttendeeForm.txtRFID.Enabled = false;
+                        //addAttendeeForm.txtRFID.Text = rfidValue;
+                        //addAttendeeForm.ShowDialog();
+                        btnAdd.Text = "RFID Not Registered";
+                        connection.WriteVariable("i", 5);
+                        Thread.Sleep(2000);
+                        AutomaticReset();
+
                     }
                     else if (isRfidRegistered)
                     {
@@ -135,15 +140,17 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
                         if (selectedAttendeeStatus == "POSITIVE")
                         {
+                            btnAdd.Text = "POSITIVE";
                             connection.WriteVariable("i", 4);
                             Thread.Sleep(2000);
-                            UnloadUserControl();
+                            AutomaticReset();
                         }
                         else if (selectedAttendeeStatus == "PUI")
                         {
+                            btnAdd.Text = "PUI";
                             connection.WriteVariable("i", 3);
                             Thread.Sleep(2000);
-                            UnloadUserControl();
+                            AutomaticReset();
                         }
                     }
 
@@ -196,21 +203,28 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
                 connection.Connect();
 
             connectionTimer.Start();
+            isTimerRunning = true;
         }
 
         public void UnloadUserControl()
         {
             connection.WriteVariable("i", 0);
-
+            isTimerRunning = false;
             if (connection.Connected)
                 connection.Disconnect();
 
             connectionTimer.Stop();
-            this.Close();
+            //this.Close();
             
             //connection.Disconnect();
 
             //connectionTimer.Stop();
+        }
+        public void AutomaticReset()
+        {
+            ResetFields();
+            UnloadUserControl();
+            LoadUserControl();
         }
 
         #endregion Helpers UserControl
@@ -242,8 +256,8 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             {
                 btnAdd.Text = "Not allowed to enter due to high temperature.";
                 Thread.Sleep(2000);
-                UnloadUserControl();
-                
+                AutomaticReset();
+
             }
             else
             {
@@ -254,7 +268,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
                 connection.WriteVariable("i", 0);
 
-                UnloadUserControl();
+                AutomaticReset();
             }
         }
 
@@ -291,6 +305,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             UnloadUserControl();
+            this.Close();
         }
     }
 }
