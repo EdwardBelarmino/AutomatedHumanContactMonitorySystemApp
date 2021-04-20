@@ -40,7 +40,9 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             AttendanceRepository = attendanceRepository;
             AppUserRepository = appUserRepository;
 
+            
             LoadLoginForm();
+            CheckPermissions();
 
             ToggleMenuButtons(isDashboard: true);
 
@@ -67,6 +69,10 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         }
 
         #region Helpers
+        private void CheckPermissions()
+        {
+            btnAdmin.Visible = Helpers.PlaceHelper.IsAdmin;
+        }
         private void ToggleMenuSize()
         {
             if (isMenuSizeToggled)
@@ -83,6 +89,8 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             btnAdmin.Visible =
                 btnDashboard.Visible =
                     btnContactTracing.Visible = isMenuSizeToggled;
+
+            CheckPermissions();
         }
 
         private void ToggleMenuButtons(bool isDashboard = false, bool isAdmin = false, bool isContactTracing = false)

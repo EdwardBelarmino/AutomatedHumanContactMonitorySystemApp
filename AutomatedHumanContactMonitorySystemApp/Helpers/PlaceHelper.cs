@@ -8,6 +8,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Helpers
     {
         public static int PlaceId { get; set; }
         public static string AppUserName { get; set; }
+        public static bool IsAdmin { get; set; }
 
     }
 }

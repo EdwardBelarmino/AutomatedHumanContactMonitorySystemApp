@@ -7,6 +7,6 @@ namespace AutomatedHumanContactMonitorySystemApp.IRepositories
 {
     public interface IAppUserRepository
     {
-        int IsAuthorized(AppUser appUserLogin);
+        AppUser IsAuthorized(AppUser appUserLogin);
     }
 }

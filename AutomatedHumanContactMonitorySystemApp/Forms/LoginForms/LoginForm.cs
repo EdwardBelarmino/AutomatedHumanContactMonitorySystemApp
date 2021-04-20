@@ -36,12 +36,13 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             {
                 try
                 {
-                    var placeId = AppUserRepository.IsAuthorized(appUser);
+                    var appUserLogin = AppUserRepository.IsAuthorized(appUser);
 
-                    if (placeId != 0)
+                    if (appUserLogin != null)
                     {
-                        PlaceHelper.AppUserName = appUser.Username;
-                        PlaceHelper.PlaceId = placeId;
+                        PlaceHelper.AppUserName = appUserLogin.Username;
+                        PlaceHelper.PlaceId = appUserLogin.PlaceId;
+                        PlaceHelper.IsAdmin = appUserLogin.IsAdmin;
                         this.Close();
                     }
                 }
