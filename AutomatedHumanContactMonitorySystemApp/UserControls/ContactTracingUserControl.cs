@@ -118,12 +118,13 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
 
                     if (!isRfidRegistered && txtAttendeeRFID.Text != "0000000000" && txtAttendeeRFID.Text != "")
                     {
-                        connectionTimer.Stop();
-                        var addAttendeeForm = new AddAttendeeForm(AttendeeRepository);
-                        addAttendeeForm.FormClosed += AddAttendeeForm_FormClosed; ;
-                        addAttendeeForm.txtRFID.Enabled = false;
-                        addAttendeeForm.txtRFID.Text = rfidValue;
-                        addAttendeeForm.ShowDialog();
+                        //connectionTimer.Stop();
+                        //var addAttendeeForm = new AddAttendeeForm(AttendeeRepository);
+                        //addAttendeeForm.FormClosed += AddAttendeeForm_FormClosed;
+                        //addAttendeeForm.txtRFID.Enabled = false;
+                        //addAttendeeForm.txtRFID.Text = rfidValue;
+                        //addAttendeeForm.ShowDialog();
+                        btnAdd.Text = "NOT REGISTERED";
                     }
                     else if (isRfidRegistered)
                     {
@@ -256,22 +257,22 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         }
         private void AddAttendeeForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            var attendees = GetAttendees().Where(a => a.AttendeeRFID.ToString() == rfidValue &&
-                                          a.AttendeeRFID.ToString() != "0" &&
-                                          a.AttendeeRFID.ToString() != string.Empty);
+            //var attendees = GetAttendees().Where(a => a.AttendeeRFID.ToString() == rfidValue &&
+            //                              a.AttendeeRFID.ToString() != "0" &&
+            //                              a.AttendeeRFID.ToString() != string.Empty);
 
-            var isRfidRegistered = attendees.Any();
+            //var isRfidRegistered = attendees.Any();
 
-            if (isRfidRegistered)
-            {
-                txtName.Text = attendees.SingleOrDefault().Name;
-                txtAge.Text = attendees.SingleOrDefault().Age.ToString();
-                txtAddress.Text = attendees.SingleOrDefault().Address;
+            //if (isRfidRegistered)
+            //{
+            //    txtName.Text = attendees.SingleOrDefault().Name;
+            //    txtAge.Text = attendees.SingleOrDefault().Age.ToString();
+            //    txtAddress.Text = attendees.SingleOrDefault().Address;
 
-                selectedAttendeeId = attendees.SingleOrDefault().Id;
-            }
+            //    selectedAttendeeId = attendees.SingleOrDefault().Id;
+            //}
 
-            connectionTimer.Start();
+            //connectionTimer.Start();
         }
 
     }
