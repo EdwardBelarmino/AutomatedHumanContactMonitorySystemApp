@@ -1,4 +1,5 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.Extensions;
+using AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms;
 using AutomatedHumanContactMonitorySystemApp.Forms.LoginForms;
 using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
@@ -21,6 +22,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         private bool isDashboardClicked;
         private bool isAdminClicked;
         private bool isContactTracingClicked;
+        private bool isRegisterUserClicked;
 
         private static readonly int fullWidthMenu = 178;
         private static readonly int toggledWidthMenu = 45;
@@ -68,10 +70,16 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             ToggleMenuButtons(isContactTracing: true);
         }
 
+        private void btnRegisterUser_Click(object sender, EventArgs e)
+        {
+            ToggleMenuButtons(isRegisterUser: true);
+        }
+
         #region Helpers
         private void CheckPermissions()
         {
             btnAdmin.Visible = Helpers.PlaceHelper.IsAdmin;
+            btnRegisterUser.Visible = Helpers.PlaceHelper.IsAdmin;
             btnContactTracing.Visible = !Helpers.PlaceHelper.IsAdmin;
         }
         private void ToggleMenuSize()
@@ -89,16 +97,18 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
             btnAdmin.Visible =
                 btnDashboard.Visible =
-                    btnContactTracing.Visible = isMenuSizeToggled;
+                    btnContactTracing.Visible = 
+                        btnRegisterUser.Visible = isMenuSizeToggled;
 
             CheckPermissions();
         }
 
-        private void ToggleMenuButtons(bool isDashboard = false, bool isAdmin = false, bool isContactTracing = false)
+        private void ToggleMenuButtons(bool isDashboard = false, bool isAdmin = false, bool isContactTracing = false, bool isRegisterUser = false)
         {
             isDashboardClicked = isDashboard;
             isAdminClicked = isAdmin;
             isContactTracingClicked = isContactTracing;
+            isRegisterUserClicked = isRegisterUser;
 
             ClearFlowLayoutPanel();
             SetActiveMenuButton();
@@ -108,21 +118,32 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
                 LoadDashboardUserControl();
 
                 isAdminClicked =
-                    isContactTracingClicked = !isDashboardClicked;
+                    isContactTracingClicked = 
+                        isRegisterUserClicked =!isDashboardClicked;
             }
             else if (isAdminClicked)
             {
                 LoadAdminUserControl();
 
                 isDashboardClicked =
-                    isContactTracingClicked = !isAdminClicked;
+                    isContactTracingClicked =
+                        isRegisterUserClicked = !isAdminClicked;
             }
             else if (isContactTracingClicked)
             {
                 LoadContactTracingForm();
                 
                 isDashboardClicked =
-                    isAdminClicked = !isContactTracingClicked;
+                    isAdminClicked =
+                        isRegisterUserClicked = !isContactTracingClicked;
+            }
+            else if (isRegisterUserClicked)
+            {
+                LoadRegisterUserForm();
+
+                isDashboardClicked =
+                    isAdminClicked =
+                        isContactTracingClicked = !isRegisterUserClicked;
             }
 
         }
@@ -135,6 +156,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
                 btnAdmin.UnsetActiveButton();
                 btnContactTracing.UnsetActiveButton();
+                btnRegisterUser.UnsetActiveButton();
             }
             else if (isAdminClicked)
             {
@@ -142,6 +164,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
                 btnDashboard.UnsetActiveButton();
                 btnContactTracing.UnsetActiveButton();
+                btnRegisterUser.UnsetActiveButton();
             }
             else if (isContactTracingClicked)
             {
@@ -149,6 +172,15 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
                 btnDashboard.UnsetActiveButton();
                 btnAdmin.UnsetActiveButton();
+                btnRegisterUser.UnsetActiveButton();
+            }
+            else if (isRegisterUserClicked)
+            {
+                btnRegisterUser.SetActiveButton();
+
+                btnDashboard.UnsetActiveButton();
+                btnAdmin.UnsetActiveButton();
+                btnContactTracing.UnsetActiveButton();
             }
         }
 
@@ -159,6 +191,12 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             contactTracingForm.LoadRepositories(AttendanceRepository, AttendeeRepository, PlaceRepository);
             contactTracingForm.LoadUserControl();
             contactTracingForm.ShowDialog();
+        }
+
+        private void LoadRegisterUserForm()
+        {
+            var registerUserForm = new AddAttendeeForm(AttendeeRepository);
+            registerUserForm.ShowDialog();
         }
 
         private void LoadAttendanceListUserControl()
@@ -187,6 +225,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
             flowLayoutPanel1.Controls.Add(dashboardUserControl);
         }
+
         public void ClearFlowLayoutPanel()
         {
             flowLayoutPanel1.Controls.Clear();
@@ -227,5 +266,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         {
             Application.Exit();
         }
+
+      
     }
 }

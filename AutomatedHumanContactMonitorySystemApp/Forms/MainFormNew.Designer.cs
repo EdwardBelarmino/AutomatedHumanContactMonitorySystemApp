@@ -43,6 +43,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             this.lblAppUserName = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnRegisterUser = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +51,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
+            this.panelMenu.Controls.Add(this.btnRegisterUser);
             this.panelMenu.Controls.Add(this.btnContactTracing);
             this.panelMenu.Controls.Add(this.btnAdmin);
             this.panelMenu.Controls.Add(this.btnDashboard);
@@ -215,6 +217,24 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnRegisterUser
+            // 
+            this.btnRegisterUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRegisterUser.FlatAppearance.BorderSize = 0;
+            this.btnRegisterUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegisterUser.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnRegisterUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRegisterUser.Image = ((System.Drawing.Image)(resources.GetObject("btnRegisterUser.Image")));
+            this.btnRegisterUser.Location = new System.Drawing.Point(0, 224);
+            this.btnRegisterUser.Name = "btnRegisterUser";
+            this.btnRegisterUser.Size = new System.Drawing.Size(178, 55);
+            this.btnRegisterUser.TabIndex = 4;
+            this.btnRegisterUser.Text = "Register User";
+            this.btnRegisterUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRegisterUser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRegisterUser.UseVisualStyleBackColor = true;
+            this.btnRegisterUser.Click += new System.EventHandler(this.btnRegisterUser_Click);
+            // 
             // MainFormNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -254,5 +274,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         private System.Windows.Forms.Label lblAppUserName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnRegisterUser;
     }
 }

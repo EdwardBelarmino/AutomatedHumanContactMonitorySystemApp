@@ -44,7 +44,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(292, 185);
+            this.btnAdd.Location = new System.Drawing.Point(293, 149);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 0;
@@ -55,7 +55,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 68);
+            this.label1.Location = new System.Drawing.Point(55, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 15);
             this.label1.TabIndex = 1;
@@ -64,7 +64,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 109);
+            this.label2.Location = new System.Drawing.Point(45, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 15);
             this.label2.TabIndex = 2;
@@ -73,7 +73,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(45, 152);
+            this.label3.Location = new System.Drawing.Point(66, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 15);
             this.label3.TabIndex = 3;
@@ -82,7 +82,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(45, 233);
+            this.dataGridView1.Location = new System.Drawing.Point(45, 178);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 25;
@@ -91,21 +91,21 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(113, 59);
+            this.txtName.Location = new System.Drawing.Point(114, 62);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(254, 23);
             this.txtName.TabIndex = 5;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(113, 100);
+            this.txtAddress.Location = new System.Drawing.Point(114, 91);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(254, 23);
             this.txtAddress.TabIndex = 6;
             // 
             // txtAge
             // 
-            this.txtAge.Location = new System.Drawing.Point(113, 143);
+            this.txtAge.Location = new System.Drawing.Point(114, 120);
             this.txtAge.Name = "txtAge";
             this.txtAge.Size = new System.Drawing.Size(254, 23);
             this.txtAge.TabIndex = 7;
@@ -121,7 +121,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(45, 39);
+            this.label4.Location = new System.Drawing.Point(63, 37);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 15);
             this.label4.TabIndex = 9;
@@ -131,7 +131,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 454);
+            this.ClientSize = new System.Drawing.Size(412, 383);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtRFID);
             this.Controls.Add(this.txtAge);
@@ -143,6 +143,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAdd);
             this.Name = "AddAttendeeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddAttendeeForm";
             this.Load += new System.EventHandler(this.AddAttendeeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
