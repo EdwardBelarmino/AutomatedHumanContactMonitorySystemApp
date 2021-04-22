@@ -88,19 +88,24 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             {
                 isMenuSizeToggled = false;
                 panelMenu.Width = toggledWidthMenu;
+
+                btnAdmin.Visible =
+                    btnDashboard.Visible =
+                        btnContactTracing.Visible =
+                            btnRegisterUser.Visible = isMenuSizeToggled;
             }
             else
             {
                 isMenuSizeToggled = true;
                 panelMenu.Width = fullWidthMenu;
+
+                btnDashboard.Visible = isMenuSizeToggled; //common button
+                CheckPermissions();
             }
 
-            btnAdmin.Visible =
-                btnDashboard.Visible =
-                    btnContactTracing.Visible = 
-                        btnRegisterUser.Visible = isMenuSizeToggled;
+ 
 
-            CheckPermissions();
+            
         }
 
         private void ToggleMenuButtons(bool isDashboard = false, bool isAdmin = false, bool isContactTracing = false, bool isRegisterUser = false)
