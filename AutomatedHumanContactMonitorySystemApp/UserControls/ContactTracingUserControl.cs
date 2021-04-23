@@ -64,7 +64,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
                 VisitedDateTime = DateTime.Now,
                 Temperature = double.Parse(txtTemperature.Text),
                 AttendeeId = selectedAttendeeId,
-                PlaceId = 1
+                PlaceId = Helpers.PlaceHelper.PlaceId
             };
 
             AttendanceRepository.PostAttendance(attendanceToAdd);
