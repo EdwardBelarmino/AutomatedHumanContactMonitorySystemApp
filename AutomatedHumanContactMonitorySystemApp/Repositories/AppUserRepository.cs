@@ -22,5 +22,16 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             var placeId = JsonConvert.DeserializeObject<AppUser>(response.Content);
             return placeId;
         }
+
+        public string Register(AppUser registerAppUser)
+        {
+            var client = new RestClient(ApiAddress);
+            var request = new RestRequest("api/login/register", Method.POST);
+            request.AddJsonBody(registerAppUser);
+            request.RequestFormat = DataFormat.Json;
+            var response = client.Execute(request);
+            var message = JsonConvert.DeserializeObject<string>(response.Content);
+            return message;
+        }
     }
 }

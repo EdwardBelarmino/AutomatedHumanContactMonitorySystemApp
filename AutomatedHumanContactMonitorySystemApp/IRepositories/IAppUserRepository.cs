@@ -8,5 +8,6 @@ namespace AutomatedHumanContactMonitorySystemApp.IRepositories
     public interface IAppUserRepository
     {
         AppUser IsAuthorized(AppUser appUserLogin);
+        string Register(AppUser registerAppUser);
     }
 }
