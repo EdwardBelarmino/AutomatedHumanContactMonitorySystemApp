@@ -81,6 +81,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             btnAdmin.Visible = Helpers.PlaceHelper.IsAdmin;
             btnRegisterUser.Visible = Helpers.PlaceHelper.IsAdmin;
             btnContactTracing.Visible = !Helpers.PlaceHelper.IsAdmin;
+            btnCreateAccount.Visible = Helpers.PlaceHelper.IsAdmin;
         }
         private void ToggleMenuSize()
         {
