@@ -30,6 +30,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardUserControl));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblPuiCount = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,10 +45,12 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.btnUpdate = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.formsPlot1 = new ScottPlot.FormsPlot();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -227,10 +230,21 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.formsPlot1.Size = new System.Drawing.Size(396, 279);
             this.formsPlot1.TabIndex = 3;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(17, 309);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(196, 166);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // DashboardUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.formsPlot1);
             this.Controls.Add(this.dateTimePicker1);
@@ -242,6 +256,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -262,5 +277,6 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblNormal;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
