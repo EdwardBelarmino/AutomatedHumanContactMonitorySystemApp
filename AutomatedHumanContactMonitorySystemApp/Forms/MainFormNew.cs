@@ -272,6 +272,10 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             Application.Exit();
         }
 
-      
+        private void btnCreateAccount_Click(object sender, EventArgs e)
+        {
+            var registerForm = new RegisterForm(PlaceRepository, AppUserRepository);
+            registerForm.ShowDialog();
+        }
     }
 }
