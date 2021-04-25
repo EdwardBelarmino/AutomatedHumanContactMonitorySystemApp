@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
@@ -39,9 +40,24 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
                         IsAdmin = radAdmin.Checked
                     };
 
-                    var register = AppUserRepository.Register(newAppUser);
+                    var hasNumber = new Regex(@"[0-9]+");
+                    var hasUpperChar = new Regex(@"[A-Z]+");
+                    var hasMinimum8Chars = new Regex(@".{8,}");
 
-                    MessageBox.Show(register);
+                    var isValidated = hasNumber.IsMatch(txtPassword.Text) && hasUpperChar.IsMatch(txtPassword.Text) && hasMinimum8Chars.IsMatch(txtPassword.Text);
+
+
+                    if (isValidated)
+                    {
+                        var register = AppUserRepository.Register(newAppUser);
+
+                        MessageBox.Show(register);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Password must contain a number, an uppercase character and must have a minimum of 8 characters.");
+                    }
+                   
                 }
                 else
                 {
