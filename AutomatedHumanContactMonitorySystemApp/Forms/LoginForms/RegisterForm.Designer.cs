@@ -31,7 +31,14 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.radAdmin = new System.Windows.Forms.RadioButton();
+            this.radGuard = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbSelectLocation = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnRegister = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,17 +47,10 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
-            this.cmbSelectLocation = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.radGuard = new System.Windows.Forms.RadioButton();
-            this.radAdmin = new System.Windows.Forms.RadioButton();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -74,6 +74,60 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             this.panel3.Size = new System.Drawing.Size(392, 457);
             this.panel3.TabIndex = 13;
             // 
+            // radAdmin
+            // 
+            this.radAdmin.AutoSize = true;
+            this.radAdmin.Location = new System.Drawing.Point(102, 368);
+            this.radAdmin.Name = "radAdmin";
+            this.radAdmin.Size = new System.Drawing.Size(60, 19);
+            this.radAdmin.TabIndex = 19;
+            this.radAdmin.Text = "Admin";
+            this.radAdmin.UseVisualStyleBackColor = true;
+            // 
+            // radGuard
+            // 
+            this.radGuard.AutoSize = true;
+            this.radGuard.Checked = true;
+            this.radGuard.Location = new System.Drawing.Point(37, 368);
+            this.radGuard.Name = "radGuard";
+            this.radGuard.Size = new System.Drawing.Size(59, 19);
+            this.radGuard.TabIndex = 18;
+            this.radGuard.TabStop = true;
+            this.radGuard.Text = "Guard";
+            this.radGuard.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(37, 318);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(120, 18);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Select Location:";
+            // 
+            // cmbSelectLocation
+            // 
+            this.cmbSelectLocation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
+            this.cmbSelectLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSelectLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbSelectLocation.ForeColor = System.Drawing.Color.White;
+            this.cmbSelectLocation.FormattingEnabled = true;
+            this.cmbSelectLocation.Location = new System.Drawing.Point(37, 339);
+            this.cmbSelectLocation.Name = "cmbSelectLocation";
+            this.cmbSelectLocation.Size = new System.Drawing.Size(326, 23);
+            this.cmbSelectLocation.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(37, 253);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(141, 18);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Confirm Password:";
+            // 
             // btnClose
             // 
             this.btnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClose.BackgroundImage")));
@@ -86,6 +140,27 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             this.btnClose.TabIndex = 12;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
+            this.panel4.Controls.Add(this.txtConfirmPassword);
+            this.panel4.Location = new System.Drawing.Point(37, 274);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(326, 21);
+            this.panel4.TabIndex = 14;
+            // 
+            // txtConfirmPassword
+            // 
+            this.txtConfirmPassword.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtConfirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtConfirmPassword.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(0, 0);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '*';
+            this.txtConfirmPassword.Size = new System.Drawing.Size(326, 18);
+            this.txtConfirmPassword.TabIndex = 2;
             // 
             // label4
             // 
@@ -174,80 +249,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             this.txtUsername.Size = new System.Drawing.Size(326, 18);
             this.txtUsername.TabIndex = 1;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(37, 253);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 18);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Confirm Password:";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
-            this.panel4.Controls.Add(this.txtConfirmPassword);
-            this.panel4.Location = new System.Drawing.Point(37, 274);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(326, 21);
-            this.panel4.TabIndex = 14;
-            // 
-            // txtConfirmPassword
-            // 
-            this.txtConfirmPassword.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtConfirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtConfirmPassword.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtConfirmPassword.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtConfirmPassword.Location = new System.Drawing.Point(0, 0);
-            this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.PasswordChar = '*';
-            this.txtConfirmPassword.Size = new System.Drawing.Size(326, 18);
-            this.txtConfirmPassword.TabIndex = 2;
-            // 
-            // cmbSelectLocation
-            // 
-            this.cmbSelectLocation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
-            this.cmbSelectLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSelectLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbSelectLocation.FormattingEnabled = true;
-            this.cmbSelectLocation.Location = new System.Drawing.Point(37, 339);
-            this.cmbSelectLocation.Name = "cmbSelectLocation";
-            this.cmbSelectLocation.Size = new System.Drawing.Size(326, 23);
-            this.cmbSelectLocation.TabIndex = 16;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(37, 318);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(120, 18);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Select Location:";
-            // 
-            // radGuard
-            // 
-            this.radGuard.AutoSize = true;
-            this.radGuard.Checked = true;
-            this.radGuard.Location = new System.Drawing.Point(37, 368);
-            this.radGuard.Name = "radGuard";
-            this.radGuard.Size = new System.Drawing.Size(59, 19);
-            this.radGuard.TabIndex = 18;
-            this.radGuard.TabStop = true;
-            this.radGuard.Text = "Guard";
-            this.radGuard.UseVisualStyleBackColor = true;
-            // 
-            // radAdmin
-            // 
-            this.radAdmin.AutoSize = true;
-            this.radAdmin.Location = new System.Drawing.Point(102, 368);
-            this.radAdmin.Name = "radAdmin";
-            this.radAdmin.Size = new System.Drawing.Size(60, 19);
-            this.radAdmin.TabIndex = 19;
-            this.radAdmin.Text = "Admin";
-            this.radAdmin.UseVisualStyleBackColor = true;
-            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -263,12 +264,12 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             this.Load += new System.EventHandler(this.RegisterForm_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
