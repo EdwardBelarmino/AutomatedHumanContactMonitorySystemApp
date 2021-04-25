@@ -35,7 +35,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
                     {
                         Username = txtUsername.Text,
                         Password = txtPassword.Text,
-                        PlaceId = int.Parse(cmbSelectLocation.SelectedItem.ToString()),
+                        PlaceId = int.Parse(GetPlaceLocation(cmbSelectLocation.SelectedItem.ToString())),
                         IsAdmin = radAdmin.Checked
                     };
 
@@ -60,15 +60,20 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             
             foreach (var place in places)
             {
-                cmbSelectLocation.Items.Add(place.Id);
+                cmbSelectLocation.Items.Add($"{place.Id}_{place.Location}");
             }
-
-            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private string GetPlaceLocation(string placeWithId)
+        {
+            var placeArray = placeWithId.Split('_');
+
+            return placeArray[0];
         }
     }
 }
