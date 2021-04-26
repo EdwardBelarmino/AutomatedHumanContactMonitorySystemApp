@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -43,6 +45,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
                         PlaceHelper.AppUserName = appUserLogin.Username;
                         PlaceHelper.PlaceId = appUserLogin.PlaceId;
                         PlaceHelper.IsAdmin = appUserLogin.IsAdmin;
+                        SaveRememberMeInfo();
                         this.Close();
                     }
                 }
@@ -56,11 +59,78 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            ReadRememberMeInfo();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        #region Remember Me
+        private void SaveRememberMeInfo()
+        {
+            var pathDirectory = Application.UserAppDataPath;
+            var filePathDirectory = Path.Combine(pathDirectory, $"remembermeinfo.txt");
+
+            try
+            {
+                // Check if file already exists. If yes, delete it.     
+                if (File.Exists(filePathDirectory))
+                {
+                    File.Delete(filePathDirectory);
+                }
+
+                // Create a new file     
+                using (FileStream fs = File.Create(filePathDirectory))
+                {
+                    // Add some text to file    
+                    Byte[] loginInfo = new UTF8Encoding(true).GetBytes("");
+
+                    if (checkRememberMe.Checked)
+                    {
+                        // Add some text to file    
+                        loginInfo = new UTF8Encoding(true).GetBytes($"{txtUsername.Text}|{EncryptionHelper.Encrypt(txtPassword.Text)}|true");
+                    }
+
+                    fs.Write(loginInfo, 0, loginInfo.Length);
+                }
+
+
+            }
+            catch (Exception Ex)
+            {
+                Console.WriteLine(Ex.ToString());
+            }
+        }
+
+        private void ReadRememberMeInfo()
+        {
+            var pathDirectory = Application.UserAppDataPath;
+            var filePathDirectory = Path.Combine(pathDirectory, $"remembermeinfo.txt");
+
+            try
+            {
+                // Open the stream and read it back.    
+                using (StreamReader sr = File.OpenText(filePathDirectory))
+                {
+                    string info = "";
+                    while ((info = sr.ReadLine()) != null)
+                    {
+                        var infos = info.Split('|').ToArray();
+
+                        txtUsername.Text = infos[0];
+                        txtPassword.Text = EncryptionHelper.Decrypt(infos[1]);
+                        checkRememberMe.Checked = bool.Parse(infos[2]);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+        #endregion
     }
 }

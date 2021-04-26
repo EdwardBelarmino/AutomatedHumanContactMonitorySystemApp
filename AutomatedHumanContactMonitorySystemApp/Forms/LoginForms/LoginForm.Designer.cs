@@ -33,7 +33,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkRememberMe = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -84,18 +84,18 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // checkBox1
+            // checkRememberMe
             // 
-            this.checkBox1.FlatAppearance.BorderSize = 0;
-            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBox1.Location = new System.Drawing.Point(140, 297);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(126, 24);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Remember me?";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkRememberMe.FlatAppearance.BorderSize = 0;
+            this.checkRememberMe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkRememberMe.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkRememberMe.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkRememberMe.Location = new System.Drawing.Point(140, 297);
+            this.checkRememberMe.Name = "checkRememberMe";
+            this.checkRememberMe.Size = new System.Drawing.Size(126, 24);
+            this.checkRememberMe.TabIndex = 3;
+            this.checkRememberMe.Text = "Remember me?";
+            this.checkRememberMe.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -153,7 +153,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.btnLogin);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.checkBox1);
+            this.panel3.Controls.Add(this.checkRememberMe);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.panel2);
@@ -202,7 +202,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkRememberMe;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
