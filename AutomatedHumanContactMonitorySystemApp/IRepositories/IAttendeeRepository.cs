@@ -10,7 +10,7 @@ namespace AutomatedHumanContactMonitorySystemApp.IRepositories
     {
         List<Attendee> GetAttendees();
         Attendee GetAttendee(int id);
-        void PostAttendee(Attendee attendee);
+        string PostAttendee(Attendee attendee);
         void DeleteAttendee(int id);
         void PutAttendee(Attendee attendee);
 
