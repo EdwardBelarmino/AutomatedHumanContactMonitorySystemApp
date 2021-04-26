@@ -67,7 +67,8 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
                 ContactNumber = txtContactNumber.Text
             };
 
-            AttendeeRepository.PostAttendee(attendeeToAdd);
+            var message = AttendeeRepository.PostAttendee(attendeeToAdd);
+            MessageBox.Show(message);
         }
 
         #endregion helpers
