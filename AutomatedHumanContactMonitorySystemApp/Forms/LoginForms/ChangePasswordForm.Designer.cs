@@ -31,8 +31,8 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangePasswordForm));
             this.label4 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtCurrentPassword = new System.Windows.Forms.TextBox();
+            this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +42,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             this.btnClose = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -60,28 +60,28 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             this.label4.Text = "Change Password";
             this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
-            // txtUsername
+            // txtCurrentPassword
             // 
-            this.txtUsername.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtUsername.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtUsername.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUsername.Location = new System.Drawing.Point(0, 0);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(326, 18);
-            this.txtUsername.TabIndex = 1;
+            this.txtCurrentPassword.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtCurrentPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCurrentPassword.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtCurrentPassword.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtCurrentPassword.Location = new System.Drawing.Point(0, 0);
+            this.txtCurrentPassword.Name = "txtCurrentPassword";
+            this.txtCurrentPassword.Size = new System.Drawing.Size(326, 18);
+            this.txtCurrentPassword.TabIndex = 1;
             // 
-            // txtPassword
+            // txtNewPassword
             // 
-            this.txtPassword.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtPassword.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPassword.Location = new System.Drawing.Point(0, 0);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(326, 18);
-            this.txtPassword.TabIndex = 2;
+            this.txtNewPassword.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtNewPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNewPassword.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtNewPassword.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNewPassword.Location = new System.Drawing.Point(0, 0);
+            this.txtNewPassword.Name = "txtNewPassword";
+            this.txtNewPassword.PasswordChar = '*';
+            this.txtNewPassword.Size = new System.Drawing.Size(326, 18);
+            this.txtNewPassword.TabIndex = 2;
             // 
             // btnChangePassword
             // 
@@ -103,9 +103,9 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(37, 186);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 18);
+            this.label2.Size = new System.Drawing.Size(117, 18);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Password:";
+            this.label2.Text = "New Password:";
             // 
             // label1
             // 
@@ -120,7 +120,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
-            this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.txtNewPassword);
             this.panel1.Location = new System.Drawing.Point(37, 207);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(326, 21);
@@ -129,7 +129,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
-            this.panel2.Controls.Add(this.txtUsername);
+            this.panel2.Controls.Add(this.txtCurrentPassword);
             this.panel2.Location = new System.Drawing.Point(37, 131);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(326, 21);
@@ -177,23 +177,23 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
-            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.txtConfirmPassword);
             this.panel4.Location = new System.Drawing.Point(37, 275);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(326, 21);
             this.panel4.TabIndex = 13;
             // 
-            // textBox1
+            // txtConfirmPassword
             // 
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(326, 18);
-            this.textBox1.TabIndex = 2;
+            this.txtConfirmPassword.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtConfirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtConfirmPassword.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(0, 0);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '*';
+            this.txtConfirmPassword.Size = new System.Drawing.Size(326, 18);
+            this.txtConfirmPassword.TabIndex = 2;
             // 
             // ChangePasswordForm
             // 
@@ -221,8 +221,8 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
         #endregion
 
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtCurrentPassword;
+        private System.Windows.Forms.TextBox txtNewPassword;
         private System.Windows.Forms.Button btnChangePassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -231,7 +231,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Button btnClose;
     }
 }
