@@ -33,5 +33,14 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             var message = JsonConvert.DeserializeObject<string>(response.Content);
             return message;
         }
+
+        public void ChangePassword(AppUser appUser)
+        {
+            var client = new RestClient(ApiAddress);
+            var request = new RestRequest("api/login/changepassword/" + appUser.Id, Method.PUT);
+            request.RequestFormat = DataFormat.Json;
+            request.AddJsonBody(appUser);
+            var response = client.Execute(request);
+        }
     }
 }
