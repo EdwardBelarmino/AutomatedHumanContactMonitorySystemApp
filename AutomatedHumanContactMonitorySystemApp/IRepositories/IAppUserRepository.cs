@@ -9,5 +9,6 @@ namespace AutomatedHumanContactMonitorySystemApp.IRepositories
     {
         AppUser IsAuthorized(AppUser appUserLogin);
         string Register(AppUser registerAppUser);
+        void ChangePassword(AppUser appUser);
     }
 }
