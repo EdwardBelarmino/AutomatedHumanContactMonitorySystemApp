@@ -45,8 +45,13 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.LoginForms
                         PlaceHelper.AppUserName = appUserLogin.Username;
                         PlaceHelper.PlaceId = appUserLogin.PlaceId;
                         PlaceHelper.IsAdmin = appUserLogin.IsAdmin;
+                        PlaceHelper.AppUserId = appUserLogin.Id;
                         SaveRememberMeInfo();
                         this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect Username/Password");
                     }
                 }
                 catch (Exception ex)

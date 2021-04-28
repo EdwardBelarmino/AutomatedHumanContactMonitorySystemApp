@@ -6,6 +6,7 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Web.Http;
 
 namespace AutomatedHumanContactMonitorySystemApp.Repositories
 {
@@ -34,13 +35,14 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
             return message;
         }
 
-        public void ChangePassword(AppUser appUser)
+        public IRestResponse ChangePassword(AppUser appUser)
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/login/changepassword/" + appUser.Id, Method.PUT);
+            var request = new RestRequest("api/login/changepassword/", Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(appUser);
             var response = client.Execute(request);
+            return response;
         }
     }
 }

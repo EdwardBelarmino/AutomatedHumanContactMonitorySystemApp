@@ -278,5 +278,11 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             var registerForm = new RegisterForm(PlaceRepository, AppUserRepository);
             registerForm.ShowDialog();
         }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            var changePasswordForm = new ChangePasswordForm(AppUserRepository);
+            changePasswordForm.ShowDialog();
+        }
     }
 }
