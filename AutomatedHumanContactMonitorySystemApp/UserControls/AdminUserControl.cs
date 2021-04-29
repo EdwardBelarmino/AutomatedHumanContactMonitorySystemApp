@@ -87,15 +87,28 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
                                                                                   a.VisitedDateTime.Date >= SelectedAttendance.VisitedDateTime.Date.AddDays(-14) &&
                                                                                   a.PlaceId == Helpers.PlaceHelper.PlaceId);
 
-            foreach (var attendance in attendances)
+            var attendancesWherePositiveAttendeeExists = attendances.Where(a => a.AttendeeId == SelectedAttendance.AttendeeId).GroupBy(a => a.VisitedDateTime.Date).Select(a => a.First()).ToList();
+
+            var datesWhenPositiveAttendeeExists = attendancesWherePositiveAttendeeExists.Select(a => a.VisitedDateTime.Date);
+
+            foreach(var date in datesWhenPositiveAttendeeExists)
             {
-                if (attendance.Id != SelectedAttendance.Id && attendance.Status != "POSITIVE")
+                foreach (var attendance in attendances)
                 {
-                    AttendanceRepository.UpdateAttendanceStatus(new Attendance { Id = attendance.Id, Status = "PUI" });
-                    AttendeeRepository.UpdateAttendeeStatus(new Attendee { Id = attendance.AttendeeId, Status = "PUI" });
+                    if (attendance.Id != SelectedAttendance.Id && attendance.Status != "POSITIVE" && attendance.VisitedDateTime.Date == date.Date)
+                    {
+                        AttendanceRepository.UpdateAttendanceStatus(new Attendance { Id = attendance.Id, Status = "PUI" });
+                        AttendeeRepository.UpdateAttendeeStatus(new Attendee { Id = attendance.AttendeeId, Status = "PUI" });
+                    }
+                    else if (attendance.AttendeeId == SelectedAttendance.AttendeeId && attendance.VisitedDateTime.Date == date.Date)
+                    {
+                        AttendanceRepository.UpdateAttendanceStatus(new Attendance { Id = attendance.Id, Status = "POSITIVE" });
+                        AttendeeRepository.UpdateAttendeeStatus(new Attendee { Id = attendance.AttendeeId, Status = "POSITIVE" });
+                    }
+
                 }
-                    
             }
+
 
         }
 
@@ -107,6 +120,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         private void dgvAttendances_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             SelectedAttendance.Id = int.Parse(dgvAttendances.CurrentRow.Cells[6].Value.ToString());
+            SelectedAttendance.AttendeeId = int.Parse(dgvAttendances.CurrentRow.Cells[7].Value.ToString());
             SelectedAttendance.Status = dgvAttendances.CurrentRow.Cells[5].Value.ToString();
             SelectedAttendance.VisitedDateTime = DateTime.Parse(dgvAttendances.CurrentRow.Cells[1].Value.ToString());
 
