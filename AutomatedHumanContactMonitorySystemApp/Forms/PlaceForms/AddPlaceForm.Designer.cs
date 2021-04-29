@@ -33,6 +33,8 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +49,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
             // 
             // txtLocation
             // 
-            this.txtLocation.Location = new System.Drawing.Point(94, 37);
+            this.txtLocation.Location = new System.Drawing.Point(94, 42);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(196, 23);
             this.txtLocation.TabIndex = 1;
@@ -64,24 +66,40 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(32, 101);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Location});
+            this.dataGridView1.Location = new System.Drawing.Point(32, 84);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(353, 150);
             this.dataGridView1.TabIndex = 3;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            // 
+            // Location
+            // 
+            this.Location.HeaderText = "Location";
+            this.Location.Name = "Location";
             // 
             // AddPlaceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 299);
+            this.ClientSize = new System.Drawing.Size(406, 276);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtLocation);
             this.Controls.Add(this.label1);
             this.Name = "AddPlaceForm";
-            this.Text = "AddPlaceForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "New Location";
             this.Load += new System.EventHandler(this.AddPlaceForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -95,5 +113,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Location;
     }
 }

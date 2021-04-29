@@ -46,6 +46,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             this.btnClose = new System.Windows.Forms.Button();
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.btnCreateAccount = new System.Windows.Forms.Button();
+            this.btnNewLocation = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -267,12 +268,28 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             this.btnCreateAccount.UseVisualStyleBackColor = false;
             this.btnCreateAccount.Click += new System.EventHandler(this.btnCreateAccount_Click);
             // 
+            // btnNewLocation
+            // 
+            this.btnNewLocation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
+            this.btnNewLocation.FlatAppearance.BorderSize = 0;
+            this.btnNewLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewLocation.Font = new System.Drawing.Font("Arial", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnNewLocation.ForeColor = System.Drawing.Color.White;
+            this.btnNewLocation.Location = new System.Drawing.Point(502, 3);
+            this.btnNewLocation.Name = "btnNewLocation";
+            this.btnNewLocation.Size = new System.Drawing.Size(81, 23);
+            this.btnNewLocation.TabIndex = 9;
+            this.btnNewLocation.Text = "New Location";
+            this.btnNewLocation.UseVisualStyleBackColor = false;
+            this.btnNewLocation.Click += new System.EventHandler(this.btnNewLocation_Click);
+            // 
             // MainFormNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(240)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(792, 590);
+            this.Controls.Add(this.btnNewLocation);
             this.Controls.Add(this.btnCreateAccount);
             this.Controls.Add(this.btnChangePassword);
             this.Controls.Add(this.btnClose);
@@ -311,5 +328,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         private System.Windows.Forms.Button btnRegisterUser;
         private System.Windows.Forms.Button btnChangePassword;
         private System.Windows.Forms.Button btnCreateAccount;
+        private System.Windows.Forms.Button btnNewLocation;
     }
 }

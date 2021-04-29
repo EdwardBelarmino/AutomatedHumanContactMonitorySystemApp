@@ -38,7 +38,12 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
         }
         private void LoadGridViewPlaces()
         {
-            dataGridView1.DataSource = GetPlaces();
+            dataGridView1.Rows.Clear();
+
+            foreach (var place in GetPlaces())
+            {
+                dataGridView1.Rows.Add(place.Id, place.Location);
+            }
         }
 
         private void AddPlace()
@@ -49,6 +54,10 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms
             };
 
             PlaceRepository.PostPlace(placeToAdd);
+
+            txtLocation.Text = string.Empty;
+
+            MessageBox.Show("Location successfully added!");
         }
 
         #endregion Helpers

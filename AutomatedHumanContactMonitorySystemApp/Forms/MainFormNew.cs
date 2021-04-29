@@ -1,6 +1,7 @@
 ﻿using AutomatedHumanContactMonitorySystemApp.Extensions;
 using AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms;
 using AutomatedHumanContactMonitorySystemApp.Forms.LoginForms;
+using AutomatedHumanContactMonitorySystemApp.Forms.PlaceForms;
 using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
 using AutomatedHumanContactMonitorySystemApp.UserControls;
@@ -82,6 +83,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             btnRegisterUser.Visible = Helpers.PlaceHelper.IsAdmin;
             btnContactTracing.Visible = !Helpers.PlaceHelper.IsAdmin;
             btnCreateAccount.Visible = Helpers.PlaceHelper.IsAdmin;
+            btnNewLocation.Visible = Helpers.PlaceHelper.IsAdmin;
         }
         private void ToggleMenuSize()
         {
@@ -283,6 +285,12 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         {
             var changePasswordForm = new ChangePasswordForm(AppUserRepository);
             changePasswordForm.ShowDialog();
+        }
+
+        private void btnNewLocation_Click(object sender, EventArgs e)
+        {
+            var newLocationForm = new AddPlaceForm(PlaceRepository);
+            newLocationForm.ShowDialog();
         }
     }
 }
