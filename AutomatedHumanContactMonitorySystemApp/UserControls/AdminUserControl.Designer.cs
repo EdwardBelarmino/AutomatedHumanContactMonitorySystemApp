@@ -36,6 +36,15 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvAttendances = new System.Windows.Forms.DataGridView();
+            this.AttendeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VisitedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Temperature = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PlaceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttendeeRFID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttendeeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PlaceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,15 +57,8 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.txtRfid = new System.Windows.Forms.TextBox();
             this.comboStatus = new System.Windows.Forms.ComboBox();
             this.btnSetStatus = new System.Windows.Forms.Button();
-            this.AttendeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VisitedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Temperature = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PlaceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AttendeeRFID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AttendeeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PlaceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnSetAttendeeStatusByDate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendances)).BeginInit();
             this.panel3.SuspendLayout();
@@ -133,6 +135,63 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.dgvAttendances.Size = new System.Drawing.Size(577, 284);
             this.dgvAttendances.TabIndex = 1;
             this.dgvAttendances.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendances_CellClick);
+            // 
+            // AttendeeName
+            // 
+            this.AttendeeName.HeaderText = "Name";
+            this.AttendeeName.Name = "AttendeeName";
+            this.AttendeeName.ReadOnly = true;
+            // 
+            // VisitedDateTime
+            // 
+            this.VisitedDateTime.HeaderText = "Date and Time";
+            this.VisitedDateTime.Name = "VisitedDateTime";
+            this.VisitedDateTime.ReadOnly = true;
+            // 
+            // Temperature
+            // 
+            this.Temperature.HeaderText = "Temperature";
+            this.Temperature.Name = "Temperature";
+            this.Temperature.ReadOnly = true;
+            // 
+            // PlaceName
+            // 
+            this.PlaceName.HeaderText = "Location";
+            this.PlaceName.Name = "PlaceName";
+            this.PlaceName.ReadOnly = true;
+            // 
+            // AttendeeRFID
+            // 
+            this.AttendeeRFID.HeaderText = "RFID";
+            this.AttendeeRFID.Name = "AttendeeRFID";
+            this.AttendeeRFID.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // AttendeeId
+            // 
+            this.AttendeeId.HeaderText = "AttendeeId";
+            this.AttendeeId.Name = "AttendeeId";
+            this.AttendeeId.ReadOnly = true;
+            this.AttendeeId.Visible = false;
+            // 
+            // PlaceId
+            // 
+            this.PlaceId.HeaderText = "PlaceId";
+            this.PlaceId.Name = "PlaceId";
+            this.PlaceId.ReadOnly = true;
+            this.PlaceId.Visible = false;
             // 
             // panel3
             // 
@@ -290,67 +349,37 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.btnSetStatus.UseVisualStyleBackColor = false;
             this.btnSetStatus.Click += new System.EventHandler(this.btnSetStatus_Click);
             // 
-            // AttendeeName
+            // label5
             // 
-            this.AttendeeName.HeaderText = "Name";
-            this.AttendeeName.Name = "AttendeeName";
-            this.AttendeeName.ReadOnly = true;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(253, 470);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(132, 15);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Attendance not found? ";
             // 
-            // VisitedDateTime
+            // btnSetAttendeeStatusByDate
             // 
-            this.VisitedDateTime.HeaderText = "Date and Time";
-            this.VisitedDateTime.Name = "VisitedDateTime";
-            this.VisitedDateTime.ReadOnly = true;
-            // 
-            // Temperature
-            // 
-            this.Temperature.HeaderText = "Temperature";
-            this.Temperature.Name = "Temperature";
-            this.Temperature.ReadOnly = true;
-            // 
-            // PlaceName
-            // 
-            this.PlaceName.HeaderText = "Location";
-            this.PlaceName.Name = "PlaceName";
-            this.PlaceName.ReadOnly = true;
-            // 
-            // AttendeeRFID
-            // 
-            this.AttendeeRFID.HeaderText = "RFID";
-            this.AttendeeRFID.Name = "AttendeeRFID";
-            this.AttendeeRFID.ReadOnly = true;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // AttendeeId
-            // 
-            this.AttendeeId.HeaderText = "AttendeeId";
-            this.AttendeeId.Name = "AttendeeId";
-            this.AttendeeId.ReadOnly = true;
-            this.AttendeeId.Visible = false;
-            // 
-            // PlaceId
-            // 
-            this.PlaceId.HeaderText = "PlaceId";
-            this.PlaceId.Name = "PlaceId";
-            this.PlaceId.ReadOnly = true;
-            this.PlaceId.Visible = false;
+            this.btnSetAttendeeStatusByDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(67)))), ((int)(((byte)(255)))));
+            this.btnSetAttendeeStatusByDate.FlatAppearance.BorderSize = 0;
+            this.btnSetAttendeeStatusByDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetAttendeeStatusByDate.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSetAttendeeStatusByDate.ForeColor = System.Drawing.Color.White;
+            this.btnSetAttendeeStatusByDate.Location = new System.Drawing.Point(391, 466);
+            this.btnSetAttendeeStatusByDate.Name = "btnSetAttendeeStatusByDate";
+            this.btnSetAttendeeStatusByDate.Size = new System.Drawing.Size(205, 23);
+            this.btnSetAttendeeStatusByDate.TabIndex = 4;
+            this.btnSetAttendeeStatusByDate.Text = "Set Attendee Status By Date";
+            this.btnSetAttendeeStatusByDate.UseVisualStyleBackColor = false;
+            this.btnSetAttendeeStatusByDate.Click += new System.EventHandler(this.btnSetAttendeeStatusByDate_Click);
             // 
             // AdminUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSetAttendeeStatusByDate);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -364,6 +393,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -392,5 +422,7 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn AttendeeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn PlaceId;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnSetAttendeeStatusByDate;
     }
 }

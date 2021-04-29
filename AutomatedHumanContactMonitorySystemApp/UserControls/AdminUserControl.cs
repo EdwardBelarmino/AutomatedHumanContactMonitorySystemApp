@@ -1,4 +1,5 @@
-﻿using AutomatedHumanContactMonitorySystemApp.IRepositories;
+﻿using AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms;
+using AutomatedHumanContactMonitorySystemApp.IRepositories;
 using AutomatedHumanContactMonitorySystemApp.Models.ContextModels;
 using AutomatedHumanContactMonitorySystemApp.Models.Dtos;
 using AutomatedHumanContactMonitorySystemApp.Models.Dtos.AttendanceDtos;
@@ -73,21 +74,35 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
 
             if (SelectedAttendance.Status == "POSITIVE")
             {
-                UpdateMultipleAttendances();
+                UpdateMultipleAttendances(SelectedAttendance.VisitedDateTime, SelectedAttendance.AttendeeId, SelectedAttendance.Id);
             }
 
             SelectedAttendance = new Attendance();
         }
-
-        private void UpdateMultipleAttendances()
+        public void UpdateAttendanceById(DateTime visitedDateTime, int attendeeId, string status)
         {
-            var attendances = AttendanceRepository.GetAttendances().Where(a => a.VisitedDateTime.Year <= SelectedAttendance.VisitedDateTime.Year &&
-                                                                                  a.VisitedDateTime.Month <= SelectedAttendance.VisitedDateTime.Month &&
-                                                                                  a.VisitedDateTime.Day <= SelectedAttendance.VisitedDateTime.Day &&
-                                                                                  a.VisitedDateTime.Date >= SelectedAttendance.VisitedDateTime.Date.AddDays(-14) &&
+
+            if (attendeeId > 0)
+            {
+                AttendeeRepository.UpdateAttendeeStatus(new Attendee { Id = attendeeId, Status = status });
+
+                if (status == "POSITIVE")
+                {
+                    UpdateMultipleAttendances(visitedDateTime, attendeeId, 0);
+                }
+            }
+
+      
+        }
+        private void UpdateMultipleAttendances(DateTime visitedDateTime, int attendeeId, int attendanceId)
+        {
+            var attendances = AttendanceRepository.GetAttendances().Where(a => a.VisitedDateTime.Year <= visitedDateTime.Year &&
+                                                                                  a.VisitedDateTime.Month <= visitedDateTime.Month &&
+                                                                                  a.VisitedDateTime.Day <= visitedDateTime.Day &&
+                                                                                  a.VisitedDateTime.Date >= visitedDateTime.Date.AddDays(-14) &&
                                                                                   a.PlaceId == Helpers.PlaceHelper.PlaceId);
 
-            var attendancesWherePositiveAttendeeExists = attendances.Where(a => a.AttendeeId == SelectedAttendance.AttendeeId).GroupBy(a => a.VisitedDateTime.Date).Select(a => a.First()).ToList();
+            var attendancesWherePositiveAttendeeExists = attendances.Where(a => a.AttendeeId == attendeeId).GroupBy(a => a.VisitedDateTime.Date).Select(a => a.First()).ToList();
 
             var datesWhenPositiveAttendeeExists = attendancesWherePositiveAttendeeExists.Select(a => a.VisitedDateTime.Date);
 
@@ -95,12 +110,13 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             {
                 foreach (var attendance in attendances)
                 {
-                    if (attendance.Id != SelectedAttendance.Id && attendance.Status != "POSITIVE" && attendance.VisitedDateTime.Date == date.Date)
+                    if (attendance.Id != attendanceId && attendance.Status != "POSITIVE" && attendance.VisitedDateTime.Date == date.Date)
                     {
                         AttendanceRepository.UpdateAttendanceStatus(new Attendance { Id = attendance.Id, Status = "PUI" });
                         AttendeeRepository.UpdateAttendeeStatus(new Attendee { Id = attendance.AttendeeId, Status = "PUI" });
                     }
-                    else if (attendance.AttendeeId == SelectedAttendance.AttendeeId && attendance.VisitedDateTime.Date == date.Date)
+                    
+                    if (attendance.AttendeeId == attendeeId && attendance.VisitedDateTime.Date == date.Date)
                     {
                         AttendanceRepository.UpdateAttendanceStatus(new Attendance { Id = attendance.Id, Status = "POSITIVE" });
                         AttendeeRepository.UpdateAttendeeStatus(new Attendee { Id = attendance.AttendeeId, Status = "POSITIVE" });
@@ -167,6 +183,12 @@ namespace AutomatedHumanContactMonitorySystemApp.UserControls
             LoadAttendanceList();
 
             this.Cursor = Cursors.Default;
+        }
+
+        private void btnSetAttendeeStatusByDate_Click(object sender, EventArgs e)
+        {
+            var setAttendeeStatusByDateForm = new SetAttendeeStatusByDateForm(AttendeeRepository, this);
+            setAttendeeStatusByDateForm.ShowDialog();
         }
     }
 }
