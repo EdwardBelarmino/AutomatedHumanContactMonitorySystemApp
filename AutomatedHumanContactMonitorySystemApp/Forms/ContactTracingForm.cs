@@ -201,14 +201,14 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
         {
             if (!connection.Connected)
                 connection.Connect();
-
+            connection.WriteVariable("i", 0);
             connectionTimer.Start();
             isTimerRunning = true;
         }
 
         public void UnloadUserControl()
         {
-            connection.WriteVariable("i", 0);
+            
             isTimerRunning = false;
             if (connection.Connected)
                 connection.Disconnect();
@@ -236,6 +236,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
             txtAttendeeRFID.Text = string.Empty;
             txtName.Text = string.Empty;
             txtTemperature.Text = string.Empty;
+            btnAdd.Text = string.Empty;
 
             rfidValue = "";
             bodytempValue = string.Empty;
@@ -304,8 +305,10 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            connection.WriteVariable("i", 0);
             UnloadUserControl();
             this.Close();
+            
         }
     }
 }
