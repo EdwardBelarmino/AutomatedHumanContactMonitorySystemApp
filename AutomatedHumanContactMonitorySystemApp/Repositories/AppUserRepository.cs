@@ -16,7 +16,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
         public AppUser IsAuthorized(AppUser appUserLogin)
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/login/authorize", Method.POST);
+            var request = new RestRequest("api/login/authorize/", Method.POST);
             request.AddJsonBody(appUserLogin);
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
@@ -27,7 +27,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
         public string Register(AppUser registerAppUser)
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/login/register", Method.POST);
+            var request = new RestRequest("api/login/register/", Method.POST);
             request.AddJsonBody(registerAppUser);
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);

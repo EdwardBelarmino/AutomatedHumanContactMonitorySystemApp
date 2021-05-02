@@ -25,7 +25,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://13.76.131.130:80/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://ahcmsapi20210502202635.azurewebsites.net/")]
         public string ApiAddress {
             get {
                 return ((string)(this["ApiAddress"]));

@@ -18,7 +18,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
         public List<AttendanceDto> GetAttendances()
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/attendance/get");
+            var request = new RestRequest("api/attendance/");
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
             var attendances = JsonConvert.DeserializeObject<List<AttendanceDto>>(response.Content);
@@ -28,7 +28,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
         public void PostAttendance(Attendance attendance)
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/attendance/post", Method.POST);
+            var request = new RestRequest("api/attendance/", Method.POST);
             request.AddJsonBody(attendance);
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
@@ -37,7 +37,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
         public void DeleteAttendance(int id)
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/attendance/delete/" + id, Method.DELETE);
+            var request = new RestRequest("api/attendance/" + id, Method.DELETE);
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
         }
@@ -45,7 +45,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
         public void UpdateAttendanceStatus(Attendance attendance)
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/attendance/UpdateAttendanceStatus", Method.POST);
+            var request = new RestRequest("api/attendance/UpdateAttendanceStatus/", Method.POST);
             request.AddJsonBody(attendance);
             var response = client.Execute(request);
         }
@@ -53,7 +53,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
         public List<AttendanceDto> GetAttendanceBySearchParameter(SearchDto searchDto)
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/attendance/GetAttendanceBySearchParameter", Method.POST);
+            var request = new RestRequest("api/attendance/GetAttendanceBySearchParameter/", Method.POST);
             request.AddJsonBody(searchDto);
             var response = client.Execute(request);
             var attendances = JsonConvert.DeserializeObject<List<AttendanceDto>>(response.Content);
@@ -63,7 +63,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
         public List<AttendanceDto> GetAttendanceByDate(SearchDto searchDto)
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/attendance/GetAttendanceByDate", Method.POST);
+            var request = new RestRequest("api/attendance/GetAttendanceByDate/", Method.POST);
             request.AddJsonBody(searchDto);
             var response = client.Execute(request);
             var attendances = JsonConvert.DeserializeObject<List<AttendanceDto>>(response.Content);

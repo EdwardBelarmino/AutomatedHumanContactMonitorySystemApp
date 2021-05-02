@@ -16,7 +16,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
         public List<Place> GetPlaces()
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/place/get");
+            var request = new RestRequest("api/place/");
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
             var places = JsonConvert.DeserializeObject<List<Place>>(response.Content);
@@ -26,7 +26,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
         public void PostPlace(Place place)
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/place/post", Method.POST);
+            var request = new RestRequest("api/place/", Method.POST);
             request.AddJsonBody(place);
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
@@ -35,7 +35,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
         public void DeletePlace(int id)
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/place/delete/" + id, Method.DELETE);
+            var request = new RestRequest("api/place/" + id, Method.DELETE);
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
         }
@@ -43,7 +43,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Repositories
         public void PutPlace(Place place)
         {
             var client = new RestClient(ApiAddress);
-            var request = new RestRequest("api/place/put/" + place.Id, Method.PUT);
+            var request = new RestRequest("api/place/" + place.Id, Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(place);
             var response = client.Execute(request);

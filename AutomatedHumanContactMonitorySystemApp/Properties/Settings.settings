@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ApiAddress" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://13.76.131.130:80/</Value>
+      <Value Profile="(Default)">https://ahcmsapi20210502202635.azurewebsites.net/</Value>
     </Setting>
   </Settings>
 </SettingsFile>
