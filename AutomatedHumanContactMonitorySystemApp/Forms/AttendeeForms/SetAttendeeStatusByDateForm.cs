@@ -35,7 +35,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
 
             foreach (var attendee in attendees)
             {
-                dataGridView1.Rows.Add(attendee.Id, attendee.AttendeeRFID, attendee.Status);
+                dataGridView1.Rows.Add(attendee.Id, attendee.Name, attendee.AttendeeRFID, attendee.Status);
             }
         }
 

@@ -31,9 +31,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetAttendeeStatusByDateForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AttendeeRFID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dateTimePickerVisitedDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,6 +38,10 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnSetStatus = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttendeeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttendeeRFID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +56,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
+            this.AttendeeName,
             this.AttendeeRFID,
             this.Status});
             this.dataGridView1.Location = new System.Drawing.Point(26, 176);
@@ -67,25 +69,6 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             this.dataGridView1.Size = new System.Drawing.Size(301, 150);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // AttendeeRFID
-            // 
-            this.AttendeeRFID.HeaderText = "RFID";
-            this.AttendeeRFID.Name = "AttendeeRFID";
-            this.AttendeeRFID.ReadOnly = true;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
             // 
             // panel4
             // 
@@ -175,11 +158,36 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // AttendeeName
+            // 
+            this.AttendeeName.HeaderText = "Name";
+            this.AttendeeName.Name = "AttendeeName";
+            this.AttendeeName.ReadOnly = true;
+            // 
+            // AttendeeRFID
+            // 
+            this.AttendeeRFID.HeaderText = "RFID";
+            this.AttendeeRFID.Name = "AttendeeRFID";
+            this.AttendeeRFID.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
             // SetAttendeeStatusByDateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 367);
+            this.ClientSize = new System.Drawing.Size(365, 339);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.dataGridView1);
@@ -205,6 +213,7 @@ namespace AutomatedHumanContactMonitorySystemApp.Forms.AttendeeForms
         private System.Windows.Forms.Button btnSetStatus;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AttendeeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn AttendeeRFID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
     }
